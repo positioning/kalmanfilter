@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\textheight 30cm
+\textwidth 18.5cm
+\oddsidemargin -1cm
+\evensidemargin -1cm
+\topmargin -3cm
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2ex plus 0.5ex minus 0.2ex}
+\usepackage{cite}
+%To make the bibliography look right
+\makeatletter \renewcommand\@biblabel[1]{} \makeatother
+\renewcommand{\citeleft}{(}
+\renewcommand{\citeright}{)}
+
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{mathptmx}
+\usepackage{charter}
+\usepackage{color}
+\pagestyle{empty}
+\begin{document}
+\begin{center}
+{\huge Trackit R package}
+\end{center}
+\Large
+\thispagestyle{empty}
+Trackit is an add-on package for the statistical environment {\bf R}
+to efficiently estimate movement parameters and predict ``the most
+probable track'' directly from the raw light measurements obtained
+from archival tagged individuals. Its basic use is to fit and plot the
+model described in \citen{Nielsen2007}.
+
+The model is unique in estimating the most probable track without
+making any light-level threshold assumptions, or constraining the
+movement of the tag between dawn and dusk. The new model generates two
+estimates of geographic positions per day (at dawn and dusk). The
+covariance structure of the model is designed to handle high
+correlations between light measurements, such as might be caused by
+local weather conditions. The yearly pattern in latitude precision is
+estimated by propagating the data uncertainties through the
+geolocation process. The model has been applied to simulated data,
+mooring studies, and real deployments on swimming and diving fish.
+
+An attempt has been made to make it as simple as possible to apply 
+this model. For instance, to fit a basic track all that is necessary 
+is to bring data into the right format: 
+\vspace{-0.6cm}
+{\color{blue}
+\begin{small}
+\begin{verbatim}
+    year  month   day     hour    min     sec     depth   light   temp
+    2003  6       29      2       23      0       0       158     0
+    2003  6       29      2       35      0       0       156     0
+       .  .        .      .        .      .       .         .     .
+       .  .        .      .        .      .       .         .     .
+       .  .        .      .        .      .       .         .     .
+\end{verbatim}
+\end{small}}
+and type the following commands into R: 
+\vspace{-.3cm}
+{\color{red}
+\begin{small}
+\begin{verbatim}
+    library(trackit)
+    track<-read.table('filename.txt')
+    prepared.track<-prepit(track,
+                           fix.first=c(242.12,32.87,2003,6,28,0,0,0),
+                           fix.last=c(240.42,32.62,2003,12,27,0,0,0))
+    fit<-trackit(prepared.track)
+    plot(fit)
+\end{verbatim}
+\end{small}}
+First line loads the package. Second line reads the data. Third 
+line (here spanning three lines) prepares the track and supplies 
+information about known release and recapture positions. Fourth line 
+does the model optimization. Finally the fifth line plots the most 
+probable track.     
+
+The importance of open collaboration for the future development and
+application of electronic tags cannot be overemphasized. The model is
+developed because a broad network of collaborating tag users and
+manufacturers generously shared their time, data, and ideas.
+\vspace{-1cm}
+\begin{thebibliography}{}
+\vspace{-0.75cm}
+\bibitem[Nielsen~and~Sibert~2007]{Nielsen2007}
+Nielsen,~A. and Sibert,~J.~R.~(2007).
+{State--space model for light--based tracking of marine animals}.
+{\it Can. J. Fish. Aquat. Sci.}~{\bf 64(8)}:1055-1068. 
+\end{thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage 
+\begin{center}
+{\huge Sea Surface Temperature in Trackit}
+\end{center}
+\Large
+\thispagestyle{empty}
+A fairly recent addition to the trackit package is the ability to 
+include sea surface temperatures derived from temperature measurements 
+in the tag to assist the geolocation. In periods where light--based 
+geolocation is less precise (around equinoxes), this can be a great 
+improvement. 
+
+In order to use sea surface temperatures a second data frame must be 
+prepared containing the columns: {\color{blue}\verb#year#},
+{\color{blue}\verb#month#}, {\color{blue}\verb#day#}, 
+{\color{blue}\verb#hour#}, {\color{blue}\verb#min#}, 
+{\color{blue}\verb#sec#}, and {\color{blue}\verb#sst#}. Assuming this 
+data is in the file {\color{blue}\verb#sstfile.txt#} a syntax example 
+for fitting the model is:   
+{\color{red}
+\begin{small}
+\begin{verbatim}
+    library(trackit)
+    track<-read.table('filename.txt')
+    sstdata<-read.table('sstfile.txt')
+    path<-get.sst.from.server(track, 220, 260, 10, 40)
+    prepared.track<-prepit(track, sst=sstdata,
+                           fix.first=c(242.12,32.87,2003,6,28,0,0,0),
+                           fix.last=c(240.42,32.62,2003,12,27,0,0,0))
+    fit<-trackit(prepared.track)
+    plot(fit)
+\end{verbatim}
+\end{small}}
+Most lines are similar to fitting a track with light alone. Third 
+line reads in the SST data extracted from the tag. Fourth line 
+downloads satellite SST images for the a user defined area, spanning 
+the duration of the tag's deployment (several sources are available).  
+
+The model is very flexible in that it does not require SST data to be 
+available on all days where light data is available (or the other way 
+around), so even if SST measurements from the tag are only available 
+on a few days throughout the track - it can still be useful for the 
+geolocation process.  
+
+The option to include SST in the trackit package is developed in 
+collaboration with Chi Lam from University of Southern California.
+\end{document}
+
+\newpage
+\begin{center}
+{\huge A simulated example}
+\end{center}
+\Large
+\thispagestyle{empty}
+In addition to estimating parameters and reconstructing most probable 
+tracks from real data the packages also offers the ability of simulating 
+data from the model. This serves several purposes. First it can be used 
+to test the model implementation, and to verify that the parameters in 
+the model are in fact identifiable. Second it is a useful (and 
+inexpensive) tool for experimenting with tag settings and experimental 
+designs. Examples of relevant questions could be: How much would the 
+precision in geolocation improve by using SST in my study area? How does 
+different sampling rate settings influence the precision in geolocation? 
+What precision can be expected near equinoxes in my area? My marine 
+creatures tend loose their tags fast, with such short deployments how 
+precise can I expect inference about the model parameters to be?       
+
+The function used to simulate data from the model is called 
+{\color{blue}\verb#light.simulator#}. This function has a lot of default 
+settings,
+
+
+set.seed(1234567)
+library(trackit)
+x<-date.mdy(mdy.date(2,1,2003)+1:150)
+sstdates<-as.data.frame(cbind(x$year, x$month, x$day, 0,0,0))
+sim<-light.simulator(sstdates=sstdates)
+fit<-trackit(sim)
+
+
+\end{document}

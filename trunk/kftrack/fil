@@ -1,0 +1,334 @@
+LDFLAGS="-m32 yrmonday.o azimuth.o banner.o solstice.o" /home/andni/ADMB/admb-trunk/trunk/build/admb-10.1-linux-gcc4.5.2-32bit/admb-10.1-linux-gcc4.5.2-32bit/bin/adlink kftrack
+g++ -m32 yrmonday.o azimuth.o banner.o solstice.o -s -L/home/andni/ADMB/admb-trunk/trunk/build/admb-10.1-linux-gcc4.5.2-32bit/admb-10.1-linux-gcc4.5.2-32bit/lib kftrack.o -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado -o kftrack
+make: `twosegtrack' is up to date.
+
+R version 2.12.1 (2010-12-16)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> options(keep.source = TRUE); source("kftrack.R"); 
+>       dirlist<-dir("data"); 
+>       for(i in 1:length(dirlist))source(paste("data",dirlist[i], sep="/")); 
+>       rm(i, dirlist); 
+>       package.skeleton("kftrack", list=ls(all.names=TRUE)); warnings()
+NULL
+> 
+* using log directory ‘/home/andni/TRACKING/kftrack/70/kftrack.Rcheck’
+* using R version 2.12.1 (2010-12-16)
+* using platform: i686-pc-linux-gnu (32-bit)
+* using session charset: UTF-8
+* checking for file ‘kftrack/DESCRIPTION’ ... OK
+* this is package ‘kftrack’ version ‘0.70’
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking for executable files ... WARNING
+Found the following executable file(s):
+  inst/admb/kftrack
+  inst/admb/src/kftrack
+  inst/admb/src/twosegtrack
+  inst/admb/twosegtrack
+Source packages should not contain undeclared executable files.
+See section 'Package structure' in manual 'Writing R Extensions'.
+* checking whether package ‘kftrack’ can be installed ... OK
+* checking package directory ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking for unstated dependencies in R code ... WARNING
+'library' or 'require' call not declared from: date
+See the information on DESCRIPTION files in the chapter 'Creating R
+packages' of the 'Writing R Extensions' manual.
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+.First.lib: no visible binding for global variable ‘.serverGlobalWD’
+.init.scan: no visible binding for global variable ‘admb.string’
+.make.flags: no visible binding for global variable ‘theta.active’
+.make.flags: no visible binding for global variable ‘var.struct’
+.make.flags: no visible binding for global variable ‘fix.last’
+.plot3 : gmt: no visible binding for '<<-' assignment to ‘cmd’
+.plot3 : gmt: no visible binding for global variable ‘cmd’
+.read.twoseg.output: no visible binding for global variable ‘ox’
+.read.twoseg.output: no visible binding for global variable ‘oy’
+.read.twoseg.output: no visible binding for global variable ‘px’
+.read.twoseg.output: no visible binding for global variable ‘py’
+.read.twoseg.output: no visible binding for global variable ‘smoothX’
+.read.twoseg.output: no visible binding for global variable ‘smoothY’
+plot.kftrack.scan: no visible binding for global variable ‘fix.first’
+plot.kftrack.scan: no visible binding for global variable ‘nobs’
+plot.kftrack.scan: no visible binding for global variable ‘fix.last’
+plot.kftrack.scan: no visible binding for global variable
+  ‘nominal.track’
+plot.kftrack.scan: no visible binding for global variable ‘pred.track’
+plot.kftrack.scan: no visible binding for global variable
+  ‘most.prob.track’
+plot.kftrack.scan: no visible binding for global variable
+  ‘days.at.liberty’
+plot.kftrack.scan: no visible binding for global variable ‘estimates’
+plot.kftrack.scan: no visible binding for global variable
+  ‘one.seg.nlogL’
+plot.kftrack.scan: no visible binding for global variable ‘npar’
+plot.kftrack.scan: no visible binding for global variable
+  ‘one.seg.npar’
+plot.kftrack.scan: no visible binding for global variable ‘nlogL’
+* checking Rd files ... WARNING
+Error : kftrack.Rd: non-ASCII input and no declared encoding
+
+problem found in ‘kftrack.Rd’
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... NOTE
+S3 methods shown with full name in documentation object 'plot.kftrack':
+  plot.kftrack
+
+S3 methods shown with full name in documentation object 'plot.kftrack.scan':
+  plot.kftrack.scan
+
+S3 methods shown with full name in documentation object 'print.kfhead':
+  print.kfhead
+
+S3 methods shown with full name in documentation object 'print.kftrack':
+  print.kftrack
+
+The \usage entries for S3 methods should use the \method markup and not
+their full name.
+See the chapter 'Writing R documentation files' in manual 'Writing R
+Extensions'.
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking data for non-ASCII characters ... OK
+* checking examples ... ERROR
+Running examples in ‘kftrack-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: addcoast
+> ### Title: Adds coastline to plotted track
+> ### Aliases: addcoast
+> ### Keywords: programming
+> 
+> ### ** Examples
+> 
+>   data(big.241)
+>   fit<-kftrack(big.241, fix.last=FALSE)
+State space Kalman filter track estimator
+kftrack version 1.2 (Gnu C++, v4)
+  (c) 2001 John Sibert
+  Pelagic Fisheries Research Program, University of Hawaii
+
+  Finished LOCAL_CALCS in PARAMETER_SECTION.
+
+
+Initial statistics: 3 variables; iteration 0; function evaluation 0; phase 1
+Function value   4.1053176e+02; maximum gradient component mag  -4.3308e+02
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.00000 -2.10102e+02 |  2  0.00000 -7.62261e+01 |  3 -0.81933 -4.33084e+02
+
+Intermediate statistics: 3 variables; iteration 10; function evaluation 18; phase 1
+Function value   3.5907955e+02; maximum gradient component mag  -7.2111e-01
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.09375 -7.21107e-01 |  2 -0.03195 -5.45408e-01 |  3 -0.29289 -1.38914e-01
+
+ - final statistics:
+3 variables; iteration 20; function evaluation 28
+Function value   3.5908e+02; maximum gradient component mag  -8.8832e-06
+Exit code = 1;  converg criter   1.0000e-04
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.09813 -8.88316e-06 |  2 -0.02852  4.10951e-06 |  3 -0.29195  1.22599e-06
+
+Initial statistics: 7 variables; iteration 0; function evaluation 0; phase 2
+Function value   3.5907698e+02; maximum gradient component mag  -2.0939e+02
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.09813 -8.88316e-06 |  2 -0.02852  4.10951e-06 |  3 -0.29195  1.22599e-06
+  4 -0.87246  1.87251e+02 |  5 -0.77835 -1.48017e+02 |  6  0.00000 -2.09385e+02
+  7  0.00000 -1.21410e+02 |
+
+Intermediate statistics: 7 variables; iteration 10; function evaluation 18; phase 2
+Function value   3.4523265e+02; maximum gradient component mag   2.3629e+01
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.07419  1.02918e+00 |  2 -0.04094 -9.84693e-01 |  3 -0.42223  7.60154e+00
+  4 -0.91525 -3.44513e+00 |  5 -0.74484  2.36289e+01 |  6  0.03731  2.22026e+01
+  7  0.03918  1.02255e+01 |
+7 variables; iteration 20; function evaluation 31; phase 2
+Function value   3.4417000e+02; maximum gradient component mag  -1.4881e-01
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.06835  9.54171e-02 |  2 -0.00028  1.22627e-01 |  3 -0.61760 -1.36403e-02
+  4 -0.88661 -1.37758e-01 |  5 -0.73276 -1.48806e-01 |  6  0.03767  3.06196e-02
+  7  0.02873  9.14459e-02 |
+
+ - final statistics:
+7 variables; iteration 25; function evaluation 36
+Function value   3.4417e+02; maximum gradient component mag  -2.2887e-05
+Exit code = 1;  converg criter   1.0000e-04
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.06817 -3.04399e-06 |  2 -0.00062  1.20302e-06 |  3 -0.61753  2.96359e-06
+  4 -0.88660 -2.28869e-05 |  5 -0.73275  1.13259e-05 |  6  0.03767 -1.04065e-05
+  7  0.02874 -6.71039e-06 |
+
+Initial statistics: 9 variables; iteration 0; function evaluation 0; phase 3
+Function value   3.4416997e+02; maximum gradient component mag  -7.4388e+02
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.06817 -3.04399e-06 |  2 -0.00062  1.20302e-06 |  3 -0.61753  2.96359e-06
+  4 -0.88660 -2.28869e-05 |  5 -0.73275  1.13259e-05 |  6  0.03767 -1.04065e-05
+  7  0.02874 -6.71039e-06 |  8 -0.99431 -7.43879e+02 |  9  0.00000  1.47437e+02
+
+Intermediate statistics: 9 variables; iteration 10; function evaluation 20; phase 3
+Function value   3.2229061e+02; maximum gradient component mag   9.3989e+01
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.08644  1.06941e+01 |  2 -0.06697  1.98556e+00 |  3 -0.64462  1.53757e+00
+  4 -0.88361  2.41402e+00 |  5 -0.76406  1.58742e+00 |  6  0.03726 -4.22251e-01
+  7  0.03427  7.57715e-02 |  8 -0.98443  9.39890e+01 |  9 -0.11422 -4.39566e+00
+
+ - final statistics:
+9 variables; iteration 19; function evaluation 30
+Function value   3.2206e+02; maximum gradient component mag   3.5458e-05
+Exit code = 1;  converg criter   1.0000e-04
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.06817 -3.70567e-07 |  2 -0.07095 -3.54270e-06 |  3 -0.65341  2.53566e-06
+  4 -0.88299  9.73045e-06 |  5 -0.76779 -4.56594e-07 |  6  0.03782 -1.47060e-05
+  7  0.03450  5.45928e-06 |  8 -0.98691  3.54576e-05 |  9 -0.11493 -4.51468e-06
+
+Phase 3 tracks written to files mpt_111111110
+�	.dat and gmt_111111110
+�	.dat
+Estimating row 1 out of 9 for hessian
+Estimating row 2 out of 9 for hessian
+Estimating row 3 out of 9 for hessian
+Estimating row 4 out of 9 for hessian
+Estimating row 5 out of 9 for hessian
+Estimating row 6 out of 9 for hessian
+Estimating row 7 out of 9 for hessian
+Estimating row 8 out of 9 for hessian
+Estimating row 9 out of 9 for hessian
+Warning in grep(what, txt) : input string 8 is invalid in this locale
+Warning in grep(what, txt) : input string 115 is invalid in this locale
+Warning in grep(what, txt) : input string 117 is invalid in this locale
+Warning in grep(what, txt) : input string 120 is invalid in this locale
+Warning in grep(what, txt) : input string 121 is invalid in this locale
+Warning in grep(what, txt) : input string 8 is invalid in this locale
+Warning in grep(what, txt) : input string 115 is invalid in this locale
+Warning in grep(what, txt) : input string 117 is invalid in this locale
+Warning in grep(what, txt) : input string 120 is invalid in this locale
+Warning in grep(what, txt) : input string 121 is invalid in this locale
+Warning in .read.output(data, fix.first, fix.last, theta.active, theta.init,  :
+  File not found
+Error in .read.output(data, fix.first, fix.last, theta.active, theta.init,  : 
+  object 'nominal.track' not found
+Calls: kftrack -> .read.output
+Execution halted
+Hmm ... looks like a package
+Creating pdf output from LaTeX ...
+Saving output to 'KFtrack-ref-manual.pdf' ...
+Done
+* checking for file ‘kftrack/DESCRIPTION’ ... OK
+* preparing ‘kftrack’:
+* checking DESCRIPTION meta-information ... OK
+* checking for LF line-endings in source and make files
+* checking for empty or unneeded directories
+* building ‘kftrack_0.70.tar.gz’
+
+R version 2.12.1 (2010-12-16)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i686-pc-linux-gnu (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+>       strs<-readLines('kftrack.Rcheck/kftrack/DESCRIPTION');
+>       idx<-grep('Built',strs);
+>       pts<-strsplit(strs[11],';')[[1]];
+>       strs[idx]<-paste(pts[1],'',pts[3],'windows', sep='; ');
+>       writeLines(strs[-idx], 'kftrack.Rcheck/kftrack/DESCRIPTION');
+>       setwd('kftrack.Rcheck');
+>       system('zip -r ../kftrack.zip kftrack');
+  adding: kftrack/ (stored 0%)
+  adding: kftrack/admb/ (stored 0%)
+  adding: kftrack/admb/kftrack (deflated 58%)
+  adding: kftrack/admb/twosegtrack (deflated 58%)
+  adding: kftrack/admb/src/ (stored 0%)
+  adding: kftrack/admb/src/kftrack.tpl (deflated 72%)
+  adding: kftrack/admb/src/oldMakefile (deflated 56%)
+  adding: kftrack/admb/src/kftrack.o (deflated 70%)
+  adding: kftrack/admb/src/kftrack (deflated 58%)
+  adding: kftrack/admb/src/Makefile (deflated 49%)
+  adding: kftrack/admb/src/solstice.o (deflated 52%)
+  adding: kftrack/admb/src/banner.cpp (deflated 58%)
+  adding: kftrack/admb/src/kftrack.obj (deflated 70%)
+  adding: kftrack/admb/src/twosegtrack.o (deflated 70%)
+  adding: kftrack/admb/src/trace.h (deflated 60%)
+  adding: kftrack/admb/src/twosegtrack (deflated 58%)
+  adding: kftrack/admb/src/yrmonday.o (deflated 63%)
+  adding: kftrack/admb/src/twosegtrack.tpl (deflated 78%)
+  adding: kftrack/admb/src/johnoel.zip (stored 0%)
+  adding: kftrack/admb/src/azimuth.o (deflated 59%)
+  adding: kftrack/admb/src/yrmonday.cpp (deflated 75%)
+  adding: kftrack/admb/src/yrmonday.h (deflated 74%)
+  adding: kftrack/admb/src/banner.o (deflated 55%)
+  adding: kftrack/admb/src/solstice.cpp (deflated 61%)
+  adding: kftrack/admb/src/Makefile.cygwin (deflated 58%)
+  adding: kftrack/admb/src/azimuth.cpp (deflated 66%)
+  adding: kftrack/admb/src/kftrack.cpp (deflated 72%)
+  adding: kftrack/admb/src/twosegtrack.htp (deflated 73%)
+  adding: kftrack/admb/src/kftrack.htp (deflated 74%)
+  adding: kftrack/data/ (stored 0%)
+  adding: kftrack/data/big.241.R (deflated 70%)
+  adding: kftrack/Meta/ (stored 0%)
+  adding: kftrack/Meta/hsearch.rds (stored 0%)
+  adding: kftrack/Meta/package.rds (stored 0%)
+  adding: kftrack/Meta/data.rds (stored 0%)
+  adding: kftrack/Meta/links.rds (stored 0%)
+  adding: kftrack/Meta/Rd.rds (stored 0%)
+  adding: kftrack/INDEX (deflated 58%)
+  adding: kftrack/R/ (stored 0%)
+  adding: kftrack/R/kftrack (deflated 53%)
+  adding: kftrack/R/kftrack.rdb (deflated 1%)
+  adding: kftrack/R/kftrack.rdx (stored 0%)
+  adding: kftrack/html/ (stored 0%)
+  adding: kftrack/html/00Index.html (deflated 64%)
+  adding: kftrack/DESCRIPTION (deflated 39%)
+  adding: kftrack/help/ (stored 0%)
+  adding: kftrack/help/paths.rds (stored 0%)
+  adding: kftrack/help/kftrack.rdb (deflated 6%)
+  adding: kftrack/help/kftrack.rdx (stored 0%)
+  adding: kftrack/help/AnIndex (deflated 69%)
+  adding: kftrack/help/aliases.rds (stored 0%)
+>       setwd('..');
+> 

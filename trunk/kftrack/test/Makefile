@@ -1,0 +1,17 @@
+.SUFFIXES: .tpl .obj
+CC = g++
+AD_DIR = /usr/local/admb
+LL = $(CC) -static -s -L$(AD_DIR)/lib
+CFLAGS = -static -fpermissive -Wno-deprecated -I. -I${AD_DIR}/include -DUSE_LAPLACE -D__GNUDOS__ -Dlinux -DOPT_LIB -O3
+
+kftrack: kftrack.cpp kftrack.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
+	$(LL) kftrack.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o kftrack -L${AD_DIR}/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado
+
+twosegtrack: twosegtrack.cpp twosegtrack.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
+	$(LL) twosegtrack.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o twosegtrack -L${AD_DIR}/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado
+
+.cpp.obj:
+	$(CC) -c $(CFLAGS) -o$*.obj $<
+
+.tpl.cpp:
+	$(AD_DIR)/bin/tpl2cpp $*

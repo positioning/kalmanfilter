@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<TITLE>The KFSST package</TITLE>
+</head>
+
+<BODY BGCOLOR="lightblue"> 
+
+<TABLE border="0" width="100%">
+  <TR align="LEFT"><TD rowspan="2">
+
+<H1>The KFSST package</H1>
+
+KFSST is an add-on package for the statistical environment 
+<a href=http://www.r-project.org>R</a> to efficiently estimate 
+movement parameters and predict the most probable track from 
+raw light-based geolocations and sea surface temperatures (SST). 
+This package offers an approach to use both types of 
+information in one coherent state-space model and carries out 
+the estimation via the extended Kalman filter (KF). Read all 
+about the model here 
+(<a href=./wwwnielsen_etal/index.html>html</a>
+/
+<a href=./wwwnielsen_etal/nielsen_etal.pdf>pdf</a>). 
+<hr>
+
+<H3>How to try the package</H3>
+
+The KFSST package depends on a few other packages 
+(<a href=http://mirrors.dotsrc.org/cran/src/contrib/Descriptions/date.html>date</a>,
+<a href=http://mirrors.dotsrc.org/cran/src/contrib/Descriptions/akima.html>akima</a>,
+<a href=http://cm.bell-labs.com/stat/project/locfit/>locfit</a>, and 
+<a href=https://www.soest.hawaii.edu/tag-data/tracking/kftrack/>kftrack</a>).<br><br>
+
+To make installation a bit easier, a script has been prepared to set up 
+all of these five packages.<br><br> 
+
+To run it fire up <a href=http://www.r-project.org>R</a> and type (or paste) the following line: 
+
+<pre>
+  <font
+color='red'>source('ftp://ftp.soest.hawaii.edu/PFRP/tracking/install')</font>
+</pre>
+
+This should be done in <TT>root</TT>/<TT>administrator</TT>-mode on 
+Linux/Windows to allow each package to add to the R-documentation and 
+library tree.<br><br>
+
+<hr>
+
+<H3>How to use</H3>
+
+KFSST comes with a function explaining how to fit a track. It covers all steps 
+from how to read in the raw track, automatically obtain SST-field, smooth the field, 
+fit the track, and plot and investigate the final track. This help is displayed by 
+typing:       
+<pre>
+  <font color='red'>road.map()</font>
+</pre>
+Also the package comes with a complete example. To see it type: 
+<pre>
+  <font color='red'>example(blue.shark)</font>
+</pre>
+
+Thank you for your efforts in downloading and trying this
+package. If you encounter any bugs or have any questions 
+please don't hesitate to contact me. <br>
+
+<hr> 
+Latest update: DATEFIELD (email: anders 'dot' nielsen 'at' hawaii 'dot' edu)     
+
+      <TD colspan="1" height=10>
+<a href=./wwwnielsen_etal/index.html><IMG SRC="./wwwnielsen_etal/mini/p1.png"></a> <br>
+
+<font color="black" size="3">
+     Hints:
+</font>
+  <TR><TD>
+<div>
+<marquee bgcolor="lightblue" scrollamount="1" direction="up">
+<font color="black" size="2">
+<pre>
+1) Try using the 'plotmap' function with the argument  	 
+   'zoom=TRUE', which makes it possible to zoom in on  	 
+   a sub-map by left-clicking twice on the map to      	 
+   select the area. Once the area is selected simply   	 
+   right-click. 				       	 
+						       	 
+2) Try using 'write.sst.field' function with the       	 
+   argument 'peak=TRUE' to visually inspect the        	 
+   each of the observed SST-fields and their 	       	 
+   corresponding smoothed SST-field. This is helpful   	 
+   when trying to decide the degree of smoothing to    	 
+   use. 					       	 
+						       	 
+3) Sometimes the raw latitude measurements are very    	 
+   poor and completely useless. One way to ignore the  	 
+   latitude information is to assign a huge fixed      	 
+   variance to these measurements. For instance like:	 
+  							 
+     fit<-kfsst(..., var.struct='uniform', 	       	 
+                sy.active=FALSE, sy.init=1000) 		 
+							 
+4) SST-data matching your track can be automatically 	 
+   obtained by typing: 					 
+  							 
+     path<-get.sst.from.server(track)			 
+							 
+5) To get one SST-field covering a set of tracks use 	 
+   a command similar to:       				 
+							 
+     path<-get.sst.from.server(list(track1, track2, ...))
+
+6) The land-polygons can be saved for other purposes 
+   from the function 'plotmap' via the option 
+   'save=TRUE'.  
+</pre>
+</font>
+</marquee>
+
+</div>  
+  
+</TABLE>
+
+</BODY> 
+</html> 
+
+
+
+
+
+
+
+
+
+
+
+
