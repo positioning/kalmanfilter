@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>ukfsst</TITLE>
+</HEAD>
+
+<BODY onkeypress="checkKey(event);" BGCOLOR="lightblue"> 
+
+<div align="center">
+<img onclick="prev()" src="./left.jpg" width="30" height="30" border="0" title="Try the left arrow key instead">
+<a href="./index.html"><img src="./up.jpg" width="30" height="30" border="0"></a>
+<img onclick="next()" src="./right.jpg" width="30" height="30" border="0" title="Try the right arrow key instead"> 
+</div>
+
+<center><img name="page" onclick="big()" src="./small/p1.png" BORDER=2 title="Click to change size"></center> <br>
+
+<script type="text/javascript">
+  $big=false;
+  $page=1;
+  $maxpage=24;
+
+  function setpage($newpage) 
+  {
+    $page=$newpage;
+    if ($big)
+      document.page.src="big/p"+$page+".png";
+    else
+      document.page.src="small/p"+$page+".png";
+  } 
+  
+  function big() 
+  {
+    if ($big)
+      $big=false;
+    else
+      $big=true;
+    setpage($page);
+  } 
+
+  function next() 
+  {
+    if ($page < $maxpage)
+      $page=($page+1);
+    else 
+      $page=1;
+
+    setpage($page);
+  } 
+
+  function prev() 
+  {
+    if ($page > 1)
+      $page=($page-1);
+    else 
+      $page=$maxpage;
+      
+    setpage($page);
+  } 
+
+  function checkKey(event) 
+  {
+    if (event.keyCode==37)
+      prev();
+    else if (event.keyCode==39)
+      next();
+  } 
+</script>
+
+<div align="center">
+<img onclick="prev()" src="./left.jpg" width="30" height="30" border="0" title="Try the left arrow key instead">
+<a href="./index.html"><img src="./up.jpg" width="30" height="30" border="0"></a>
+<img onclick="next()" src="./right.jpg" width="30" height="30" border="0" title="Try the right arrow key instead">
+</div>
+
+</BODY> 
+</HTML> 

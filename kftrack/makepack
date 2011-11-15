@@ -1,0 +1,109 @@
+#!/bin/sh
+# setupRpack kftrack
+# 2004, Anders Nielsen (anielsen@dina.kvl.dk)
+VERNR="0.70"
+
+
+#clean
+rm -Rf kftrack.Rcheck/ kftrack/ admb/ kftrack_*.tar.gz
+
+#compile the ADMB program
+mkdir admb 
+cp src/* admb/
+cd admb 
+make kftrack
+make twosegtrack
+cd .. 
+
+# Create a template for each documentation file
+
+echo "options(keep.source = TRUE); source(\"kftrack.R\"); 
+      dirlist<-dir(\"data\"); 
+      for(i in 1:length(dirlist))source(paste(\"data\",dirlist[i], sep=\"/\")); 
+      rm(i, dirlist); 
+      package.skeleton(\"kftrack\", list=ls(all.names=TRUE)); warnings()" | R --vanilla
+
+cd kftrack
+cp -f ../man/* ./man
+rm -rf ./man/.*.Rd
+rm -f ./R/*.R
+rm -f ./R/.*.R
+cp -f ../kftrack.R ./R
+rm -f ./data/*.rda
+cp -f ../data/*.R ./data
+
+mkdir inst/
+mkdir inst/admb/
+mkdir inst/admb/src
+cp -f ../admb/kftrack ./inst/admb
+cp -f ../admb/twosegtrack ./inst/admb
+cp -f ../src/* ./inst/admb/src/
+
+
+rm -f INDEX DESCRIPTION ./README ./man/README ./src/README
+touch DESCRIPTION TITLE
+#touch INDEX
+
+# put relevant information in the INDEX file
+#R CMD Rdindex man >> INDEX
+#R CMD Rdindex --data man > data/00Index
+
+# put relevant information in the DESCRIPTION file
+echo "Package: kftrack " >> DESCRIPTION
+echo "Version: $VERNR " >> DESCRIPTION
+echo "Date: $(date +%Y-%m-%d) " >> DESCRIPTION
+echo "Title: kftrack " >> DESCRIPTION
+echo "Author: John Sibert <sibert@hawaii.edu>, Anders Nielsen <anders.nielsen@hawaii.edu> " >> DESCRIPTION
+echo "Maintainer: Anders Nielsen <anders.nielsen@hawaii.edu> " >> DESCRIPTION
+echo "Depends: R (>= 1.5.0) " >> DESCRIPTION
+echo "Description: This package estimates most probable track from archival tagging data ">> DESCRIPTION
+echo "License: BSD " >> DESCRIPTION
+echo "URL: http://www.r-project.org, https://www.soest.hawaii.edu/tag-data/tracking/kftrack" >> DESCRIPTION
+
+# put relevant information in the TITLE file
+echo "kftrack		Kalman filter tracking (of tagged individuals)" >> TITLE
+
+#rmdir src
+cd ..
+
+# check and build package 
+R CMD check kftrack
+R CMD Rd2dvi --no-preview --pdf --title="Reference manual for the KFtrack package"  -o KFtrack-ref-manual.pdf  ./kftrack
+mkdir ./kftrack/doc
+mv KFtrack-ref-manual.pdf ./kftrack/doc/KFtrack-ref-manual.pdf
+R CMD build kftrack
+
+# -- cheap build of the windows ver without the binaries 
+echo "
+      strs<-readLines('kftrack.Rcheck/kftrack/DESCRIPTION');
+      idx<-grep('Built',strs);
+      pts<-strsplit(strs[11],';')[[1]];
+      strs[idx]<-paste(pts[1],'',pts[3],'windows', sep='; ');
+      writeLines(strs[-idx], 'kftrack.Rcheck/kftrack/DESCRIPTION');
+      setwd('kftrack.Rcheck');
+      system('zip -r ../kftrack.zip kftrack');
+      setwd('..');" | R --vanilla
+
+# update web dir
+rm -Rf ./web
+mkdir web
+mkdir ftp
+sed s/VERNR/$VERNR/g ./homepage.html > tmp
+sed s/DATE/"$(date +%Y-%m-%d)"/g tmp >./web/index.html
+rm -f tmp
+cp -r ./kftrack.Rcheck/kftrack ./web
+cp -r ./kftrack/doc ./web/kftrack 
+mv ./kftrack_*.tar.gz ./ftp
+mv ./kftrack.zip ./ftp
+chmod a+rx ./web
+cd web
+cp -r ../jpg4web .
+cd ./kftrack/html
+sed 's/\.\.\/\.\.\/\.\.\/doc\/html\//\.\.\/\.\.\/jpg4web\//g' ./00Index.html > ./tmp
+sed 's/\.\.\/\.\.\/R.css/\.\.\/\.\.\/jpg4web\/R.css/g' ./tmp > ./tmp2
+sed 's/jpg4web\/packages\.html/index\.html/g' ./tmp2 > ./tmp3 
+sed 's/jpg4web\/index\.html/index.html/g' ./tmp3 > ./00Index.html
+rm -f tmp*
+chmod -R a+rx *
+cd ..
+ 

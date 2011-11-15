@@ -1,0 +1,3 @@
+cp -r web ukfsst
+rsync -aHvz --delete ukfsst -e ssh nielsens@nielsensweb.org:~/public_html/
+rm -rf ukfsst
