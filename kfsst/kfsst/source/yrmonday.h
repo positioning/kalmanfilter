@@ -1,6 +1,6 @@
 #ifndef __year_month_day__
 #define __year_month_day__
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 
 //class prnstream ;
@@ -15,15 +15,13 @@ private:
   long lfloor(const long a, const long b);
 
 protected:
-  static char delimiter;
-  static int year_month_day::month_length[14];
+  static int month_length[14];
   int m_day;
   int m_month;
   long m_year;
   int days_in_month;
   int add(const int t);
   int subtract(const int t);
-  void to_string(char* s) const;
   void to_gdn(const char calendar = 'G');
   void to_date(const char calendar = 'G');
   int is_leap_year(const long year, const char calendar='G');
@@ -62,14 +60,18 @@ public:
   int operator < (const year_month_day&);
   int operator > (const year_month_day&);
 
-  friend istream& operator>>(istream& istr, year_month_day& t);
-  friend ostream& operator<<(ostream& ostr, const year_month_day& t);
+  void to_string(char* s) const;
 
   //friend prnstream& operator<<(prnstream& ostr, const year_month_day& t);
 
   friend int operator - (const year_month_day& t1, const year_month_day& t2);
   friend char set_year_month_day_delimiter(const char c);
+
+  static char delimiter;
 };
+
+  std::istream& operator>>(std::istream& istr, year_month_day& t);
+  std::ostream& operator<<(std::ostream& ostr, const year_month_day& t);
 
 typedef year_month_day year_month_day_;
 //typedef year_month_day date;
@@ -97,15 +99,15 @@ public:
     return v->p;
   }
 #ifdef OPT_LIB
-  year_month_day_& year_month_day_vector::operator[](const int i)
+  year_month_day_& operator[](const int i)
     {return v->p[i-v->en1];}
-  year_month_day_& year_month_day_vector::operator()(const int i)
+  year_month_day_& operator()(const int i)
     {return v->p[i-v->en1];}
 #else
-  year_month_day_& year_month_day_vector::operator[](const int i);
-  year_month_day_& year_month_day_vector::operator()(const int i);
+  year_month_day_& operator[](const int i);
+  year_month_day_& operator()(const int i);
 #endif
-  year_month_day_vector& year_month_day_vector::operator=(year_month_day_vector& x);
+  year_month_day_vector& operator=(year_month_day_vector& x);
   ~year_month_day_vector();
   inline year_month_day_vector(year_month_day_vector& x)
   {

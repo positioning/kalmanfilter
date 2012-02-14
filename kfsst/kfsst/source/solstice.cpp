@@ -1,4 +1,4 @@
-#include <iostream.h>
+#include <iostream>
 #include "yrmonday.h"
 
 int previous_solstice(const int y0, const int m0, const int d0)

@@ -174,9 +174,10 @@ get.sst.from.server<-function(track, folder=tempdir(),
   link<-paste(server,string, sep='')
   dest<-paste(folder,'temp.zip', sep='/')
   download.file(link, dest, mode='wb')
-  .Internal(int.unzip(paste(folder,'temp.zip',sep='/'),NULL, folder))
-  # May need some special treatment for windows here using 'zip.unpack()'
-  unlink(paste(folder,'temp.zip', sep='/'))
+  ## fixed for R 2.11 MDSumner 2010-05-17
+  unzip(paste(folder, "temp.zip", sep = "/"),NULL, exdir = folder)
+  unlink(paste(folder, "temp.zip", sep = "/"))
+  ##.Internal(int.unzip(paste(folder,'temp.zip',sep='/'),NULL, folder))
 
   cat(paste(rep('=',options()$width), collapse=''),'\n\n')
   cat('Downloaded', length(dir(folder)), 'files to:\n\n  ', folder)

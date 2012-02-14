@@ -12,7 +12,7 @@
 // Now with SST also ...  
  
 GLOBALS_SECTION
-  #include <fstream.h>
+  //#include <fstream.h>
   #include <math.h>
   #include <fvar.hpp>
   #include <adstring.hpp>
@@ -562,11 +562,10 @@ REPORT_SECTION
 
   report << banner << endl;
   REPORT(current_phase())
-  char flags[80];
-  ostrstream ss(flags,80);
-  ss <<active(uu)<<active(vv)<<active(D)<<active(bx)<<active(by)
-     <<active(vx)<<active(vy)
-     <<cos_errors<<active(vy_dev) << ends;
+  char flags[9];
+  ostrstream ss(flags,9);
+  ss <<active(uu)<<active(vv)<<active(D)<<active(bx)<<active(by)<<active(vx)<<active(vy)<<cos_errors<<active(vy_dev);
+
   REPORT(flags)
   int days_at_liberty = track_dates(npoint)-track_dates(1)+1;
   REPORT(days_at_liberty)
