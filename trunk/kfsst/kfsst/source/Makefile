@@ -1,14 +1,22 @@
-.SUFFIXES: .tpl .obj
-CC = /usr/local/gcc-3.4.4/bin/g++
-AD_DIR = /usr/local/admb-gcc344
-LL = $(CC) -static -s -L$(AD_DIR)/lib
-CFLAGS = -static -fpermissive -Wno-deprecated -I. -I${AD_DIR}/include -DUSE_LAPLACE -D__GNUDOS__ -Dlinux -DOPT_LIB -O3
- 
-kfsst: kfsst.cpp kfsst.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
-	$(LL) kfsst.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o kfsst -L${AD_DIR}/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado
+.SUFFIXES: .tpl .o
 
-.cpp.obj:
-	$(CC) -c $(CFLAGS) -o$*.obj $<
+ifndef ADMB_HOME
+  $(error "Error: ADMB_HOME not defined.")
+endif
+
+ARCH=-m32
+OBJECTS=yrmonday.o azimuth.o banner.o solstice.o
+
+all: kfsst
+
+kfsst: kfsst.o $(OBJECTS)
+	LDFLAGS="$(ARCH) $(OBJECTS)" ${ADMB_HOME}/bin/adlink $@
+
+.cpp.o:
+	CXXFLAGS=$(ARCH) ${ADMB_HOME}/bin/adcomp $(*F)
 
 .tpl.cpp:
-	$(AD_DIR)/bin/tpl2cpp $*
+	${ADMB_HOME}/bin/tpl2cpp $*
+
+clean:
+	@rm -vf *.o kfsst kfsst.cpp kfsst.htp

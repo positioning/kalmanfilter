@@ -1,6 +1,6 @@
 #ifndef __TRACE__
 #define __TRACE__
-#include <iostream.h>
+//#include <iostream.h>
 #undef HERE
 #define HERE clogf << "reached " << __LINE__ << " in " << __FILE__ << endl;
 

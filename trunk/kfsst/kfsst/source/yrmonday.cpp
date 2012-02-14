@@ -2,11 +2,11 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-//#include <prnstrem.h>
+//#include <prn_t.h>
 #include <strstream>
-using std::ostrstream;
-using std::istrstream;
-#include <iomanip.h>
+#include <iomanip>
+
+using namespace std;
 
 #ifndef FALSE
   #define FALSE false
@@ -17,7 +17,9 @@ using std::istrstream;
 //#include "trace.h"
 
 #ifdef __GNUDOS__
-  void strnset(char *, const char, size_t n);
+  void strnset(char *, const char, size_t n)
+  {
+  }
 #endif
 
 int year_month_day::month_length[14] =
@@ -185,7 +187,11 @@ void year_month_day::set(const int _year, const int _month, const int _day)
   m_day = _day;
   to_gdn();
   if (!valid)
-    cout << " " << *this << " not valid" << endl;
+  {
+    char buf[31];
+    to_string(buf);
+    cout << " " << buf << " not valid" << endl;
+  }
 }
 
 int year_month_day::operator == (const year_month_day& t)
@@ -375,13 +381,15 @@ ostream& operator << (ostream& ostr, const year_month_day& t)
     return(ostr);
   }
 
-//prnstream& operator << (prnstream& pstr, const year_month_day& t)
-//  {
-//    char buf[31];
-//    t.to_string(buf);
-//    pstr << buf;
-//    return(pstr);
-//  }
+/*
+prnstream& operator << (prnstream& pstr, const year_month_day& t)
+  {
+    char buf[31];
+    t.to_string(buf);
+    pstr << buf;
+    return(pstr);
+  }
+*/
 
 int operator - (const year_month_day& t2, const year_month_day& t1)
   {
