@@ -456,12 +456,12 @@ REPORT_SECTION
 
   report << banner << endl;
   REPORT(current_phase())
-  char flags[9];
-  ostrstream ss(flags,9);
-  ss <<active(uu)<<active(vv)<<active(D)<<active(bx)<<active(by)<<active(vx)<<active(vy)<<cos_errors<<active(vy_dev);
-  cout<<"DER "<<flags<<endl;  
+  //char flags[9];
+  //ostrstream ss(flags,9);
+  //ss <<active(uu)<<active(vv)<<active(D)<<active(bx)<<active(by)<<active(vx)<<active(vy)<<cos_errors<<active(vy_dev);
+  //cout<<"DER "<<flags<<endl;  
 
-  REPORT(flags)
+  //REPORT(flags)
   int days_at_liberty = track_dates(npoint)-track_dates(1)+1;
   REPORT(days_at_liberty)
   REPORT(npoint)
@@ -500,15 +500,16 @@ REPORT_SECTION
 
   if (last_phase())
   { 
-    adstring gmt_name("gmt_");
-    gmt_name += adstring(flags);
-    gmt_name += adstring(".dat");
-    REPORT(gmt_name)
-    adstring mpt_name("mpt_");
-    mpt_name += adstring(flags);
-    mpt_name += adstring(".dat");
-    REPORT(mpt_name)
-    ofstream mpt(mpt_name);
+    //adstring gmt_name("gmt_");
+    //gmt_name += adstring(flags);
+    //gmt_name += adstring(".dat");
+    //REPORT(gmt_name)
+    //adstring mpt_name("mpt_");
+    //mpt_name += adstring(flags);
+    //mpt_name += adstring(".dat");
+    //REPORT(mpt_name)
+    ofstream mpt("mpt.dat");//ofstream mpt(mpt_name);
+    
     mpt << "# npoint" << endl;
     mpt << setw(5) << npoint << endl;
     mpt << "#  i       date  dt    j        vy         ax        ay         ox        oy         px        py     smoothX    smoothY   Psmooth11   Psmooth12   Psmooth21   Psmooth22" << endl; 
@@ -552,7 +553,7 @@ REPORT_SECTION
     
     dmatrix ZP(1,m,1,m);
     ZP.initialize();
-    ofstream gmt(gmt_name);
+    ofstream gmt("gmt.dat");//ofstream gmt(gmt_name);
     // these labels will cause GMT to complain, but shouldn't cause an error
     // they work with R
     gmt << "ox  oy  px  py  mx  my  ex  ey  smoothX  smoothY" << endl;         	 
@@ -609,14 +610,14 @@ REPORT_SECTION
       gmt << endl;
     }
     report << "\nPhase " << current_phase() << " tracks written to files " 
-         << mpt_name << " and "
-         << gmt_name << endl;
+         << "mpt.dat" << " and "
+         << "gmt.dat" << endl;
     clogf << "\nPhase " << current_phase() << " tracks written to files " 
-         << mpt_name << " and "
-         << gmt_name << endl;
+         << "mpt.dat" << " and "
+         << "gmt.dat" << endl;
     cout << "\nPhase " << current_phase() << " tracks written to files " 
-         << mpt_name << " and "
-         << gmt_name << endl;
+         << "mpt.dat" << " and "
+         << "gmt.dat" << endl;
   }
 
 

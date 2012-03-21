@@ -109,8 +109,9 @@
     estimates<-estimates[!names(estimates)%in%c('sx','sy')]  
     std.dev<-std.dev[!names(std.dev)%in%c('sd.sx','sd.sy')]  
   }
-  mptfilename<-paste("mpt_", paste(as.numeric(
-    c(ta,var.struct=="solstice",var.struct=="daily")), collapse=""),".dat",sep="")
+  mptfilename<-"mpt.dat"
+  #mptfilename<-paste("mpt_", paste(as.numeric(
+  #  c(ta,var.struct=="solstice",var.struct=="daily")), collapse=""),".dat",sep="")
   if(file.access(mptfilename)!=0){warning("File not found")}else{
     tmp<-read.table(mptfilename,skip=3, header=FALSE)
     name<-strsplit(readLines(mptfilename, 3)[3], split=" ")[[1]]  
@@ -910,8 +911,9 @@ write.html<-function(fitlist, description=rep("",length(fitlist)), file='track.h
     std.dev<-tmp
   }
 
-  mptfilename<-paste("mpt_", paste(as.numeric(
-    c(theta.active[1:7],var.struct=="solstice",var.struct=="daily")), collapse=""),".dat",sep="")
+  mptfilename<-"mpt.dat"
+  #mptfilename<-paste("mpt_", paste(as.numeric(
+  #  c(theta.active[1:7],var.struct=="solstice",var.struct=="daily")), collapse=""),".dat",sep="")
   if(file.access(mptfilename)!=0){warning("File not found")}else{
     tmp<-read.table(mptfilename,skip=3, header=FALSE)
     name<-strsplit(readLines(mptfilename, 3)[3], split=" ")[[1]]  
