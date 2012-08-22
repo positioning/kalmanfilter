@@ -1,0 +1,139 @@
+#summary Useful resources across the web shared by our fellow colleagues & friends
+
+A list of resources that we are aware of for tagging applications. Feel free to add yours with the comments.
+
+<wiki:toc max_depth="2" />
+
+== State-space models for geolocation - Kalman filter suite ==
+=== (`TrackIt`, `Ukfsst`, `Kfsst`, `Kftrack`) ===
+==== http://www.nielsensweb.org/trackit/ ====
+==== http://www.nielsensweb.org/ukfsst/ ====
+
+A suite of statistical models to estimate position errors, movement model parameters, and most probable positions from tracking data. Refer to:
+
+   {{{Lam, Chi H., Anders Nielsen, and John R. Sibert. Incorporating sea-surface temperature to the light-based geolocation model TrackIt. Marine Ecology Progress Series MEPS 419:71-84 (2010).}}}
+   [http://www.int-res.com/abstracts/meps/v419/p71-84/ Open Access] available!
+
+
+== Webpage and R libaries of Ben Galuardi ==
+==== http://code.google.com/p/analyzepsat/ ====
+==== http://people.umass.edu/galuardi/ ====
+
+http://tagbase.googlecode.com/svn/trunk/images/Tag04233-2005UD_small.jpg 
+Full-sized image [http://tagbase.googlecode.com/svn/trunk/images/Tag04233-2005UD.png here]
+
+Great utilities are provided here to work tag data in the [http://www.r-project.org/ R] environment. 
+
+Refer to [http://rparticle.web-p.cisti.nrc.ca/rparticle/AbstractTemplateServlet?calyLang=eng&journal=cjfas&volume=67&year=0&issue=6&msno=f10-033 Galaurdi et al.] for details. 
+
+Data courtesy of Large Pelagics Research Center, UMass Amherst.
+
+
+== Geolocation toolbox by Martin Pedersen == 
+==== http://www2.imm.dtu.dk/~mwp/?Geolocation_toolbox ====
+
+Geolocation toolbox in Matlab using hidden Markov models
+
+
+== Pelagic Habitat Analysis Module (PHAM) ==
+==== http://phamlite.com/aboutpham.html ====
+
+http://tagbase.googlecode.com/svn/trunk/images/pham.jpg
+
+PHAM is a set of software tools designed to assist fisheries managers, scientists, and researchers to examine and predict the habitat for pelagic ocean biota utilising presence/absence or abundance data for the biota combined with environmental datasets such as satellite imagery, bathymetry, survey cruises, and ocean circulation models.
+
+The software has been developed to reside within the [http://www.runeasy.com/ Environmental Analysis System (EASy)] Geographic Information System (GIS), specifically for [http://netviewer.usc.edu/projects.htm marine applications]. 
+
+
+== NOAA ERDDAP ==
+==== http://coastwatch.pfeg.noaa.gov/erddap/index.html ====
+
+ERDDAP (the Environmental Research Division's Data Access Program) is a data server that gives you a simple, consistent way to download subsets of scientific datasets in common file formats and make graphs and maps. This particular ERDDAP installation has oceanographic data (for example, data from satellites and buoys). 
+
+
+== NOAA Xtractomatic Data Client ==
+==== http://coastwatch.pfel.noaa.gov/xtracto/ ====
+
+Xtractomatic is a set of free routines that allow client-side access of environmental data served by the Thematic Real-time Environmental Distributed Data System (THREDDS) at the Pacific Fisheries Environmental Laboratory. 
+
+
+== NOAA Environmental Data Connector ==
+==== http://www.asascience.com/software/arcgistools/edc.shtml ====
+==== http://www.pfeg.noaa.gov/products/EDC/ ====
+http://www.pfeg.noaa.gov/products/EDC/images/edcbanner3x.jpg
+
+The Environmental Data Connector (EDC) is a tool that allows users to connect to THREDDS/OPeNDAP servers from within ArcGIS and download environmental data.  It was developed for the National Oceanic and Atmospheric Administration (NOAA) Fisheries by Applied Science Associates, Inc. (ASA). The EDC is available in two versions: the original EDC which is designed to work in conjunction with ArcGIS, and the EDC Standalone version which can be run outside ArcGIS.
+
+
+== Electronic Tagging Data Repository ==
+==== https://www.soest.hawaii.edu/tag-data/ ====
+
+https://www.soest.hawaii.edu/tag-data/banner.gif
+
+A facility for exchange of data derived from electronic tags developed by John Sibert and Johnoel Ancheta of [http://www.soest.hawaii.edu/PFRP/pfrp1.html Pelagic Fisheries Research Program] at University of Hawaii at Manoa. It is a part of the developing new culture of science where more is gained by sharing information than by locking it away in dark filing cabinets.
+
+The Electronic Tagging Data Repository (ETDR) is a facility for storage of data and metadata derived from electronic tags. ETDR makes extensive use of tools developed by the Knowledge Network for Biocomplexity (KNB). All metadata of the ETDR conform to the Ecological Metadata Language (EML) and eXtensible Markup Language (XML). EML is a fully documented open standard developed for ecological data and adapted for electronic tags. XML is a robust file format developed by w3.org. The data are housed on a metacat server which stores, retrieves and displays data conforming to the EML standard.
+
+
+== Satellite Tracking and Analysis Tool (STAT) ==
+==== http://www.seaturtle.org/stat/ ====
+
+http://www.seaturtle.org/images/logo3.gif
+
+The Satellite Tracking and Analysis Tool (STAT) automates the process of working with satellite tracking data, including daily data downloads, backups and map updates. STAT is a free open access product with a user-friendly online interface that provides a suite of integrated data analysis and filtering tools.
+
+== Ocean Data View ==
+==== http://odv.awi.de/ ====
+
+http://odv.awi.de/fileadmin/user_upload/keyvisuals/banner/header-image.jpg
+
+Ocean Data View (ODV) is a software package for the interactive exploration, analysis and visualization of oceanographic and other geo-referenced profile or sequence data. ODV runs on Windows (7, Vista, XP, 9x, Me, NT, 2000), Mac OS X, Linux, and UNIX (Solaris, Irix, AIX) systems. ODV data and configuration files are platform-independent and can be exchanged between different systems. 
+
+It offers very simple and interactive features to visualize your tag data!
+
+== Ethographer ==
+==== http://sites.google.com/site/ethographer ====
+
+http://sites.google.com/site/ethographer/_/rsrc/1286177709369/home/LogoBBA.jpg?height=113&width=320
+
+Ethographer is a collection of functions that enables bio-logging data to be viewed and analyzed and that works on the IGOR Pro software.
+
+== Marine Geospatial Ecology Tools == 
+==== http://code.env.duke.edu/projects/mget ====
+
+Marine Geospatial Ecology Tools (MGET), also known as the `GeoEco` Python package, is an open source geoprocessing toolbox designed for coastal and marine researchers and GIS analysts who work with spatially-explicit ecological and oceanographic data in scientific or management workflows. MGET includes over 180 tools useful for a variety of tasks, such as converting oceanographic data to ArcGIS formats, identifying fronts in sea surface temperature images, fitting and evaluating statistical models such as GAMs and GLMs by integrating ArcGIS with the R statistics program, analyzing coral reef connectivity by simulating hydrodynamic larval dispersal, and building grids that summarize fishing effort, CPUE and other statistics. Currently under development are tools for identifying eddy cores in sea surface height images, for analyzing connectivity networks, for estimating fishing effort when no effort data are available, for predicting hard bottom habitat from coarse grain bathymetry, and much more. 
+
+
+== Geospatial Modelling Environment ==
+==== http://www.spatialecology.com/gme/index.htm ====
+==== http://www.spatialecology.com/htools/tooldesc.php ====
+
+GME provides a suite of analysis and modelling tools, ranging from small 'building blocks' that you can use to construct a sophisticated work-flow, to completely self-contained analysis programs. It also uses the extraordinarily powerful open source software R as the statistical engine to drive some of the analysis tools.
+
+Note: Current development is based on ArcGIS 10
+
+
+== AD Model Builder ==
+==== http://www.admb-project.org/ ====
+
+http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
+
+AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
+
+
+== Orange ==
+==== http://orange.biolab.si/ ====
+
+http://orange.biolab.si/orange-logo-w.png
+
+Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting. Components for machine learning. Extensions for bioinformatics and text mining. Packed with features for data analytics.
+
+== General file management practices ==
+ * *[http://tortoisesvn.tigris.org/ TortoiseSVN]* is a version control software for Subversion. It enables Subversion commands directly in Windows explorer, and lets you keep tracks of the history of changes to your files
+ * *[http://www.educ.umu.se/~cobian/cobianbackup.htm Cobian Backup]* is a free backup program that can be used to schedule and backup your files and directories from their original location to other directories/drives in the same computer or other computer in your network and FTP. 
+
+
+== Other notable resources ==
+ * *[http://www.tableausoftware.com/public Tableau Public]* can be a great way to share and show your data
+ * *[http://www.passagesoftware.net Pattern Analysis, Spatial Statistics and Geographic Exegesis, PASSaGE]* is a free, integrated, easy-to-use software package for performing spatial analysis and statistics on biological and other data. 
+ * *[http://www.ecoevol.ufg.br/sam SAM - Spatial Analysis in Macroecology]* is a free program designed as a package of tools for spatial statistical analysis, mainly for applications in Surface Pattern Spatial Analysis
