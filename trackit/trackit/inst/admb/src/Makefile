@@ -1,4 +1,7 @@
+.PHONY: ukf prepro
 .SUFFIXES: .tpl 
+
+all: ukf prepro
 
 ukf: ukf.tpl 
 	admb ukf
