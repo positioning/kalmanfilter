@@ -11,28 +11,39 @@ However we have some tips for users:
   * 1. Know your working directory
   
   Your working directory is the first place R looks for reading and writing files, so your life will be a lot easier if you know where this directory is. Working directory can be looked up with R via the command:
-  
-  `getwd()`
+{{{
+   getwd()
+}}}
 	
   To reassign your working directory, put your directory path in quotes (single or double):
   
-  `setwd("C:/temp")`
+{{{
+    setwd("C:/temp")
+}}}
    
    or in Linux and Mac
    
-  `setwd("~/temp")`
+{{{
+   setwd("~/temp")
+}}}
    
   Once you know your work directory, you can supply a filename of the files residing in the working directory without specifying the exact path, e.g.
   
-  `read.csv("mydata.csv")`
+{{{
+   read.csv("mydata.csv")
+}}}
   
   instead of
   
-  `read.csv("C:/temp/mydata.csv")`
+{{{
+   read.csv("C:/temp/mydata.csv")
+}}}
    
   * 2. Use a single forward slash for directory path (think Linux/ Mac) or use double backslash in Windows:
 
-  `setwd("C:\\temp")`
+{{{ 
+   setwd("C:\\temp")
+}}}
 
   * 3. Make sure you use the correctly capitalized file names. This process is easily accomplished with "auto-complete as you type" feature via the "Tab" button across different platforms.  Or in Windows, drag-and-drop the file into the R main session window, and the full path of that file will be exposed.
   
