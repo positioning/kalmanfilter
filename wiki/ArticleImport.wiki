@@ -15,32 +15,27 @@ However we have some tips for users:
    getwd()
 }}}
 	
-  To reassign your working directory, put your directory path in quotes (single or double):
-  
+  To reassign your working directory, put your directory path in quotes (single or double):  
 {{{
     setwd("C:/temp")
 }}}
    
    or in Linux and Mac
-   
 {{{
    setwd("~/temp")
 }}}
    
   Once you know your work directory, you can supply a filename of the files residing in the working directory without specifying the exact path, e.g.
-  
 {{{
    read.csv("mydata.csv")
 }}}
   
   instead of
-  
 {{{
    read.csv("C:/temp/mydata.csv")
 }}}
    
   * 2. Use a single forward slash for directory path (think Linux/ Mac) or use double backslash in Windows:
-
 {{{ 
    setwd("C:\\temp")
 }}}
