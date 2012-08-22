@@ -22,7 +22,7 @@
   * [ArticleWcDap Third-party Software using KF packages]
     * [ArticleWcDap Working with Wildlife Computers DAP/GPE]
   * [ArticlePedersen Other Geolocation Packages]
-    * [ArticlePdersen Geolocation Toolbox in Matlab]
+    * [ArticlePedersen Geolocation Toolbox in Matlab]
   * [ArticleRefs Publications]
   * [WebResources Web Resources]
   * [WishList Tell us what you want!]
