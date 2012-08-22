@@ -18,7 +18,7 @@
   * [ArticleTrackit Package details - Trackit]
     * [ArticleParTrackit Description of Model Parameters]
     * [ArticleRefKfsst Reference manual]
-  * [ArticleBathyCorr Bathymetric correction - Analyzepsat]
+  * [ArticleBathyCorr Bathymetric correction with Analyzepsat]
   * [ArticleWcDap Third-party Software using KF packages]
     * [ArticleWcDap Working with Wildlife Computers DAP/GPE]
   * [ArticlePedersen Other Geolocation Packages]
