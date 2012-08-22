@@ -22,7 +22,7 @@ And look for something like this:
 
 	`Packages in library 'C:/R/R-2.8.1/library':`
 
-= What you need is to... =.
+= What you need is to... =
   
   * Inform yourself with an overview of the geolocation methods:
 
@@ -43,7 +43,7 @@ And look for something like this:
 library(kftrack)
 data(big.241) # load packaged example data
 track <- big.241
-#track<-read.table(’datafile.dat’, header=TRUE) # change file name and path for your own file
+#track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
 fit1 <-kftrack(track)
 fit1 # inspect model parameters
 plot(fit1, map=FALSE, ci=TRUE)
@@ -58,7 +58,7 @@ save(fit1, file="kf-example.Rdata")
 library(ukfsst)
 #library(kfsst)
 data(blue.shark) # load packaged example data
-#track<-read.table(’datafile.dat’, header=TRUE) # change file name and path for your own file
+#track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
 sst.path<-get.sst.from.server(track)
 #sst.file<-write.sst.field(sst.path) # only used in kfsst
 fit2<-kfsst(track)
@@ -71,8 +71,7 @@ save(fit2, file="kf-example.Rdata")
 
 Assume we have run our tracks successfully, and everything is in an active R session, we can output the tracks for other programs.
 
-   * Download the export script for R, [http://geolocation.googlecode.com/svn/trunk/updates/fit2csv.R
- `fit2csv`]
+   * Download the export script for R, `[http://geolocation.googlecode.com/svn/trunk/updates/fit2csv.R fit2csv]`
  
    * Make sure you note where you save the downloaded file. Drag-and-drop the file into the main R window, or use the function, `source`
    
