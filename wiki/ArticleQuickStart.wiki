@@ -74,6 +74,27 @@ fit2 # inspect model parameters
 plot(fit2, map=FALSE, ci=TRUE)
 save(fit2, file="kf-example.Rdata")
   }}}
+  
+  * Trackit
+   
+  {{{
+# Note: delete the hash sign (#) at the beginning to uncomment a line
+
+library(trackit)  
+data(drifter) # load packaged example data
+#track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
+prep.track<-prepit(drifter, fix.first=c(360-161.45,22.85,2002,9,10,0,0,0), 
+                   fix.last=c(360-159.87,21.95,2003,5,21,0,0,0), scan=FALSE)
+ 
+fit3<-trackit(prep.track)
+fit3 # inspect model parameters
+
+plot(fit3)
+fitmap(fit3, ci=T)
+points(fit3$most.prob.track, pch=20)
+save(fit3, file="kf-example.Rdata")
+  }}}
+
     
 = Exporting results from R =
 
