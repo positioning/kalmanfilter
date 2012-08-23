@@ -72,4 +72,4 @@ http://tagbase.googlecode.com/svn/trunk/images/WcGpe2.jpg
 
   * Choosing *Trackit interface* exposes the options to generate data files for running light only or light+SST in R.
     * Start up R to run the script and copy-and-paste lines of code
-	* Make sure you double-check the information listed in `fix.first` and `fix.last` as they might not correct
+    * Make sure you double-check the information listed in `fix.first` and `fix.last` as they might not correct

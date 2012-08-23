@@ -18,6 +18,7 @@ KF geolocation packages include various state-space models: [ArticleKftrack Kftr
   * Any point on the most probable track is a weighted average of:
      * What is learned from the current observation
      * What is learned from the entire track
+  * No land avoidance is used so positions may end up on land (high on the todo list in our future developed)
 
 = Differences among KF packages = 
 
