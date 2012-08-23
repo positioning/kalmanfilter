@@ -32,7 +32,8 @@ KF geolocation packages include various state-space models: [ArticleKftrack Kftr
 http://geolocation.googlecode.com/svn/wiki/images/intro-tablediff.jpg
 	
 = General tips on usage =
-
+  
+  * Longitude values should be between 0 - 360 degrees (degree East)
   * If possible, running more than one KF package on the same data can often be very instructive
   * Model convergence should be obtained
   * Ways to help the optimizer if a track is problematic

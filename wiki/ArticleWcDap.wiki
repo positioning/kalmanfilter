@@ -65,12 +65,11 @@ http://tagbase.googlecode.com/svn/trunk/images/WcGpe2.jpg
 
 == Utilizing Kalman filter/ Trackit interfaces in GPE ==    
 
-  * If you decide to run any *Kalman filter/ Trackit analysis*, proceed to do so via the "File" menu. Save & export after estimation is completed.
+  * If you want to use *Kalman filter interface* or *Trackit interface*, proceed to do so via the "File" menu. Save & export after estimation is completed.
   
-  * The Kalman filter/ Trackit analysis is powered by open-source libraries authored by Anders Nielsen, Chi Hin Lam and John Sibert, and provided by the [http://www.soest.hawaii.edu/PFRP/ Pelagic Fisheries Research Program]. 
-  
-  * We recommend the following papers and references therein for a more complete understanding of the methods and assumptions needed to best utilize this type of analysis.
-  
-  # [http://www.int-res.com/abstracts/meps/v419/p71-84/ Trackit] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2010. Incorporating sea-surface temperature to the light-based geolocation model !TrackIt. Marine Ecology Progress Series MEPS 419:71-84
-  # [http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25
-  # [http://www.soest.hawaii.edu/PFRP/reprints/sibert_horizontal.pdf Kftrack] Sibert, J.R., Musyl, M.K., Brill, R.W., 2003. Horizontal movements of bigeye tuna (Thunnus obesus) near Hawaii determined by Kalman filter analysis of archival tagging data. Fisheries Oceanography, 12(3):141-151.
+  * Choosing *Kalman filter interface* with start another window where *Kftrack* or *Ukfsst* can be run within the program.
+	* Parameters can be changed, saved and reuse through the options in the dialog
+
+  * Choosing *Trackit interface* exposes the options to generate data files for running light only or light+SST in R.
+    * Start up R to run the script and copy-and-paste lines of code
+	* Make sure you double-check the information listed in `fix.first` and `fix.last` as they might not correct
