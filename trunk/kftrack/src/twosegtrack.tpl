@@ -114,7 +114,7 @@ DATA_SECTION
   !! P0.initialize(); 
   number start_long;
 
-  LOCAL_CALCS
+ LOCAL_CALCS
     //solstice.set(syr,smo,sda);
     //gsolstice = solstice.get_gregorian();
     gsolstice = previous_solstice((int)dat_mat(1,3),(int)dat_mat(1,2),(int)dat_mat(1,3));
@@ -227,7 +227,7 @@ PARAMETER_SECTION
   sdreport_vector hdg(1,noOfSegments);						//twosegments modification (anielsen@dina.kvl.dk)			
   sdreport_vector spd(1,noOfSegments);						//twosegments modification (anielsen@dina.kvl.dk)
 
-  LOCAL_CALCS
+ LOCAL_CALCS
    uu = init_u;  								//twosegments modification (anielsen@dina.kvl.dk)
    vv = init_v;  								//twosegments modification (anielsen@dina.kvl.dk)
    D  = init_D;  								//twosegments modification (anielsen@dina.kvl.dk)
