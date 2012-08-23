@@ -46,7 +46,7 @@ _This list is not meant to be comprehensive. Please suggest more as comments_
   * Wildlife Computers: Electronic tags for wildlife research: http://www.wildlifecomputers.com
 
 ==== Overview of tag platforms available for animals submerged underwater ====
-|| *Tag manufacturer* || *Acoustic* || *Archival* || *Popup* || *Radio-linked telemetry* || *Signals used for geopositioning*||
+|| *Tag manufacturer* || *Acoustic* || *Archival* || *Popup* || *Radio-linked telemetry* || *Signals used for geolocation*||
 || [http://www.cefastechnology.co.uk Cefas] || - || _Yes_ || - || _Yes_ || Light, Radio ||
 || [http://www.desertstar.com Desert Star] || - || _Yes_ || _Yes_ || - || Magnetic ||
 || [http://www.lotek.com Lotek] || _Yes_ || _Yes_ || _Yes_ || _Yes_ (limited choices) || Light, Radio ||
