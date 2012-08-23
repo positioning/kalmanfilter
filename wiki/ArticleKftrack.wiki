@@ -1,7 +1,9 @@
-#summary Wishlist items
+#summary Kftrack package
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Cheatsheet of Kftrack =
 
-Tell us what you want here by leaving comments!
+[http://www.soest.hawaii.edu/PFRP/reprints/sibert_horizontal.pdf Kftrack] - Sibert, J.R., Musyl, M.K., Brill, R.W., 2003. Horizontal movements of bigeye tuna (Thunnus obesus) near Hawaii determined by Kalman filter analysis of archival tagging data. Fisheries Oceanography, 12(3):141-151.
+
+http://geolocation.googlecode.com/svn/wiki/images/kftrack.jpg

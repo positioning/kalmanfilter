@@ -47,6 +47,7 @@ http://geolocation.googlecode.com/svn/wiki/images/intro-tablediff.jpg
   * Use SST products of different resolutions and compare different runs.
 	Check documentation in R.
 	   ` ?get.sst.from.server `
+	   or
 	   ` ?get.blended.sst `
   
 http://geolocation.googlecode.com/svn/wiki/images/convergence.jpg
