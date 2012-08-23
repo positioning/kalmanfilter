@@ -86,7 +86,7 @@ data(drifter) # load packaged example data
 prep.track<-prepit(drifter, fix.first=c(360-161.45,22.85,2002,9,10,0,0,0), 
                    fix.last=c(360-159.87,21.95,2003,5,21,0,0,0), scan=FALSE)
  
-fit3<-trackit(prep.track)
+fit3<-trackit(prep.track, D.ph=2)
 fit3 # inspect model parameters
 
 plot(fit3)
