@@ -1,5 +1,5 @@
 #include <fvar.hpp>
-#include <iostream.h>
+#include <iostream>
 #include <math.h>
   const double eps = 1e-8;  //small number to avoid divide by 0
  
