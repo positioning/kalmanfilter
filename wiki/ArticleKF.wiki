@@ -6,8 +6,6 @@
 
 KF geolocation packages include various state-space models: [ArticleKftrack Kftrack], [ArticleKfsst Kfsst], [ArticleUkfsst Ukfsst] and [ArticleTrackit Trackit], and KF is simply a shorthand for Kalman filter that all these packages utilize. State-space models are a generic statistical modeling technique when a model describing the observations/ measurements is coupled to a model describing the hidden process that cannot be directly measured. Refer to Patterson et al. 2008 in [ArticleRefs Publications] for a review of state-space models.
 
-http://geolocation.googlecode.com/svn/wiki/images/intro-ex.jpg
-
 = Similarities among KF packages =
 
   * Underlying movement model
@@ -48,7 +46,8 @@ http://geolocation.googlecode.com/svn/wiki/images/intro-tablediff.jpg
     * Also check input data or inspect via visual plots
   * Use SST products of different resolutions and compare different runs.
 	Check documentation in R.
-    {{{?get.sst.from.server
-	   ?get.blended.sst}}}
+	   ` ?get.sst.from.server `
+	   ` ?get.blended.sst `
   
 http://geolocation.googlecode.com/svn/wiki/images/convergence.jpg
+http://geolocation.googlecode.com/svn/wiki/images/intro-ex.jpg
