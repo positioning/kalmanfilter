@@ -19,7 +19,7 @@
     * [ArticleParTrackit Description of Model Parameters]
     * [ArticleRefKfsst Reference manual]
   * [ArticleBathyCorr Bathymetric correction with Analyzepsat]
-  * [ArticleWcDap Third-party Software using KF packages]
+  * [ArticleWcDap Third-party software using KF packages]
     * [ArticleWcDap Working with Wildlife Computers DAP/GPE]
   * [ArticlePedersen Other Geolocation Packages]
     * [ArticlePedersen Geolocation Toolbox in Matlab]

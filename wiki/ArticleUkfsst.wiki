@@ -1,7 +1,9 @@
-#summary Wishlist items
+#summary Ukfsst package
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Cheatsheet of Ukfsst =
 
-Tell us what you want here by leaving comments!
+[http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25
+
+http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg

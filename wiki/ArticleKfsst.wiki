@@ -1,7 +1,9 @@
-#summary Wishlist items
+#summary Kfsst package
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Cheatsheet of Kfsst =
 
-Tell us what you want here by leaving comments!
+[http://www.soest.hawaii.edu/PFRP/reprints/nielsen_geolocation.pdf Kfsst] - Nielsen, A., Bigelow, K. A., Musyl, M. K., and Sibert, J. R. 2006. Improving light-based geolocation by including sea surface temperature. Fisheries Oceanography, 15(4), 314-325. 
+
+http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
