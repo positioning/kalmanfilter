@@ -1,7 +1,7 @@
 #include <strstream> 
 using std::ostrstream;
 #include <fvar.hpp>
-#include <iomanip.h>
+#include <iomanip>
 #include <adstring.hpp>
 
 extern adstring copyright;
@@ -50,7 +50,7 @@ adstring make_banner(void)
   {
     char s[80];
     ostrstream ss(s,80);
-    ss << hex << version << '\0';
+    ss << std::hex << version << '\0';
     banner += ", v" + adstring(s);
   }
 

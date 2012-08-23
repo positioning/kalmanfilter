@@ -1,6 +1,6 @@
 #ifndef __year_month_day__
 #define __year_month_day__
-#include <iostream.h>
+#include <iostream>
 #include <stdlib.h>
 
 //class prnstream ;
@@ -16,7 +16,7 @@ private:
 
 protected:
   static char delimiter;
-  static int year_month_day::month_length[14];
+  static int month_length[14];
   int m_day;
   int m_month;
   long m_year;
@@ -62,8 +62,8 @@ public:
   int operator < (const year_month_day&);
   int operator > (const year_month_day&);
 
-  friend istream& operator>>(istream& istr, year_month_day& t);
-  friend ostream& operator<<(ostream& ostr, const year_month_day& t);
+  friend std::istream& operator>>(std::istream& istr, year_month_day& t);
+  friend std::ostream& operator<<(std::ostream& ostr, const year_month_day& t);
 
   //friend prnstream& operator<<(prnstream& ostr, const year_month_day& t);
 
@@ -97,15 +97,15 @@ public:
     return v->p;
   }
 #ifdef OPT_LIB
-  year_month_day_& year_month_day_vector::operator[](const int i)
+  year_month_day_& operator[](const int i)
     {return v->p[i-v->en1];}
-  year_month_day_& year_month_day_vector::operator()(const int i)
+  year_month_day_& operator()(const int i)
     {return v->p[i-v->en1];}
 #else
-  year_month_day_& year_month_day_vector::operator[](const int i);
-  year_month_day_& year_month_day_vector::operator()(const int i);
+  year_month_day_& operator[](const int i);
+  year_month_day_& operator()(const int i);
 #endif
-  year_month_day_vector& year_month_day_vector::operator=(year_month_day_vector& x);
+  year_month_day_vector& operator=(year_month_day_vector& x);
   ~year_month_day_vector();
   inline year_month_day_vector(year_month_day_vector& x)
   {
