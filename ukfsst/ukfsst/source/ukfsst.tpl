@@ -18,7 +18,7 @@ GLOBALS_SECTION
   #include "chol.h"
   #include "nLogNormal.h"
   #include "basics.h"
-  #include <fstream.h>
+  #include <fstream>
   #include <math.h>
   #include <fvar.hpp>
   #include <adstring.hpp>
