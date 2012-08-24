@@ -86,7 +86,7 @@ fit<-trackit(prep.track)
 	 
 = Subsampling light data =
 == Transmitted light data ==
-  * Wildlife Computer PSATs
+  * Only available now with Wildlife Computer PSATs
   * Light values are already depth-corrected on board of the instrument
 == Recovered light data time series ==
   * Nielsen and Sibert (2007) show that tracks can be reconstructed with high fidelty even when the time series data are at a lower sampling frequency (up to 14 min between successive observations).
@@ -102,7 +102,7 @@ fit<-trackit(prep.track)
   * Although you are free to assign any object for the model output, we use `fit` consistently throughout to maintain clarity.  
   * `fit` is only generated when the model converges. If you see any "Error" messages on the R window, it means the model did not converge and you should re-run the model
   {{{
-  > fit
+> fit
 # Trackit version: 0.2-68 
 # Date: 23 Aug 2012 (21:03:56) 
 # Negative log likelihood: 29322.5 
