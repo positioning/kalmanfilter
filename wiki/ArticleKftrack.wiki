@@ -46,7 +46,7 @@ plot(fit)
   # Run the model
     # Start and end positions are assumed to known and "without any errors"
     # Set `fix.last=FALSE` if you are unsure about your end position
-	# You can also set `fix.first=FALSE` for the start position
+    # You can also set `fix.first=FALSE` for the start position
   # Plot the results
     # Use `ci=TRUE` to show the confidence regions
-	# Use `map=TRUE` if you have [http://gmt.soest.hawaii.edu/ *GMT*] installed
+    # Use `map=TRUE` if you have *[http://gmt.soest.hawaii.edu/ GMT]* installed
