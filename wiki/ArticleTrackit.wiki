@@ -8,6 +8,8 @@ Trackit is an add-on package for the statistical environment *R* to efficiently 
 
 The model is unique in estimating the most probable track without making any light-level threshold assumptions, or constraining the movement of the tag between dawn and dusk. The model generates 2 estimates of geographic positions per day (at dawn and dusk) based on light and 3 estimates of positions per day (at dawn, dusk, SST time point) when sea-surface temperature (SST) are used in combination with light. The covariance structure of the model is designed to handle high correlations between light measurements, such as might be caused by local weather conditions. The yearly pattern in latitude precision is estimated by propagating the data uncertainities through the geolocation process. The model has been applied to simulated data, mooring studies, and real deployments on swimming and diving fish.
 
+= Publications = 
+
   * [http://www.int-res.com/abstracts/meps/v419/p71-84/ Trackit with SST] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2010. Incorporating sea-surface temperature to the light-based geolocation model !TrackIt. Marine Ecology Progress Series MEPS 419:71-84
   * [http://www.soest.hawaii.edu/PFRP/reprints/Nielsen_Sibert_2007.pdf Trackit] - Nielsen, Anders, and John R. Sibert, 2007. State-space model for light-based tracking of marine animals. Can. J. Fish. Aquat. Sci. 64: 1055-1068.
 
@@ -15,11 +17,31 @@ The model is unique in estimating the most probable track without making any lig
   
 http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
 
-= Required input data format =
-  
-  * Light data
-  
-  * SST data
+= Input data format =  
+  ===1. Light data===
+  {{{
+  year month day hour min sec depth light  temp
+  2003     9   8    2  32   0  22.5   173 21.75
+  2003     9   8    2  33   0  22.5   173 21.75
+  2003     9   8    2  34   0  23.0   173 21.75
+  2003     9   8    2  35   0  22.5   173 21.75
+  2003     9   8    2  36   0  22.0   173 21.75
+  2003     9   8    2  37   0  22.0   173 21.75
+  }}}
+  * `depth` values can be used for correcting light measurements taken at deeper depths. This is only recommended when detailed, high resolution time series is available. Check documentation for usage
+  {{{
+	?two.layer.depth.corr
+  }}}
+  ===2. SST data===
+  {{{
+  year month day hour min sec sst
+  2003     9   8    0   0   0  21.7
+  2003     9   9    0   0   0  22.5   
+  2003     9  10    0   0   0  24.0
+  2003     9  11    0   0   0  21.5
+  2003     9  12    0   0   0  22.0
+  2003     9  13    0   0   0  22.5
+  }}}  
 
 = Basic Workflow =
   # Loads packages
