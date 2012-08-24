@@ -18,7 +18,7 @@ The model is unique in estimating the most probable track without making any lig
 http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
 
 = Input data format =  
-  ===1. Light data===
+  ==1. Light data==
   {{{
   year month day hour min sec depth light  temp
   2003     9   8    2  32   0  22.5   173 21.75
@@ -32,7 +32,7 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
   {{{
   ?two.layer.depth.corr
   }}}
-  ===2. SST data===
+  ==2. SST data==
   {{{
   year month day hour min sec sst
   2003     9   8    0   0   0  21.7
@@ -44,28 +44,56 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
   }}}  
 
 = Basic Workflow =
-  # Loads packages
+  
+  {{{
+# Note: delete the hash sign (#) at the beginning to uncomment a line
+
+library(trackit)  
+track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
+prep.track<-prepit(track, fix.first=c(360-161.45,22.85,2002,9,10,0,0,0), 
+                   fix.last=c(360-159.87,21.95,2003,5,21,0,0,0), scan=FALSE)
+fit<-trackit(prep.track)
+  }}}
+  
+  # Load packages
   # Read in data files (light, SST data)
   # (Optional) Perform depth correction of light measurements
+     {{{
+	 track <- two.layer.depth.corr(track)
+	 }}}
   # (Optional) Download SST satellite imagery
+     {{{
+	 sstfolder <- get.sst.from.server(track,200,250,10,40)
+	 ?get.blended.sst
+	 }}}
   # Prepare data for trackit via the `prepit` function
      * Make sure `fix.first` and `fix.last` contain the correct release and reporting/ recapture postions
+	 * Set `scan=FALSE` when transmitted light data are used (Wildlife Computer tags)
      * Arguments `sst` and `localsstfolder` are only required when you desire to do SST matching as well
   # Run the model via the `trackit` function
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
 	 {{{
      fit <- trackit(prep.track, ss3.ph=-1)
 	 }}}
-
 	 
 = Subsampling light data =
-  * Transmitted light data
-  * Recovered light data time series
-
+  == Transmitted light data ==
+    * Wildlife Computer PSATs
+	* Light values are already depth-corrected on board of the instrument
+  == Recovered light data time series ==
+    * Nielsen and Sibert (2007) show that tracks can be reconstructed with high fidelty even when the time series data are at a lower sampling frequency (up to 14 min between successive observations).
+	* Sub-sampling full resolution time series will also shorten computation time
+	* If you want to depth-correct your light measurements, make sure you perform that before sub-sampling your time series
+	* Sub-sampling can be done with code like below:
+	{{{
+	track2 <- track[seq(1,nrow(track),2),] # Retain every other row
+	}}}
+	
 = Output and Plotting =
-  * the `fit` object
-  * Diagnosis: `plot` function
-  * Mapping: `fitmap` function
+  == The `fit` object ==
+  
+  == Diagnosis: `plot` function ==
+  == Mapping: `fitmap` function ==
   
 = Known issues =
   * Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
