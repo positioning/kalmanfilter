@@ -44,17 +44,17 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
   }}}  
 
 = Basic Workflow =
-  1. Loads packages
-  2. Read in data files (light, SST data)
-  3. (Optional) Perform depth correction of light measurements
-  4. (Optional) Download SST satellite imagery
-  5. Prepare data for trackit via the `prepit` function
+  # Loads packages
+  # Read in data files (light, SST data)
+  # (Optional) Perform depth correction of light measurements
+  # (Optional) Download SST satellite imagery
+  # Prepare data for trackit via the `prepit` function
      * Make sure `fix.first` and `fix.last` contain the correct release and reporting/ recapture postions
      * Arguments `sst` and `localsstfolder` are only required when you desire to do SST matching as well
-  6. Run the model via the `trackit` function
+  # Run the model via the `trackit` function
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
 	 {{{
-	    fit <- trackit(prep.track, ss3.ph=-1)
+     fit <- trackit(prep.track, ss3.ph=-1)
 	 }}}
 
 	 
