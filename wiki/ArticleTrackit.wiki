@@ -20,7 +20,7 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
 = Input data format =  
   ==1. Light data==
   {{{
-  > track
+> track
   year month day hour min sec depth light  temp
   2003     9   8    2  32   0  22.5   173 21.75
   2003     9   8    2  33   0  22.5   173 21.75
@@ -35,7 +35,7 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
   }}}
   ==2. SST data==
   {{{
-  > tagsst
+> tagsst
   year month day hour min sec sst
   2003     9   8    0   0   0  21.7
   2003     9   9    0   0   0  22.5   
@@ -76,7 +76,7 @@ fit<-trackit(prep.track)
   # Will not run
   # prep.track <- prepit(track, ...,
                          sst=tagsst, 
-						 localsstfolder="c:/temp/sstfolder")
+                         localsstfolder="c:/temp/sstfolder")
 	 }}}
   # Run the model via the `trackit` function
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
