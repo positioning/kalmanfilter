@@ -68,7 +68,7 @@ fit<-trackit(prep.track)
 	 }}}
   # Prepare data for trackit via the `prepit` function
      * Make sure `fix.first` and `fix.last` contain the correct release and reporting/ recapture postions
-	 * Set `scan=FALSE` when transmitted light data are used (Wildlife Computer tags)
+     * Set `scan=FALSE` when transmitted light data are used (Wildlife Computer tags)
      * Arguments `sst` and `localsstfolder` are only required when you desire to do SST matching as well
   # Run the model via the `trackit` function
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
