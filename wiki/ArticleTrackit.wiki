@@ -127,8 +127,24 @@ Std. dev.: 13.5800 29.58500
 # To access these items use the $ operator. For instance
 # to get the most probable track type: fit$most.prob.track
   }}}
+  
 == Diagnosis: `plot` function ==
+  * Plot of longitude, latitude, and SST (if used) time series can be shown with the command:
+  {{{
+  plot(fit)
+  }}}
+  * Confidence regions are shown in lilac and data points are plotted as crosses
+
+  http://geolocation.googlecode.com/svn/wiki/images/drifter.jpg
+  
 == Mapping: `fitmap` function ==
+  * Built-in mapping allows quick visualization of fitted track. To call,
+  {{{
+  fitmap(fit, ci=T) # ci = T turns on the confidence regions
+  points(fit$most.prob.track, pch=20, col="black") # plot waypoints
+  }}}
+  
+  http://geolocation.googlecode.com/svn/wiki/images/drifter-map.jpg
   
 = Known issues =
   * Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
