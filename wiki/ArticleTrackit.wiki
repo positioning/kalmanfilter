@@ -155,4 +155,5 @@ Std. dev.: 13.5800 29.58500
   http://geolocation.googlecode.com/svn/wiki/images/drifter-map.jpg
   
 = Known issues =
-  * Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
+  # Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
+  # Trackit cannot handle dateline crossing at the 0/360 line yet.
