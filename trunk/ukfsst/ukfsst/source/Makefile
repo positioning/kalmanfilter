@@ -1,14 +1,7 @@
-.SUFFIXES: .tpl .obj
-CC = /usr/local/gcc-3.4.4/bin/g++
-AD_DIR = /usr/local/admb-gcc344
-LL = $(CC) -static -s -L$(AD_DIR)/lib
-CFLAGS = -static -fpermissive -Wno-deprecated -I. -I${AD_DIR}/include -DUSE_LAPLACE -D__GNUDOS__ -Dlinux -DOPT_LIB -O3
- 
-ukfsst: ukfsst.cpp ukfsst.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
-	$(LL) ukfsst.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o ukfsst -L${AD_DIR}/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado
+SRCS=yrmonday.cpp azimuth.cpp banner.cpp solstice.cpp
 
-.cpp.obj:
-	$(CC) -c $(CFLAGS) -o$*.obj $<
+ukfsst: ukfsst.tpl $(SRCS)
+	admb ukfsst.tpl $(SRCS)
 
-.tpl.cpp:
-	$(AD_DIR)/bin/tpl2cpp $*
+clean:
+	del ukfsst.exe ukfsst.obj ukfsst.htp ukfsst.cpp $(OBJECTS)
