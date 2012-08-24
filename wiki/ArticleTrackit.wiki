@@ -2,6 +2,8 @@
 
 <wiki:toc max_depth="2" />
 
+= Overview =
+
 Trackit is an add-on package for the statistical environment *R* to efficiently estimate movement parameters and predict "the most probable track" directly from the raw light measurements obtained from archival tagged individuals. Its basic use is to fit and plot the model described in Nielsen and Sibert 2007.
 
 The model is unique in estimating the most probable track without making any light-level threshold assumptions, or constraining the movement of the tag between dawn and dusk. The model generates 2 estimates of geographic positions per day (at dawn and dusk) based on light and 3 estimates of positions per day (at dawn, dusk, SST time point) when sea-surface temperature (SST) are used in combination with light. The covariance structure of the model is designed to handle high correlations between light measurements, such as might be caused by local weather conditions. The yearly pattern in latitude precision is estimated by propagating the data uncertainities through the geolocation process. The model has been applied to simulated data, mooring studies, and real deployments on swimming and diving fish.
