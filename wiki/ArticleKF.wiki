@@ -39,18 +39,25 @@ http://geolocation.googlecode.com/svn/wiki/images/intro-tablediff.jpg
   * Model convergence should be obtained
   * Ways to help the optimizer if a track is problematic
     * Simplify model (especially for short tracks)
-      {{{ fit<-kftrack(track, bx.a=FALSE, by.a=FALSE) }}}
+      {{{ 
+    fit<-kftrack(track, bx.a=FALSE, by.a=FALSE) 
+	  }}}
     * Supply better initial values
-      {{{ fit<-kftrack(track, D.i=500) }}}
+      {{{ 
+    fit<-kftrack(track, D.i=500) 
+	  }}}
     * Remove extreme outliers
-      {{{ track<-track[abs(track$lat)<90,] }}}
+      {{{ 
+    track<-track[abs(track$lat)<90,] 
+	  }}}
     * A combination of the above
     * Also check input data or inspect via visual plots
-  * Use SST products of different resolutions and compare different runs.
-	Check documentation in R.
-	   ` ?get.sst.from.server `
-	   or
-	   ` ?get.blended.sst `
+  * Use SST products of different resolutions and compare different runs. Check documentation in R.
+  {{{
+  ?get.sst.from.server
+	  or
+  ?get.blended.sst
+  }}}
   
 http://geolocation.googlecode.com/svn/wiki/images/convergence.jpg
 http://geolocation.googlecode.com/svn/wiki/images/intro-ex.jpg
