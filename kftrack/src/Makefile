@@ -1,25 +1,9 @@
-.SUFFIXES: .tpl .o
-
-ifndef ADMB_HOME
-  $(error "Error: ADMB_HOME not defined.")
-endif
-
-ARCH=-m32
-OBJECTS=yrmonday.o azimuth.o banner.o solstice.o
+SRCS=yrmonday.cpp azimuth.cpp banner.cpp solstice.cpp
 
 all: kftrack twosegtrack
 
-kftrack: kftrack.o $(OBJECTS)
-	LDFLAGS="$(ARCH) $(OBJECTS)" ${ADMB_HOME}/bin/adlink $@
+kftrack: kftrack.tpl $(SRCS)
+	admb kftrack.tpl $(SRCS)
 
-twosegtrack: twosegtrack.o $(OBJECTS)
-	LDFLAGS="$(ARCH) $(OBJECTS)" ${ADMB_HOME}/bin/adlink $@
-
-.cpp.o:
-	CXXFLAGS=$(ARCH) ${ADMB_HOME}/bin/adcomp $(*F)
-
-.tpl.cpp:
-	${ADMB_HOME}/bin/tpl2cpp $*
-
-clean:
-	@rm -vf *.o kftrack kftrack.cpp kftrack.htp twosegtrack twosegtrack.cpp twosegtrack.htp
+twosegtrack: twosegtrack.tpl $(SRCS)
+	admb twosegtrack.tpl $(SRCS)
