@@ -1,13 +1,13 @@
-all: kfsst kftrack trackit ukfsst
+all: build-kfsst build-kftrack build-trackit build-ukfsst
 
-kfsst:
+build-kfsst:
 	make --directory=kfsst/kfsst/source
 
-kftrack:
+build-kftrack:
 	make --directory=kftrack/src
 
-trackit:
+build-trackit:
 	make --directory=trackit/trackit/inst/admb/src
 
-ukfsst:
+build-ukfsst:
 	make --directory=ukfsst/ukfsst/source
