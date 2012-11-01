@@ -4,7 +4,8 @@
 all: ukf prepro
 
 ukf: ukf.tpl 
-	$(CXXFLAGS) admb ukf
+	admb ukf
 
 prepro: prepro.tpl 
-	$(CXXFLAGS) admb prepro
+	admb prepro
+
