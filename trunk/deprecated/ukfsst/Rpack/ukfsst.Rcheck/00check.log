@@ -1,0 +1,11 @@
+* using log directory ‘/home/andni/TRACKING/ukfsst/Rpack/ukfsst.Rcheck’
+* using R version 2.12.1 (2010-12-16)
+* using platform: i686-pc-linux-gnu (32-bit)
+* using session charset: UTF-8
+* checking for file ‘ukfsst/DESCRIPTION’ ... OK
+* this is package ‘ukfsst’ version ‘0.3’
+* checking package dependencies ... ERROR
+Package required but not available: kftrack
+
+See the information on DESCRIPTION files in the chapter 'Creating R
+packages' of the 'Writing R Extensions' manual.

@@ -1,0 +1,13 @@
+#!/bin/sh
+# cleanup 
+# 2002, Anders Nielsen (anielsen@dina.kvl.dk)
+
+#clean
+rm -Rf kftrack.Rcheck/ kftrack/ admb/ inst/ web/ ftp/
+rm -f *~
+rm -f kftrack_*.tar.gz
+rm -f kftrack.zip
+rm -f KFtrack-ref-manual.pdf
+cd src; make clean; cd ..
+
+#rm DESCRIPTION INDEX TITLE 

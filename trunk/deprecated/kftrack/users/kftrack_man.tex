@@ -1,0 +1,576 @@
+\documentclass[12pt,draft,titlepage,twoside]{article}
+\pagestyle{myheadings}
+\markboth{Sibert\hfil \texttt{kftrack} User's Guide}
+{\texttt{kftrack} User's Guide\hfil Sibert}
+\def\doublespacing{\baselineskip=1.6\normalbaselineskip}
+\def\deg #1{\hbox{$^\circ\,$#1}} % prevents line break between symbol and argument
+\def\Dunit{Nmi$^2$da$^{-1}$}
+\def\Uunit{Nmi$\,$da$^{-1}$}
+\def\Eunit{degrees}
+\def\ybull{y_\circ}
+\def\kftrack{\texttt{kftrack}}
+\input epsf
+\usepackage{m-pictex}
+%\input setbmp
+
+\def\Balpha{{\bf\alpha}}
+\setlength{\parskip}{1ex plus .5ex minus .2ex} 
+
+\begin{document}
+
+
+\begin{titlepage}
+\hbox{}
+\kern-1.25in
+%\setbmp{0in}{0in}{1.50in}{tunalogo150.bmp}
+\epsfxsize=1.5truein
+\epsfbox{tunalogo150.eps}
+
+
+\vskip1.5in
+\begin{center}
+\LARGE{User's Guide to \texttt{kftrack}}
+\vskip1in
+\large{
+John R. Sibert\\
+Pelagic Fisheries Research Program\\
+Joint Institute of Marine and Atmospheric Research\\
+University of Hawai`i at M\={a}noa\\
+Honolulu, HI  96822, U.S.A.\\
+\bigskip					
+jsibert@soest.hawaii.edu\\
+\bigskip
+Honolulu, October 2001\\
+}
+\end{center}
+\end{titlepage}
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\begin{quotation}
+\begin{center}
+{\LARGE Disclaimer}
+\end{center}
+\bigskip
+This program is licensed free of charge. Therefore there is no warranty for the program
+to the extent permitted by law. Except when otherwise stated in writing, the copyright holders 
+and/or other parties provide the program ``as is'' without warranty of any kind, either expressed or implied, including, but not
+limited to, the implied warranties of merchantability and fitness for a particular purpose. 
+The entire risk as to
+the quality and performance of the program is with you. 
+Should the program prove defective, you assume the
+cost of all necessary servicing, repair or correction. 
+
+In no event, unless required by applicable law or agreed to in writing,
+ will any copyright holder, or any
+other party who may modify and/or redistribute the program as permitted above, be liable to you for damages,
+including any general, special, incidental or consequential damages arising out of the use or inability to use
+the program (including but not limited to loss of data or data being rendered inaccurate or losses sustained
+by you or third parties or a failure of the program to operate with any other programs), even if such holder or
+other party has been advised of the possibility of such damages.
+
+If you change the source code, it is no longer an official version of \kftrack\ and,
+there is no warranty that it will perform as expected.
+
+\par\bigskip
+\noindent \copyright 2001 John Sibert, Pelagic Fisheries Research Program, University of Hawaii
+
+\end{quotation}\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction}
+
+We proposed to use the state space Kalman filter model (Sibert and Fournier, 2001)
+for analysis of tracking data in order to 
+estimate advection and diffusion parameters applicable
+to models of population movement. In principle, this general model can be 
+applied to tracking data from any device. 
+Subsequently, we developed an implementation of the 
+state space Kalman filter and applied it to data from geolocating archival tags deployed on bigeye tuna near Hawaii (Sibert {\it et al.} submitted).
+The results were very encouraging.
+The estimated ``most probable'' tracks appear to be plausible representations of 
+tuna behavior, and
+the geolocation error estimates are
+nearly identical to error estimates produced by other methods.
+We have also successfully tested the model on data from archival tags 
+deployed on different species in different locations and on tracks of turtles tracked with Argos tags. 
+
+I have received several enquiries about the possibility of applying our state space Kalman filter model to other data. 
+I don't really have the time (or inclination) to get
+deeply involved in more projects, so I offer the model for others to apply.
+The model described in this documentation, \kftrack,
+is the same (more or less) as that model used for the 
+Hawaiian bigeye tuna analysis.
+It has been tested under Windows NT, Windows 2000 and Linux.
+This documentation pertains only to the 32 bit Windows version.
+
+\kftrack\ is an ADModel Builder application. The source code is supplied
+in the form of an ADMB template and a couple of supporting C++ functions.
+You can browse through the source code freely to see how it works, but if you want to modify the program, you will need an ADModel Builder license from Otter Research (http://otter-rsch.com/).
+
+The notation in this documentation generally follows that of Harvey (1990) as modified by Sibert {\it et al.}.
+
+If you give \kftrack\ a try, let me know what happened.
+
+
+\section{Getting Started}
+\kftrack\ is not a full-featured, mouse clicking Windows application.
+Instead, it runs nicely in a command window, a.k.a the infamous ``DOS Prompt''.
+It also runs nicely in a Cygwin bash shell (www.sources.redhat.com/cygwin/).
+You will need a text editor.  
+I generally use (but don't necessarily endorse) Lemmy (www.softwareoneline.org) 
+and viw (www.mks.com). Other folks use emacs. I suppose you could make do with
+a word processing program.
+
+\subsection{Installing \kftrack}
+
+The distribution archive contains the directory (\texttt{kftrack}) 
+and several sub-di\-rectories shown in Table~1.%\ref{tab:distribution}.
+
+\begin{table}
+\begin{center}
+\caption{Contents of distribution archive.}
+\medskip
+\begin{tabular}{|c|l|l|}
+\hline
+Sub-directory & File & What it is\cr 
+\hline
+    & READ.ME &\cr
+bin & kftrack.exe & \kftrack\ executable\cr
+example & kftrack.dat & sample input data\cr  
+example & samplemap & example GMT application\cr
+src & kftrack.tpl & ADMB template\cr 
+src& azimuth.cpp & source code files\cr  
+src& banner.cpp&\cr  
+src & yrmonday.h&\cr
+src&yrmonday.cpp&\cr  
+src& makefile.bor & makefile for bcc32 5.5\cr  
+doc& & documentation files\cr
+\hline
+\end{tabular}
+\end{center}
+\label{tab:distribution}
+\end{table}
+
+The archive can be extracted to any convenient place. 
+The executable file \texttt{kftrack.exe} must be in a directory specified by
+one of the windows path environment variables. 
+Either move the file to a directory that is already on the path (e.g. \texttt{C:WINNT}), 
+or change the appropriate path environment variable using one of the tools
+in the Windows Control Panel.
+
+\kftrack\ follows default ADMB file naming conventions. 
+This means that it always reads the same input file and always writes the 
+same output files. I strongly recommend that you {\bf keep each track in a separate directory.}
+
+\subsection{Running \kftrack}
+Open a command window and change to the directory containing your the file, 
+\texttt{kftrack.dat}. 
+Type \kftrack\ after the prompt, and press the ``Enter'' key. 
+
+You should see a display that begins
+\begin{quotation}
+{\overfullrule=0pt\scriptsize
+\noindent
+\begin{verbatim}
+State space Kalman filter track estimator
+kftrack version 1.11 (Borland C++, v550)
+  (c) 2001 John Sibert
+  Pelagic Fisheries Research Program, University of Hawaii
+
+  Finished LOCAL_CALCS in PARAMETER_SECTION.
+
+
+Initial statistics: 3 variables; iteration 0; function evaluation 0
+Function value   1.8029e+03; maximum gradient component mag  -5.8173e+03
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.00000 -4.26531e+02 |  2  0.00000  1.83357e+02 |  3 -0.81933 -5.81732e+03
+
+Intermediate statistics: 3 variables; iteration 10; function evaluation 21
+Function value   5.9145e+02; maximum gradient component mag   7.4507e+00
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1-14.08226  1.47160e+00 |  2 10.10169  7.45071e+00 |  3  1.01069  1.12896e+00
+\end{verbatim}
+}
+\end{quotation}
+
+\noindent and ends with
+\begin{quotation}
+\noindent
+{\overfullrule=0pt\scriptsize
+\begin{verbatim}
+Intermediate statistics: 8 variables; iteration 10; function evaluation 29
+Function value   4.1990e+02; maximum gradient component mag   9.9067e+01
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.07020  3.61940e+00 |  2 -0.06228 -4.04478e+00 |  3 -0.67928 -5.40321e+00
+  4 -0.77986  1.93340e+01 |  5 -0.76902 -1.01625e+01 |  6  0.12625 -3.38360e+00
+  7  0.12198  2.39604e+01 |  8  0.12721  9.90673e+01 |
+
+ - final statistics:
+8 variables; iteration 16; function evaluation 35
+Function value   4.1965e+02; maximum gradient component mag   3.9622e-05
+Exit code = 1;  converg criter   1.0000e-04
+Var   Value    Gradient   |Var   Value    Gradient   |Var   Value    Gradient   
+  1  0.06770 -8.16939e-06 |  2 -0.05614  2.49652e-05 |  3 -0.66728 -1.52620e-06
+  4 -0.78362 -1.22100e-05 |  5 -0.76889 -2.24925e-07 |  6  0.12744 -7.85587e-06
+  7  0.11029  3.96217e-05 |  8  0.12684  1.28176e-05 |
+Phase 3 tracks written to file gmt_111111110.dat
+Estimating row 1 out of 8 for hessian
+Estimating row 2 out of 8 for hessian
+Estimating row 3 out of 8 for hessian
+Estimating row 4 out of 8 for hessian
+Estimating row 5 out of 8 for hessian
+Estimating row 6 out of 8 for hessian
+Estimating row 7 out of 8 for hessian
+Estimating row 8 out of 8 for hessian
+\end{verbatim}
+}
+\end{quotation}
+
+Most of the screen output reports the progress of the ADMB numerical function minimizer.
+The line ``Phase 3 tracks written to file gmt\_111111110.dat'' tells you the 
+name the file containing data that can be used for plotting the tracks
+on maps. The final 8 lines of screen output
+report the progress of the routines that compute the standard deviation and correlation
+coefficients of the parameter estimates.
+
+Typing \texttt{kftrack -help} will display a list of standard ADMB options.
+
+\section{Input}
+
+The input data file is \texttt{kftrack.dat}. 
+
+\subsection{Structure of \texttt{kftrack.dat}}
+Input files are ``self-documenting''. Comments can be included in the data files by preceeding each comment with the `\texttt{\#}' character which
+causes all remaining characters in the line to be ignored.
+
+The first data record is the number of data points including 
+the release position and the recapture position (if known). 
+There is no known limit to the number of data points in a track;
+it runs OK with at lease 380 points.
+
+\begin{verbatim}
+# number of data points
+76
+\end{verbatim}
+
+The next two records concern the recapture position. If the last point
+in the data file is the recapture position, place a 1 in the appropriate
+record, and \kftrack\ will report the Euclidian distance between observed 
+and predicted positions in degrees. 
+I made several attempts to coerce the Kalman filter to force the track
+to go through the observed recapture position. 
+The penalty weight for recapture position error is 
+multiplied by the Euclidian distance between the observed recapture 
+position and the last point on the track and added to the Kalman filter
+likelihood value. 
+Frankly, none of these attempts were very useful, 
+and I suggest keeping the penalty weight zero.
+\vbox{
+\begin{verbatim}
+# 1 if last point is true recapture position; 0 otherwise
+0 
+# penalty weight for recapture position error
+0.0
+\end{verbatim}
+}
+
+The ``active parameters'' flags control the model structure. If these flags
+are set to `1', the corresponding parameter will be estimated by the Kalman filter. If the flags are set to `0' the corresponding parameter is
+fixed at its initial value and not estimated by the Kalman filter. Using the notation in Sibert {\it et al.}, the first seven active parameters
+are $u$, $v$, $D$, $b_x$, $b_y$, $\sigma_x$, and $\sigma_{\ybull}$.
+\begin{verbatim}
+# active parameters
+#  u   v   D   bx  by  xv  vy
+   1   1   1   1   1   1   1
+\end{verbatim}
+
+This implementation of the Kalman filter uses a numerical function
+minimizer that requires initial values for all parameters. Note that
+if the ``active parameters'' flags are set to `0', the corresponding
+parameter values will not change. 
+The following values seem to be reasonable and
+allow the minimizer to converge fairly efficiently
+\begin{verbatim}
+# initial values
+#  u    v    D       bx   by   vx   vy
+   0.0  0.0  100.0   0.0  0.0  0.5  1.5
+\end{verbatim}
+
+The form of the latitude geolocation error is controlled by the next
+records in the file. 
+Three different assumptions about variability in the latitude estimation
+error over time are implemented:
+\begin{equation}
+\sigma^2_{yi} = \cases{\sigma^2_{\ybull} & \ref{eqn:error}.1\cr
+     \sigma^2_{\ybull} ({1\over cos^2\theta_i}) &  \ref{eqn:error}.2\cr                         
+     \sigma^2_{\ybull} e^{\xi_i} & \ref{eqn:error}.3
+\cr}
+\label{eqn:error}
+\end{equation}
+The ``cos'' flag invokes the inverse cosine error model \ref{eqn:error}.2
+and adds one parameter, $b_0$.
+The ``dev'' flag invokes the daily deviation error model 
+\ref{eqn:error}.3, and adds one parameter  for each point in the track, $\xi_i$.
+The ``deviation penalty weight'' is the constant $z_\xi$.
+If neither flag is set, the constant error model \ref{eqn:error}.1 is
+invoked. 
+In my experience the daily deviation model has mainly heuristic value,
+and the inverse cosine error model (\ref{eqn:error}.2) gives better results.
+\begin{verbatim}
+# latitude errors  
+# cos  dev deviation penalty weight
+   1    0    0.0
+\end{verbatim}
+
+
+\vbox{
+The inverse cosine error model needs to know the date of the previous solstice.
+Since the tag in this example was released January 21, 1999, 
+the previous solstice was December 21, 1998.
+This record is required whether or not the inverse cosine error model is applied.
+
+\begin{verbatim}
+# previous solstice
+#da mo year
+ 21 12 1998
+\end{verbatim}
+}
+
+The Kalman filter assumes that the release position is known without error. 
+Note the order of fields in the record: day, month, year, east longitude, and latitude. Positions are in decimal degrees; 
+minutes of longitude and latitude are not used. 
+South latitudes are negative.
+\begin{verbatim}
+# release position
+#da  mo  year  long   lat
+ 21  01  1999  201.75 18.65
+\end{verbatim}
+The release position is followed by records from the tracking device in the same
+format.
+
+
+\subsection{Listing of \texttt{kftrack.dat}}
+\begin{verbatim}
+# number of data points
+76
+# 1 if last point is true recapture position; 0 otherwise
+0 
+# penalty weight for recapture position error
+0.0
+# active parameters
+#  u   v   D   bx  by  vx  vy
+   1   1   1   1   1   1   1
+# initial values
+#  u    v    D       bx   by   vx   vy
+   0.0  0.0  100.0   0.0  0.0  0.5  1.5
+# latitude errors  
+# cos  dev deviation penalty weight
+   1    0    0.0
+# previous solstice
+#da mo yr
+ 21 12 1998
+# release position
+#da  mo  year  long   lat
+ 21  01  1999  201.75 18.65
+# tag data
+ 22  1  1999  204.52  20
+ 23  1  1999  206.086  22
+ .
+ .
+ .
+# 72 lines deleted
+ .
+ .
+ . 
+ 7  4  1999  211.968  19.5
+\end{verbatim}
+
+
+\section{Output}
+
+The parameter estimation is conduced in 3 phases with parameters added 
+in each phase. 
+In phase one, the active movement parameters in the transition equation are estimated. 
+In phase two, the active geolocation error parameters in the measurement equation are added.
+In phase three, the active seasonal latitude error parameters are added.
+Report files are produced at the end of each phase
+named \texttt{kftrack.r01}, \texttt{kftrack.r02}, and \texttt{kftrack.rep}.
+The primary output report file is \texttt{kftrack.rep}.
+
+In addition, specialized files are produce for plotting tracks with \texttt{GMT}
+or \texttt{R}.
+Other files are also produced in compliance with ADMB file naming conventions.
+Variable names used for model parameters in the report file 
+(and the ADMB template) are shown in Table~2. %\ref{tab:params}.
+The estimation flag and the phase during which the parameter is estimated
+are also shown in the table.
+
+\begin{table}
+\begin{center}
+{\renewcommand{\baselinestretch}{1.3}\small\normalsize
+\caption {Parameter names and flags.}
+%\par\bigskip
+\medskip
+\begin{tabular}{|c|c|c|c|}
+\hline
+Model     & Report & Estimation & Active\\
+Parameter & Name   & Flag       & Phase\\
+\hline
+$u$ & \texttt{uu} & 1 & 1\\
+$v$ & \texttt{vv} & 2 & 1\\
+$D$ &  \texttt{D} & 3 & 1\\
+$b_x$ & \texttt{bx} & 4 & 2\\ 
+$v_y$ & \texttt{by} & 5 & 2\\
+$\sigma_x$ & \texttt{vx} & 6 & 2\\
+$\sigma_{\ybull}$ & \texttt{vy} & 7 &2\\
+$b_0$ & \texttt{b0} & \texttt{cos} (8) & 3\\
+$\xi_i$ & \texttt{vy\_dev} & \texttt{dev} (9) & 3\\
+\hline
+\multicolumn{4}{|c|}{Model Variables}\\
+\hline
+$\mathbf{c}_i$ & \texttt{c} & &\\
+$\mathbf{Q}_i$ & \texttt{Q} & &\\
+$\mathbf{d}_i$ & \texttt{d} & &\\
+$\mathbf{H}_i$ & \texttt{H} & &\\
+$\mathbf{a}_i$ & \texttt{a(i)}& &\\
+\hline
+\multicolumn{4}{|c|}{Derived Quantities}\\
+\hline
+$\sqrt{\sigma_x^2+\sigma^2_{\ybull}}$ & \texttt{vxy} &  &\\
+$\sqrt{u^2+v^2}$ & \texttt{spd} &  &\\
+$\tan^{-1} (v/u)$ & \texttt{hdg} &  &\\
+$\sum_i\xi^2_i$ & \texttt{norm2(vy\_dev)} & &\\
+$\sigma_{yi}$ & vy(i) & &\\
+\hline
+\end{tabular}
+\renewcommand{\baselinestretch}{1.0}\small\normalsize
+}\end{center}
+\label{tab:params}
+\end{table}
+
+\subsection{Annotated Listing of \texttt{kftrack.rep}}
+The report file begins with some information about \kftrack .
+
+\begin{verbatim}
+State space Kalman filter track estimator
+kftrack version 1.11 (Borland C++, v550)
+  (c) 2001 John Sibert
+  Pelagic Fisheries Research Program, University of Hawaii
+\end{verbatim}
+
+The next few lines report the phase that produced the file and the flags
+defining the model structure. The file with the name beginning \texttt{gmt\_}
+is the file containing information for mapping tracks (see below).
+Next is information on the number of points in the track, whether the
+recapture point is included. If the recapture point penalty weight is
+greater than 0, the likelihood function is penalized by the product of the 
+weight and the Euclidian recapture error. (This doesn't really work very well.)
+\texttt{nt\_kf\_like} is the number of track points included in the Kalman filter
+contribution to the likelihood.
+
+\begin{verbatim}
+current_phase() = 3
+flags = 111111110
+gmt_name = gmt_111111110.dat
+npoint = 76
+recap_point = 0
+recap_point_penalty_weight = 0
+nt_kf_like = 76
+Number_of_parameters = 8
+f = 419.654
+kalman_like = 419.654
+recap_err = 0
+\end{verbatim}
+
+The following lines are point estimates of model parameters along with
+values of some of the model variables. Refer to Table~2.%\ref{tab:params}.
+
+\begin{verbatim}
+uu = 5.30717
+vv = -4.40384
+spd = 6.89637
+hdg = 129.686
+D = 333.738
+bx = 2.98274
+by = 2.58578
+vx = 0.429073
+vy = 0.488803
+vxy = 0.650409
+b0 = 9.89609
+vy_dev_penalty_wt = 0
+norm2(vy_dev) = 0
+c =  5.30717 -4.40384
+Q: 
+ 667.475 0
+ 0 667.475
+d =  2.98274 2.58578
+H: 
+ 0.184104 0
+ 0 6.2868
+\end{verbatim}
+
+The following section gives some information about the track. {\tt i} is the index of the observation, {\tt date} is the date of the observation, {\tt dt} is the
+number of days since the previous observation, {\tt j} is the number of days since
+the previous solstice, {\tt vy(i)} is $\sigma_{yi}$, and {\tt a(i,1)} and
+{\tt a(i,2)} are $\mathbf{a}_i$. 
+This section of the report is still evolving and doesn't get much use.
+It closes with a confirmation that the track data from this fit was written 
+to a file for mapping.
+
+\begin{verbatim}
+   i       date  dt    j        vy(i)       a(i,1)       a(i,2)
+   0 1999/01/21   0   32            0      -290.44         1119
+   1 1999/01/22   1   33      0.89294       -294.4       1101.4
+   2 1999/01/23   1   34      0.92182      -242.38       1116.2
+   3 1999/01/24   1   35      0.95269      -283.19       1157.5
+   4 1999/01/25   1   36      0.98574      -268.04       1147.1
+   5 1999/01/26   1   37       1.0212      -305.93         1101
+# 70 lines omitted
+
+Tracks written to file gmt_111111110.dat
+\end{verbatim}
+
+\subsection{Data for maps: file \texttt{gmt\_nnnnnnnnn}}
+
+\kftrack\ produces a file of points for mapping from each fit 
+(and from each phase in the estimation). One line is written in the file
+for each point in the track. The lines are organized into (x,y) pairs of 
+longitude and latitude in decimal degrees. The column headings can be used
+in an R data frame and are ignored by GMT.
+The pair (ox,oy) is the longitude and latitude from the tag; the nominal track.
+The pair (px,py) is the estimates from the Kalman filter given by
+$\mathbf{Z}_i\mathbf{a}_i$; the ``most probable'' track.
+The pair (ax,ay) is the five-point moving average of (px,py); 
+a feeble attempt at smoothing the nominal track.
+The pair (ex,ey) is the point estimate of the standard error of the
+nominal track given by $\sqrt{\mathbf{Z}_i\mathbf{P}_i/i}$.
+Lines containing 8 `$>$' symbols are inserted when $\Delta t > 1$ and will
+cause GMT to ``lift the pen'' between points.
+
+
+\clearpage\section{References}
+{\parindent=0cm 
+ \everypar={\hangindent=2em \hangafter=1}
+
+Harvey, A.C. (1990) {\it Forecasting, structural time series models and the 
+Kal\-man filter} Cambridge University Press.
+
+Musyl, M.K., Brill, R.W., Curran, D.S., Gunn, J.S., Hartog, J.R., Hill, R.D., Welch, D.W.,
+Eveson, J.P., Boggs, C.H. and Brainard, R.E. (2001) Ability of archival tags 
+to provide estimates of geographical position based on light intensity.
+In: {\it Electronic Tagging and Tracking In Marine Fisheries Reviews: Methods and Technologies in Fish Biology and Fisheries}, J. Sibert and J. Nielsen (eds.) Dordrecht: Kluwer Academic Press, pp. 343-368.
+
+Musyl, M.K., Brill, R.W., Boggs, C.H., Curran, D.S., Kazama, T.K. and Seki. M.P. (submitted)
+Vertical movements of bigeye tuna ({\it Thunnus obesus}) associated with islands, buoys, and
+seamounts of the Hawaiian Archipelago from archival tagging data. {\it Fish. Oceanogr.}
+
+Sibert, J. and Fournier, D.A. (2001) Possible Models for Combining Tracking Data with Conventional Tagging Data. 
+In: {\it Electronic Tagging and Tracking In Marine Fisheries Reviews: Methods and Technologies in Fish Biology and Fisheries}, J. Sibert and J. Nielsen (eds.) Dordrecht: Kluwer Academic Press, pp. 443-456.
+
+Sibert, J., Musyl, M.K., and Brill, R.W. (submitted) Horizontal movements of bigeye tuna near Hawaii from archival tagging data.  {\it Fish. Oceanogr.}
+
+}
+
+\end{document}

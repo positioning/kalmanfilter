@@ -1,0 +1,55 @@
+CHANGELOG
+
+Novemeber 2012
+Benjamin Galuardi; Chi Hin Lam
+
+New ADMB executables provided by Johnoel Ancheta
+http://www.admb-project.org/buildbot/geolocation/
+------------------------------------------------
+
+Compiled and tested libraries using 
+R 2.14.1 for Ubuntu 12.04
+R 2.15.2 for Mac OSX
+R 2.15.2, 2.14.1 for Windows XP, Windows 7 64-bit
+
+------------------------------------------------
+
+For Windows, binary is renamed to [name].exe
+For Linux/Mac, binary is renamed to contain only [name] with no extensions
+
+Versions: 
+macos10.6-xcode3.2-64bit-r680-opt.bin
+windows7-vc10-64bit-r680-opt.exe
+ubuntu11-gcc4.6-64bit-r680-opt.bin
+
+macos10.6-xcode3.2-32bit-r680-opt.bin
+windows7-vc10-32bit-r680-opt.exe
+ubuntu11-gcc4.6-32bit-r680-opt.bin
+
+64-bit exe seems faster
+
+-----------------------------------------------
+
+1. kftrack (with twosegtrack)
+
+Added chmod +x to linux call to kftrack binary
+kftrack.r rewritten to make proper calls to ukfsst executable
+Removed cygwin1.dll
+R CMD INSTALL -- build  can work without Rtools installed (at least on 32-bit sys)
+Use one line, instead of file.copy, as below:
+error.code <- system(paste(.path.package("kftrack"), "/admb/", filename, " ", admb.string, sep = ""))
+
+2. kfsst - deprecated 
+
+3. ukfsst
+
+Added hidden plotting functions from kftrack directly into ukfsst
+get.reynolds replaces get.sst.from.server (documentation updated)
+kfsst.r rewritten to make proper calls to ukfsst executable
+
+4. trackit
+
+get.reynolds replaces get.sst.from.server (documentation updated)
+trackit.r rewritten to make proper calls to ukf executable
+deltat.dat and deltat.tab updated through 2020
+

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Trackit R package</TITLE>
+</HEAD>
+
+<BODY onkeypress="checkKey(event);" BGCOLOR="white"> 
+
+<script type="text/javascript">
+  $big=false;
+  $page=1;
+  $maxpage=2;
+
+  function setpage($newpage) 
+  {
+    $page=$newpage;
+    if ($big)
+      document.page.src="big/p"+$page+".png";
+    else
+      document.page.src="small/p"+$page+".png";
+  } 
+  
+  function big() 
+  {
+    if ($big)
+      $big=false;
+    else
+      $big=true;
+    setpage($page);
+  } 
+
+  function next() 
+  {
+    if ($page < $maxpage)
+      $page=($page+1);
+    else 
+      $page=1;
+
+    setpage($page);
+  } 
+
+  function prev() 
+  {
+    if ($page > 1)
+      $page=($page-1);
+    else 
+      $page=$maxpage;
+      
+    setpage($page);
+  } 
+
+  function checkKey(event) 
+  {
+    if (event.keyCode==37)
+      prev();
+    else if (event.keyCode==39)
+      next();
+  } 
+</script>
+
+
+<TABLE border=0 summary="No Summery">
+<TR><TD><img name="page" onclick="big()" src="./small/p1.png" BORDER=0 title="Click to change size"></TD>
+    <TD valign=top align=left><br><br>
+
+<pre><font color='black' size=4>
+To try the package install <a href=http://www.r-project.org>R</a>, start it and paste in the 
+following red string: 
+
+<font color='red'>source('http://www.nielsensweb.org/trackit/install')</font>
+
+This will download and install the necessary package <a href=http://cran.r-project.org/web/packages/date/>date</a> 
+and the trackit package itself. Current version is 0.2-6, 
+and it was compiled 2011-08-26.   
+
+If you decide to give this package a try, we would appreciate 
+hearing about your experiences. Also we will assist you as 
+much as we can. In other words please don't hesitate to send 
+questions, suggestions, and comments to: 
+<font color='red'>anders&lt;pig's tail&gt;nielsensweb.org</font>.
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</font>
+<div align="left">
+<img onclick="next()" src="./images/right.jpg" width="30" height="30" border="0" title="Try the left/right arrow keys instead"> 
+</div>
+</TD></TR>
+</TABLE>
+
+<iframe width="0" height="0" src="http://www.nielsensweb.org/cgi-bin/count?trackit.count" frameborder="0"></iframe>
+
+</BODY> 
+</HTML> 
