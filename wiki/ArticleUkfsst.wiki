@@ -2,8 +2,40 @@
 
 <wiki:toc max_depth="2" />
 
-= Cheatsheet of Ukfsst =
+= Overview = 
+
+UKFSST is an add-on package for the statistical environment R to efficiently estimate movement parameters and predict the most probable track from raw light-based geolocations and sea surface temperatures (SST). This package offers an approach to use both types of information in one coherent state-space model and carries out the estimation via the unscented Kalman filter (UKF).
+
+= Publication =
 
 [http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25
 
+= How to use =
+
+UKFSST comes with a function explaining how to fit a track. It covers all steps from how to read in the raw track, automatically obtain SST-field, fit the track, and plot and investigate the final track. This help is displayed by typing:
+  {{{
+  road.map()
+  }}}
+Also the package comes with a complete example. To see it type:
+  {{{
+  example(blue.shark)
+  }}}
+  
+= Cheatsheet of Ukfsst =
+
 http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
+
+= Input data format =  
+  {{{
+> track
+   day month year  obsLon obsLat obsSst
+    10     9 2002  198.04  23.09   30.6
+    11     9 2002  198.11  50.50   30.7
+    12     9 2002  197.65  45.50   30.6
+  }}}
+
+= Basic Workflow =
+# Read in a track(
+# Obtain a corresponding SST-field
+# Reconstruct the track
+# Investigate the fitted track by plots and summaries

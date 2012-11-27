@@ -1,25 +1,26 @@
-#summary Running a geolocation analysis in Windows (other platforms to follow)
+#summary Running a geolocation analysis in Windows
 
 <wiki:toc max_depth="2" />
 
 = Installation of R and geolocation packages =
 
-*[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with fundamental changes made in 
+*[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with fundamental changes made in *[http://www.r-project.org/ R]* that renders some older routines non-functional. To take a conservative approach, we recommend the following installation:
 
-* Our current tested version is R-2.15.2
+  * R-2.8.1
+	
+		http://cran.r-project.org/bin/windows/base/old/2.8.1/
+  
+  * Geolocation packages
+  
+		http://tagbase.googlecode.com/files/library.zip
+  
+Move the extracted package folders into the R library folder. To find out where your R library folder is located, type in R:
 
-* Go to our [http://code.google.com/p/geolocation/downloads/list Downloads] to download the package files, according to your operating system
+	`library()`
 
-* If you are unsure what to download, always download the 32-bit versions.
+And look for something like this:
 
-* Start up R and install the packages by the R user-interface,
-
-
-* Or copy and pasting one or all of the following lines as commands:
-
-{{{
-   
-}}}
+	`Packages in library 'C:/R/R-2.8.1/library':`
 
 = It is best to... =
   

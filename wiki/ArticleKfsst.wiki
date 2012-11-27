@@ -4,6 +4,8 @@
 
 = Overview =
 
+Kfsst is superceded by Ukfsst. Refer to ArticleUkfsst and ArticleRefKfsst for usage details. Installation of Kfsst can be found here ArticleQuickStartOld.
+
 = Publications =
 
 [http://www.soest.hawaii.edu/PFRP/reprints/nielsen_geolocation.pdf Kfsst] - Nielsen, A., Bigelow, K. A., Musyl, M. K., and Sibert, J. R. 2006. Improving light-based geolocation by including sea surface temperature. Fisheries Oceanography, 15(4), 314-325. 
