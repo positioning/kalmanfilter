@@ -4,18 +4,17 @@
 
 = Installation of R and geolocation packages =
 
-*[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with fundamental changes made in 
+  *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with fundamental changes made in 
 
-* Our current tested version is R-2.15.2
+  * Our current tested version is R-2.15.2
 
-* Go to our [http://code.google.com/p/geolocation/downloads/list Downloads] to download the package files, according to your operating system
+  * Go to our [http://code.google.com/p/geolocation/downloads/list Downloads] to download the package files, according to your operating system
 
-* If you are unsure what to download, always download the 32-bit versions.
+  * If you are unsure what to download, always download the 32-bit versions.
 
-* Start up R and install the packages by the R user-interface,
+  * Start up R and install the packages by the R user-interface and browse to the downloaded file
 
-
-* Or copy and pasting one or all of the following lines as commands:
+  * Or copy and pasting one or all of the following lines as commands:
 
 {{{
    

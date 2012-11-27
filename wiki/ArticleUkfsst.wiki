@@ -8,7 +8,7 @@ UKFSST is an add-on package for the statistical environment R to efficiently est
 
 = Publication =
 
-[http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25
+  * [http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25
 
 = How to use =
 
@@ -35,7 +35,7 @@ http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
   }}}
 
 = Basic Workflow =
-# Read in a track(
-# Obtain a corresponding SST-field
-# Reconstruct the track
-# Investigate the fitted track by plots and summaries
+  # Read in a track(
+  # Obtain a corresponding SST-field
+  # Reconstruct the track
+  # Investigate the fitted track by plots and summaries
