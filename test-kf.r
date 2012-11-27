@@ -1,0 +1,8 @@
+library(kftrack)
+library(date)
+data(big.241)
+fit = kftrack(big.241)
+pdf(height=6, width =6, file = 'kftrack-exe-test.pdf')
+plot(fit)
+print(fit)
+dev.off()

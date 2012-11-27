@@ -1,0 +1,2 @@
+scp -r web/* tomcat@kihada:/home/kihada/tomcat/tomcat-base/webapps/tag-data/tracking/kftrack/
+scp -r ftp/* pfrp@ftp.soest.hawaii.edu:~/tracking/

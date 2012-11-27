@@ -1,6 +1,0 @@
-cp -r source tmp
-cd tmp 
-make -f Makefile
-cd ..
-mv tmp/kfsst bin
-rm -rf tmp
