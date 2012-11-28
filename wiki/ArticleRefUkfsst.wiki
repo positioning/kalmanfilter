@@ -4,4 +4,4 @@
 
 = Reference manual =
 
-<wiki:gadget url="http://geolocation.googlecode.com/svn/wiki/html/RefManUkfsst.xml" width="600" height="800" />
+http://geolocation.googlecode.com/svn/wiki/pdf/ukfsst-ref.pdf
