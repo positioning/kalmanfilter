@@ -8,11 +8,15 @@
   * *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. To download the latest version, visit *[http://cran.rstudio.com/ here]*, or http://cran.rstudio.com/  
 
   * Our currently tested version is R-2.15.2.
+
+== Easy installation of geolocation packages ==  
   
   *  To make installation a bit easier, a script has been prepared to set up all required packages. To run it, fire up *[http://www.r-project.org/ R]* and type (or paste) the following line:
   
   {{{
+  
   source('http://geolocation.googlecode.com/files/install.r')
+  
   }}}
 
 == Manual installation of geolocation packages ==
