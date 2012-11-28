@@ -14,3 +14,4 @@
 || sy || random error in the estimation of position (latitude) || 1.5 || degree ||
 || a0 || upper bound for latitude variance (keep the tagged animal in this planet). Used in "solstice" variance structure, related to how the latitude estimation error varies around the equinox. || 0.0001 || degree ||
 || b0 || the number of days prior to the equinox where the latitude error is maximal. Used in "solstice" variance structure, related to how the latitude estimation error varies around the equinox. || 0 || day ||
+||var.struct || 3 different assumptions about variability in the latitude estimation error over time: 'uniform','solstice','daily' || See R help, ?kftrack || N/A ||
