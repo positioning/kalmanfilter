@@ -1,7 +1,8 @@
-#summary Wishlist items
+#summary Reference manual
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Reference manual =
 
-Tell us what you want here by leaving comments!
+<iframe src="http://docs.google.com/viewer?url=http%3A%2F%2Fgeolocation.googlecode.com%2Fsvn%2Fwiki%2Fpdf%2Fukfsst-ref.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe>
+
