@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?> 
 <Module>
   <ModulePrefs title="Reference manual - Ukfsst" />
-  <Content type="url" href="http://docs.google.com/gview?url=http://infolab.stanford.edu/pub/papers/google.pdf" />
+  <Content type="url" href="http://docs.google.com/viewer?url=http%3A%2F%2Finfolab.stanford.edu%2Fpub%2Fpapers%2Fgoogle.pdf&embedded=true" />
 </Module>
