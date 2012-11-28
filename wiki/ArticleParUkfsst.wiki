@@ -2,7 +2,7 @@
 
 <wiki:toc max_depth="2" />
 
-= Parameters of Kftrack =
+= Parameters of Ukfsst =
 
 || *Parameter* || *Usage* || *Initial value * || * Unit * ||
 || u || "advection" component of movement; northward component of directed movement || 0 || nm/day ||
