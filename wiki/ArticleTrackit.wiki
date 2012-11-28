@@ -66,26 +66,26 @@ fit<-trackit(prep.track)
   # (Optional) Download SST satellite imagery
      {{{
   sstfolder <- get.sst.from.server(track,200,250,10,40)
-  # the arguments above are the track and bounding box 
-  # for downloading data, which is:
+  # the arguments above are the track and bounding box for downloading SST, which is:
   # longitude start, longitude end, latitude start, latitude end
   # longitude is in 0-360 degree system
+  
+  # Look for help for get.blended.sst if you want to use higher-resolution imagery
   ?get.blended.sst
 	 }}}
   # Prepare data for trackit via the `prepit` function
      * Make sure `fix.first` and `fix.last` contain the correct release and reporting/ recapture postions
-	 
-	 `fix.first` or `fix.last` are formated as below:
+	 * `fix.first` or `fix.last` are formated as below:
 	  
-	 `(longitude in 0-360 degree system, latitude, year, month, day, hour, minute, sec)`  
+	 `(longitude in 0-360 degree system, latitude, year, month, day, hour, minute, second)`  
 	 
      * Set `scan=FALSE` when transmitted light data are used (Wildlife Computer tags)
      * Arguments `sst` and `localsstfolder` are only required when you desire to do SST matching as well, e.g.
 	 {{{
   # Will not run
   # prep.track <- prepit(track, ...,
-                         sst=tagsst, 
-                         localsstfolder="c:/temp/sstfolder")
+  #                       sst=tagsst, 
+  #                       localsstfolder="c:/temp/sstfolder")
 	 }}}
   # Run the model via the `trackit` function
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try

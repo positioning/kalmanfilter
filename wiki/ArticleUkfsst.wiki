@@ -41,7 +41,9 @@ http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
 
 library(ukfsst)  
 track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
-sst.path <- get.sst.from.server(track) # see function, get.blended.sst for usage with higher-resolution SST imagery
+sst.path <- get.sst.from.server(track) 
+# see function, get.blended.sst 
+# for usage with higher-resolution SST imagery
 fit<-kfsst(track)
 plot(fit)
   }}}
