@@ -1,4 +1,5 @@
 #summary Running a geolocation analysis in Windows (other platforms to follow)
+#labels Featured
 
 <wiki:toc max_depth="2" />
 
