@@ -35,8 +35,8 @@ if (os == "Windows") {
   } else {
    lext <- ext[3]
    for (i in 1:3) {
-     lfile <- paste(pac[i],ver[i], lext, sep='') 
-     llink <- paste(dlink, pac[i], ifelse(x64, '-x64', ''), lext ,sep='')
+     lfile <- paste(pac[i], lext, sep='') 
+     llink <- paste(dlink, pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
      download.file(llink, lfile, mode='wb')
      install.packages(lfile, .libPaths()[1], repos = NULL)
      unlink(lfile)
