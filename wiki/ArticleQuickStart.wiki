@@ -4,9 +4,7 @@
 
 = Installation of R and geolocation packages =
 
-  * *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. To download the latest version, visit *[http://cran.rstudio.com/ here]*, or
-  
-  http://cran.rstudio.com/  
+  * *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. To download the latest version, visit *[http://cran.rstudio.com/ here]*, or http://cran.rstudio.com/  
 
   * Our currently tested version is R-2.15.2. 
 
