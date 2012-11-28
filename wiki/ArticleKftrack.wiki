@@ -37,7 +37,7 @@ http://geolocation.googlecode.com/svn/wiki/images/kftrack.jpg
 
 library(kftrack)  
 track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
-fit<-kftrack(track, fix.last=TRUE)
+fit<-kftrack(track)
 plot(fit)
   }}}
 

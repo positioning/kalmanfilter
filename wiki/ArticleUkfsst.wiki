@@ -35,7 +35,18 @@ http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
   }}}
 
 = Basic Workflow =
-  # Read in a track(
+
+  {{{
+# Note: delete the hash sign (#) at the beginning to uncomment a line
+
+library(ukfsst)  
+track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
+sst.path <- get.sst.from.server(track) # see function, get.blended.sst for usage with higher-resolution SST imagery
+fit<-kfsst(track)
+plot(fit)
+  }}}
+
+  # Read in a track
   # Obtain a corresponding SST-field
   # Reconstruct the track
   # Investigate the fitted track by plots and summaries

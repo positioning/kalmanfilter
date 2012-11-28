@@ -4,7 +4,9 @@
 
 = Installation of R and geolocation packages =
 
-  * *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. To download the latest version, visit *[http://cran.rstudio.com/ here]*
+  * *[http://www.r-project.org/ R]* is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. To download the latest version, visit *[http://cran.rstudio.com/ here]*, or
+  
+  http://cran.rstudio.com/  
 
   * Our currently tested version is R-2.15.2. 
 
@@ -16,16 +18,20 @@
 
 http://geolocation.googlecode.com/svn/wiki/images/Rlocalpackage.jpg  
   
-  * Or copy and pasting one or all of the following lines as commands, for example in a Mac:
+  * Or copy and pasting one or all of the following lines as commands in R, for example, for a Mac OSX:
 
-{{{
-  ### Make sure you know the file directory where 
-  ### you have downloaded the files and file extensions
-  ### First argument below is the file path, enclosed in quotes
-  install.packages("~/Desktop/mac/kftrack.tgz", repos=NULL)
-  install.packages("~/Desktop/mac/ukfsst.tgz", repos=NULL)
-  install.packages("~/Desktop/mac/trackit.tgz", repos=NULL) 
-}}}
+  {{{
+### Make sure you know the file directory where 
+### you have downloaded the files and file extensions
+### First argument below is the file path, enclosed in quotes
+
+install.packages("~/Desktop/mac/kftrack.tgz", repos=NULL)
+
+install.packages("~/Desktop/mac/ukfsst.tgz", repos=NULL)
+
+install.packages("~/Desktop/mac/trackit.tgz", repos=NULL) 
+
+  }}}
 
 = It is best to... =
   
