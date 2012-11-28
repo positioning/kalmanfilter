@@ -7,7 +7,7 @@
 || *Parameter* || *Usage* || *Initial value * || * Unit * ||
 || u || "advection" component of movement; northward component of directed movement || 0 || nm/day ||
 || v || "advection" component of movement; eastward component of directed movement || 0 || nm/day ||
-|| D || "diffusion" component of movement; a measure
+|| D || "diffusion" component of movement. A measure
 of the variability in movement  || 100 || nm^2/day || 
 || bx || systematic error (or bias) in the estimation of position (longitude) || 0 || degree ||
 || by || systematic error (or bias) in the estimation of position (latitude) || 0 || degree ||
