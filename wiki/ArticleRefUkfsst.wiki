@@ -4,5 +4,4 @@
 
 = Reference manual =
 
-<iframe src="http://docs.google.com/viewer?url=http%3A%2F%2Fgeolocation.googlecode.com%2Fsvn%2Fwiki%2Fpdf%2Fukfsst-ref.pdf&embedded=true" width="600" height="780" style="border: none;"></iframe>
-
+<wiki:gadget url="http://geolocation.googlecode.com/svn/wiki/html/RefManUkfsst.xmll" width="600" height="800" />
