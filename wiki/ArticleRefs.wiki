@@ -17,3 +17,5 @@ Galuardi, B., Nielsen, A., Lutcavage, M. Optimizing Smoothed Sea Surface Tempera
 [http://www.int-res.com/abstracts/meps/v419/p71-84/ Trackit with SST] - Lam, Chi H., Anders Nielsen, and John R. Sibert, 2010. Incorporating sea-surface temperature to the light-based geolocation model !TrackIt. Marine Ecology Progress Series 419:71-84
 
 [http://www.soest.hawaii.edu/PFRP/reprints/Nielsen_Sibert_2007.pdf Trackit] - Nielsen, Anders, and John R. Sibert, 2007. State-space model for light-based tracking of marine animals. Canadian Journal of Fisheries and Aquatic Sciences 64: 1055-1068.
+
+Nielsen, Anders, John R. Sibert, Suzanne Kohin, and Michael K. Musyl, 2009. State space model for light based tracking of marine animals: Validation on swimming and diving creatures. In Nielsen, J.L., H. Arrizabalaga, N. Fragoso, A. Hobday, M. Lutcavage, and J.Sibert (Eds.), Tagging and Tracking Marine Animals with Electronic Devices. 9:295-309. Kluwer Academic Publishers, The Netherlands.
