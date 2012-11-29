@@ -92,7 +92,8 @@ data(blue.shark) # load packaged example data
 sst.path<-get.sst.from.server(track)
 #sst.file<-write.sst.field(sst.path) # only used in kfsst
 
-fit2<-kfsst(track)
+track <- blue.shark # delete this line when you use your own data
+fit2<- kfsst(track, bx.a=F, bsst.a=F)
 fit2 # inspect model parameters
 
 plot(fit2, map=FALSE, ci=TRUE)
@@ -146,4 +147,3 @@ fit2csv(fit2)
    * `-a.csv` - track points
    * `-b.csv` - model parameters
    * `-c.csv` - initialization values to model
-
