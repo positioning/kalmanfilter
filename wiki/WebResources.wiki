@@ -18,9 +18,10 @@ AD Model Builder, or ADMB, the most powerful software package for the developmen
 
 *Open-source data management tool to electronic tagging data*
 
+Tagbase is a relational database application for the management of biologging data from electronic tags deployed on various marine animals. Tagbase implements a comprehensive relational model handling archival, pop-up archival satellite and telemetry tag files from all major tag manufacturers. Implemented in Microsoft Access, this application can be easily ported to a variety of database management systems across platforms.
+
 http://tagbase.googlecode.com/svn/trunk/images/tagbase.gif
 
-Tagbase is a relational database application for the management of biologging data from electronic tags deployed on various marine animals. Tagbase implements a comprehensive relational model handling archival, pop-up archival satellite and telemetry tag files from all major tag manufacturers. Implemented in Microsoft Access, this application can be easily ported to a variety of database management systems across platforms.
 
 == Pelagic Habitat Analysis Module (PHAM) ==
 ==== http://phamlite.com/aboutpham.html ====
