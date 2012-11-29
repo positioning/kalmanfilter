@@ -75,10 +75,10 @@ fit<-trackit(prep.track)
 	 }}}
   # Prepare data for trackit via the `prepit` function
      * Make sure `fix.first` and `fix.last` contain the correct release and reporting/ recapture postions
-	 * `fix.first` or `fix.last` are formated as below:
-	  
-	 `(longitude in 0-360 degree system, latitude, year, month, day, hour, minute, second)`  
-	 
+     * `fix.first` or `fix.last` are formated as below: 
+     {{{
+(longitude in 0-360 degree system, latitude, year, month, day, hour, minute, second)
+     }}}
      * Set `scan=FALSE` when transmitted light data are used (Wildlife Computer tags)
      * Arguments `sst` and `localsstfolder` are only required when you desire to do SST matching as well, e.g.
 	 {{{
@@ -144,6 +144,9 @@ Std. dev.: 13.5800 29.58500
 # To access these items use the $ operator. For instance
 # to get the most probable track type: fit$most.prob.track
   }}}
+
+== Number of estimated positions ==
+  * `fit$most.prob.track` will give you 2 estimated positions per day when only light information is used, and 3 estimated positions per day (2 light-based positions + 1 SST-based positions) when light is used in combination with sea-surface temperature
   
 == Diagnosis: `plot` function ==
   * Plot of longitude, latitude, and SST (if used) time series can be shown with the command:
