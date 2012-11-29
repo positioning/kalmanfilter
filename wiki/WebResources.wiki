@@ -14,21 +14,6 @@ A suite of statistical models to estimate position errors, movement model parame
    {{{Lam, Chi H., Anders Nielsen, and John R. Sibert. Incorporating sea-surface temperature to the light-based geolocation model TrackIt. Marine Ecology Progress Series MEPS 419:71-84 (2010).}}}
    [http://www.int-res.com/abstracts/meps/v419/p71-84/ Open Access] available!
 
-
-== Webpage and R libaries of Ben Galuardi ==
-==== http://code.google.com/p/analyzepsat/ ====
-==== http://people.umass.edu/galuardi/ ====
-
-http://tagbase.googlecode.com/svn/trunk/images/Tag04233-2005UD_small.jpg 
-Full-sized image [http://tagbase.googlecode.com/svn/trunk/images/Tag04233-2005UD.png here]
-
-Great utilities are provided here to work tag data in the [http://www.r-project.org/ R] environment. 
-
-Refer to [http://rparticle.web-p.cisti.nrc.ca/rparticle/AbstractTemplateServlet?calyLang=eng&journal=cjfas&volume=67&year=0&issue=6&msno=f10-033 Galaurdi et al.] for details. 
-
-Data courtesy of Large Pelagics Research Center, UMass Amherst.
-
-
 == Geolocation toolbox by Martin Pedersen == 
 ==== http://www2.imm.dtu.dk/~mwp/?Geolocation_toolbox ====
 
