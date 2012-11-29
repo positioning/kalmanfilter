@@ -13,6 +13,12 @@ http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
 
 AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
 
+== fishtagdisplay by John Sibert ==
+==== http://code.google.com/p/fishtagdisplay/ =====
+==== http://www2.hawaii.edu/~sibert/MovementVisualization/index.html ====
+
+Many species of tuna occupy entire ocean basins, but movement patterns vary between species. Nearly everything we know about tuna movement is based on the study of tagged fish. Analysis of tagging data has been a major activity of the PFRP since 1992. We have used a variety of analytical tools estimate movement rates and display movement patterns. Here are some visualizations using tools from the clever folks at Google.
+
 == Tagbase ==
 ==== http://www.tagbase.org ====
 
