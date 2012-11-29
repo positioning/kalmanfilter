@@ -9,7 +9,6 @@
   * [ArticleKftrack Package details - Kftrack]
     * [ArticleParKftrack Description of Model Parameters]
   * [ArticleKfsst Package details - Kfsst]
-    * [ArticleRefKfsst Reference manual]
   * [ArticleUkfsst Package details - Ukfsst]
     * [ArticleParUkfsst Description of Model Parameters]
     * [ArticleRefUkfsst Reference manual]
