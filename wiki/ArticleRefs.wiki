@@ -1,7 +1,7 @@
-#summary Wishlist items
+#summary Publications related to our geolocation packages
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Publications =
 
-Tell us what you want here by leaving comments!
+Soon to come
