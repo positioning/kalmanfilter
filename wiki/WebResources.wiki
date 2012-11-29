@@ -4,6 +4,13 @@ A list of resources that we are aware of for tagging applications. Feel free to 
 
 <wiki:toc max_depth="2" />
 
+== AD Model Builder ==
+==== http://www.admb-project.org/ ====
+
+http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
+
+AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
+
 == Pelagic Habitat Analysis Module (PHAM) ==
 ==== http://phamlite.com/aboutpham.html ====
 
@@ -80,22 +87,6 @@ Marine Geospatial Ecology Tools (MGET), also known as the `GeoEco` Python packag
 GME provides a suite of analysis and modelling tools, ranging from small 'building blocks' that you can use to construct a sophisticated work-flow, to completely self-contained analysis programs. It also uses the extraordinarily powerful open source software R as the statistical engine to drive some of the analysis tools.
 
 Note: Current development is based on ArcGIS 10
-
-
-== AD Model Builder ==
-==== http://www.admb-project.org/ ====
-
-http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
-
-AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
-
-
-== Orange ==
-==== http://orange.biolab.si/ ====
-
-http://orange.biolab.si/orange-logo-w.png
-
-Open source data visualization and analysis for novice and experts. Data mining through visual programming or Python scripting. Components for machine learning. Extensions for bioinformatics and text mining. Packed with features for data analytics.
 
 == General file management practices ==
  * *[http://tortoisesvn.tigris.org/ TortoiseSVN]* is a version control software for Subversion. It enables Subversion commands directly in Windows explorer, and lets you keep tracks of the history of changes to your files
