@@ -4,22 +4,6 @@ A list of resources that we are aware of for tagging applications. Feel free to 
 
 <wiki:toc max_depth="2" />
 
-== State-space models for geolocation - Kalman filter suite ==
-=== (`TrackIt`, `Ukfsst`, `Kfsst`, `Kftrack`) ===
-==== http://www.nielsensweb.org/trackit/ ====
-==== http://www.nielsensweb.org/ukfsst/ ====
-
-A suite of statistical models to estimate position errors, movement model parameters, and most probable positions from tracking data. Refer to:
-
-   {{{Lam, Chi H., Anders Nielsen, and John R. Sibert. Incorporating sea-surface temperature to the light-based geolocation model TrackIt. Marine Ecology Progress Series MEPS 419:71-84 (2010).}}}
-   [http://www.int-res.com/abstracts/meps/v419/p71-84/ Open Access] available!
-
-== Geolocation toolbox by Martin Pedersen == 
-==== http://www2.imm.dtu.dk/~mwp/?Geolocation_toolbox ====
-
-Geolocation toolbox in Matlab using hidden Markov models
-
-
 == Pelagic Habitat Analysis Module (PHAM) ==
 ==== http://phamlite.com/aboutpham.html ====
 
