@@ -140,7 +140,7 @@ getwd()
 # Main code:
 
 source("fit2csv.R") # make sure R knows where the file is located,
-                    # or move fit2csv.R to the working directory, shown above
+                    # or move fit2csv.R to the working directory, as shown above
 fit2csv(fit1)
 fit2csv(fit2)
    }}}   
