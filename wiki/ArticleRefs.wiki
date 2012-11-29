@@ -1,8 +1,6 @@
 #summary Publications related to our geolocation packages
 #labels Featured
 
-<wiki:toc max_depth="2" />
-
 = Publications =
 
 Galuardi, B., Nielsen, A., Lutcavage, M. Optimizing Smoothed Sea Surface Temperature Through Crossvalidation. 2008, Marine Ecology Progress Series, 365, 35-44. [http://code.google.com/p/geolocation/source/browse/wiki/pdf/Galuardi2008.pdf Cross-validation]
