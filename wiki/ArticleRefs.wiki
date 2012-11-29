@@ -1,4 +1,5 @@
 #summary Publications related to our geolocation packages
+#labels Featured
 
 <wiki:toc max_depth="2" />
 
