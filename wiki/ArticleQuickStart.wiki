@@ -139,7 +139,7 @@ getwd()
 
 # Main code:
 
-source("fit2csv.R")
+source("fit2csv.R") # Make sure R knows where your file is located
 fit2csv(fit1)
 fit2csv(fit2)
    }}}   
