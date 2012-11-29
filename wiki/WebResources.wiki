@@ -9,6 +9,8 @@ A list of resources that we are aware of for tagging applications. Feel free to 
 
 http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
 
+*The backbone to all our geolocation models!*
+
 AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
 
 == Pelagic Habitat Analysis Module (PHAM) ==
