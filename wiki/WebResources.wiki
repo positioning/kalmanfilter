@@ -13,6 +13,15 @@ http://www.soest.hawaii.edu/Illust/admb_dev/image/admb_banner_deep.jpg
 
 AD Model Builder, or ADMB, the most powerful software package for the development of state-of-the-art nonlinear models, can now be freely downloaded for Windows, Linux, MacOS, and Sun/SPARC. This should projectile you into serious ecological modeling! A very powerful set of tools used by ecologists and stock assessment scientists.
 
+== Tagbase ==
+==== http://www.tagbase.org ====
+
+*Open-source data management tool to electronic tagging data*
+
+http://tagbase.googlecode.com/svn/trunk/images/tagbase.gif
+
+Tagbase is a relational database application for the management of biologging data from electronic tags deployed on various marine animals. Tagbase implements a comprehensive relational model handling archival, pop-up archival satellite and telemetry tag files from all major tag manufacturers. Implemented in Microsoft Access, this application can be easily ported to a variety of database management systems across platforms.
+
 == Pelagic Habitat Analysis Module (PHAM) ==
 ==== http://phamlite.com/aboutpham.html ====
 
