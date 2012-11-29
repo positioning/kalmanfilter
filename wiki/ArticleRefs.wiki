@@ -10,7 +10,7 @@ Sibert, John R., Molly E. Lutcavage, Anders Nielsen, Richard W. Brill, and Steve
 
 Nielsen, A., Bigelow, K. A., Musyl, M. K., and Sibert, J. R. 2006. Improving light-based geolocation by including sea surface temperature. Fisheries Oceanography, 15(4), 314-325. [http://www.soest.hawaii.edu/PFRP/reprints/nielsen_geolocation.pdf Kfsst]
 
-Galuardi, B., Nielsen, A., Lutcavage, M. Optimizing Smoothed Sea Surface Temperature Through Crossvalidation. 2008, Marine Ecology Progress Series, 365, 35-44
+Galuardi, B., Nielsen, A., Lutcavage, M. Optimizing Smoothed Sea Surface Temperature Through Crossvalidation. 2008, Marine Ecology Progress Series, 365, 35-44. [http://code.google.com/p/geolocation/source/browse/wiki/pdf/Galuardi2008.pdf Cross-validation]
 
 Lam, Chi H., Anders Nielsen, and John R. Sibert, 2008. Improving light and temperature based geolocation by unscented Kalman filtering. Fisheries Research, 91: 15-25. [http://www.soest.hawaii.edu/PFRP/reprints/lam_nielsen_sibert.pdf Ukfsst] 
 
@@ -18,4 +18,4 @@ Lam, Chi H., Anders Nielsen, and John R. Sibert, 2010. Incorporating sea-surface
 
 Nielsen, Anders, and John R. Sibert, 2007. State-space model for light-based tracking of marine animals. Canadian Journal of Fisheries and Aquatic Sciences 64: 1055-1068. [http://www.soest.hawaii.edu/PFRP/reprints/Nielsen_Sibert_2007.pdf Trackit]
 
-Nielsen, Anders, John R. Sibert, Suzanne Kohin, and Michael K. Musyl, 2009. State space model for light based tracking of marine animals: Validation on swimming and diving creatures. In Nielsen, J.L., H. Arrizabalaga, N. Fragoso, A. Hobday, M. Lutcavage, and J.Sibert (Eds.), Tagging and Tracking Marine Animals with Electronic Devices. 9:295-309. Kluwer Academic Publishers, The Netherlands. 
+Nielsen, Anders, John R. Sibert, Suzanne Kohin, and Michael K. Musyl, 2009. State space model for light based tracking of marine animals: Validation on swimming and diving creatures. In Nielsen, J.L., H. Arrizabalaga, N. Fragoso, A. Hobday, M. Lutcavage, and J.Sibert (Eds.), Tagging and Tracking Marine Animals with Electronic Devices. 9:295-309. Kluwer Academic Publishers, The Netherlands. [http://code.google.com/p/geolocation/source/browse/wiki/pdf/Nielsen2008.pdf Validation]
