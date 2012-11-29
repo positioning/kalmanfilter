@@ -7,3 +7,7 @@
 [http://www.soest.hawaii.edu/PFRP/reprints/sibert_horizontal.pdf Kftrack] - Sibert, J.R., Musyl, M.K., Brill, R.W., 2003. Horizontal movements of bigeye tuna (Thunnus obesus) near Hawaii determined by Kalman filter analysis of archival tagging data. Fisheries Oceanography, 12(3):141-151
 
 [http://www.soest.hawaii.edu/PFRP/reprints/Sibert_Lutcavage_etal_2006.pdf Extending Kftrack] - Sibert, John R., Molly E. Lutcavage, Anders Nielsen, Richard W. Brill, and Steven G. Wilson, 2006. Interannual variation in large-scale movement of Atlantic bluefin tuna (Thunnus thynnus) determined from pop-up satellite archival tags. Canadian Journal of Fisheries and Aquatic Sciences 63: 2154-2166. Also, [http://www.soest.hawaii.edu/PFRP/reprints/Sibert_Lutcavage_etal_2006_supplement.pdf Supplementary material]
+
+[http://www.soest.hawaii.edu/PFRP/reprints/nielsen_geolocation.pdf Kfsst] - Nielsen, A., Bigelow, K. A., Musyl, M. K., and Sibert, J. R. 2006. Improving light-based geolocation by including sea surface temperature. Fisheries Oceanography, 15(4), 314-325. 
+
+Galuardi, B., Nielsen, A., Lutcavage, M. Optimizing Smoothed Sea Surface Temperature Through Crossvalidation. 2008, Marine Ecology Progress Series, 365, 35-44
