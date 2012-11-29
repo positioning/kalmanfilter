@@ -135,11 +135,12 @@ Assume we have run our tracks successfully, and everything is in an active R ses
 # Preparation; find out/ define your working directory:
 
 getwd()
-# setwd("C:/Test") # Give path to your desired output directory
+# setwd("C:/Test") # give path to your desired output directory
 
 # Main code:
 
-source("fit2csv.R") # Make sure R knows where your file is located
+source("fit2csv.R") # make sure R knows where the file is located,
+                    # or move fit2csv.R to the working directory, shown above
 fit2csv(fit1)
 fit2csv(fit2)
    }}}   
