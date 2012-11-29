@@ -1,7 +1,8 @@
-#summary Wishlist items
+#summary Other geolocation tools
 
 <wiki:toc max_depth="2" />
 
-= What do you want to see in our project? =
+= Geolocation toolbox by Martin Pedersen =
+==== http://www2.imm.dtu.dk/~mwp/?Geolocation_toolbox ====
 
-Tell us what you want here by leaving comments!
+Geolocation toolbox in Matlab using hidden Markov models
