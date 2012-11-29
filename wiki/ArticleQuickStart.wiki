@@ -1,4 +1,4 @@
-#summary Running a geolocation analysis in Windows (other platforms to follow)
+#summary Running a geolocation analysis
 #labels Featured
 
 <wiki:toc max_depth="2" />
@@ -132,8 +132,9 @@ Assume we have run our tracks successfully, and everything is in an active R ses
    {{{
 # Note: delete the hash sign (#) to uncomment a line
 
-# Preparation; define working directory:
-setwd("C:/Test")
+# Preparation; find out/ define your working directory:
+getwd()
+setwd("C:/Test") # Give path to your desired output directory
 
 # Main code:
 
