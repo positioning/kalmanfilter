@@ -1,5 +1,5 @@
   * [ArticleQuickStart Quick Start Guide]
-  * *[ArticleTestDrive Test run with an Online tool]*
+  * *[ArticleTestDrive Test run with an online tool]*
   * [ArticleIntro Introduction to Geolocation]  
     * [DataFundamentals Fundamentals of Tagging]
     * [ArticleTerms Abbreviations and Terminology]
