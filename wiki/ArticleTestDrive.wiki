@@ -1,4 +1,5 @@
 #summary Take geolocation models for a spin with track-project.org
+#labels Featured
 
 = http://track-project.org =
 === Created by Martin W. Pedersen and Anders Nielsen  ===
