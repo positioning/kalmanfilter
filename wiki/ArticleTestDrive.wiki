@@ -1,0 +1,6 @@
+#summary Take geolocation models for a spin with track-project.org
+#labels Featured
+
+= Test drive with track-project.org =
+
+<wiki:gadget url="http://geolocation.googlecode.com/svn/wiki/html/trackproject.xml" width="600" height="900" border="0" />
