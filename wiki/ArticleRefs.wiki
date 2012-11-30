@@ -15,7 +15,7 @@ Nielsen, Anders, and John R. Sibert, 2007. State-space model for light-based tra
 
 Nielsen, Anders, John R. Sibert, Suzanne Kohin, and Michael K. Musyl, 2009. State space model for light based tracking of marine animals: Validation on swimming and diving creatures. In Nielsen, J.L., H. Arrizabalaga, N. Fragoso, A. Hobday, M. Lutcavage, and J.Sibert (Eds.), Tagging and Tracking Marine Animals with Electronic Devices. 9:295-309. Kluwer Academic Publishers, The Netherlands. [http://code.google.com/p/geolocation/source/browse/wiki/pdf/Nielsen2008.pdf Validation]
 
-Pedersen, Martin. W., T. A. Patterson, U. H. Thygesen and H. Madsen, 2011. Estimating animal behavior and residency from movement data. Oikos 120: 1281–1290, 2011 [https://vmmawp.imm.dtu.dk/trackproject/doc/sphmm.pdf Spatial HMM]
+Pedersen, Martin. W., T. A. Patterson, U. H. Thygesen and H. Madsen, 2011. Estimating animal behavior and residency from movement data. Oikos 120: 1281–1290. [https://vmmawp.imm.dtu.dk/trackproject/doc/sphmm.pdf Spatial HMM]
 
 Sibert, J.R., Musyl, M.K., Brill, R.W., 2003. Horizontal movements of bigeye tuna (Thunnus obesus) near Hawaii determined by Kalman filter analysis of archival tagging data. Fisheries Oceanography, 12(3):141-151. [http://www.soest.hawaii.edu/PFRP/reprints/sibert_horizontal.pdf Kftrack]
 
