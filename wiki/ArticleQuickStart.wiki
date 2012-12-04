@@ -33,7 +33,7 @@ http://geolocation.googlecode.com/svn/wiki/images/Rlocalpackage.jpg
   
   * Or copy and pasting one or all of the following lines as commands in R
 
-  * Make sure, you remove "-x64" from your downloaded file if you download a 64-bit package
+  * Make sure, you *REMOVE* "-x64" from the filename of your downloaded 64-bit package
 
   * For example, for a Mac OSX:
 
