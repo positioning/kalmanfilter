@@ -1,0 +1,12 @@
+Package: kftrack
+Version: 0.70
+Date: 2012-10-04
+Title: kftrack
+Author: John Sibert <sibert@hawaii.edu>, Anders Nielsen <anders.nielsen@hawaii.edu>, Johnnoel Ancheta <see admb-project.org>, Benjamin Galuardi <galuardi@eco.umass.edu>, Chi Hin (Tim) Lam <timlam@eco.umass.edu>
+Maintainer: Anders Nielsen <anders.nielsen@hawaii.edu>
+Depends: R (>= 1.5.0)
+Description: This package estimates most probable track from archival tagging data 
+License: BSD
+URL: http://www.r-project.org,
+        https://www.soest.hawaii.edu/tag-data/tracking/kftrack
+Packaged: 2012-11-23 23:04:06 UTC; ben

@@ -1,0 +1,18 @@
+.SUFFIXES: .tpl .obj
+CC = g++ -mno-cygwin
+LL = $(CC) 
+CFLAGS = -Wno-deprecated -fpermissive -c  -I. -I/admodel/include -D__GNUDOS__ -DOPT_LIB -Dlinux -DUSE_LAPLACE
+ 
+kftrack: kftrack.cpp kftrack.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
+	$(LL) kftrack.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o kftrack -L/admodel/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado 
+
+twosegtrack: twosegtrack.cpp twosegtrack.obj yrmonday.obj azimuth.obj banner.obj solstice.obj
+	$(LL) twosegtrack.obj yrmonday.obj banner.obj azimuth.obj solstice.obj -o twosegtrack -L/admodel/lib -ldf1b2o -ladmod -ladt -lado -ldf1b2o -ladmod -ladt -lado 
+
+.cpp.obj:
+	$(CC) $(CFLAGS) $< -o$*.obj
+
+.tpl.cpp:
+	/admodel/bin/tpl2cpp $*
+
+
