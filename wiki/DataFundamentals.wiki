@@ -61,5 +61,6 @@ _This list is not meant to be comprehensive. Please suggest more as comments_
 
 =  Other resources =
 
+  * [http://www.oceantracks.csiro.au/thetags.html Ocean Tracks - visualization by CSIRO's tagging research]
   * [http://www.coml.org/comlfiles/scor/SCOR-tagging.pdf Census of Marine Life - Tagging basics]
   * Arnold, G., and Dewar, H. 2001. Electronic tags in marine fisheries research: a 30-year perspective. In *Electronic Tagging and Tracking in Marine Fisheries Reviews: Methods and Technologies in Fish Biology and Fisheries*. Kluwer Academic Press, Dordrecht. pp. 7-64.
