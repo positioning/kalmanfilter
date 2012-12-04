@@ -1,0 +1,13 @@
+Package: ukfsst
+Title: Kalman Filter tracking including Sea Surface Temperature
+Version: 0.3
+Date: 2012-10-04
+Author: Anders Nielsen <anders.nielsen@hawaii.edu>, John R Sibert <sibert@hawaii.edu>, Johnnoel Ancheta <see admb-project.org>, Benjamin Galuardi <galuardi@eco.umass.edu>, Chi Hin (Tim) Lam <timlam@eco.umass.edu>
+Description: Archival tagged marine creatures are typically geolocated based on 
+             observed light-levels. This package uses these raw geolocations and 
+             observed sea surface temperatures in a coherent state-space model to 
+             reconstruct the track via the extended Kalman filter.    
+Maintainer: Anders Nielsen <anders.nielsen@hawaii.edu>
+Depends: R (>= 1.8.0), date, kftrack
+License: BSD
+Packaged: 2012-11-24 15:50:31 UTC; ben

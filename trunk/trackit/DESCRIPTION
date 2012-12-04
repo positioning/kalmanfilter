@@ -1,0 +1,14 @@
+Package: trackit
+Version: 0.2-6
+Date: 2012-10-04
+Title: Track tagged individuals from light measurements
+Author: Anders Nielsen <anders.nielsen@hawaii.edu>, John R Sibert <sibert@hawaii.edu>, Johnnoel Ancheta <see admb-project.org>, Benjamin Galuardi <galuardi@eco.umass.edu>, Chi Hin (Tim) Lam <timlam@eco.umass.edu>
+Maintainer: Anders Nielsen <anders.nielsen@hawaii.edu>
+Depends: R (>= 2.2.0), MASS, date
+Suggests:
+Description: Track tagged individuals from raw light measurements. This package 
+	     contain tools for estimating the track from a time series of light 
+	     measurements, and to simulate such time series from known parameters.
+License: BSD
+URL: https://www.soest.hawaii.edu/tag-data/software/
+Packaged: 2012-11-24 15:46:50 UTC; ben
