@@ -2,17 +2,52 @@
 
 <wiki:toc max_depth="2" />
 
-=Overview=
+= Overview =
 Analyzepsat is an add-on package for kftrack, ukfsst and trackit. It is used for import, analysis and display of pop-up and archival tag data. It is primarily focused on data returned by Microwave Telemetry fish tags but many of the functions may be used on any tag data conforming to the proper format. 
 
 The main driver behind the packages creation is a bathymetric correction scheme for light based geolocation data. Functionality exists for interpolation for missing days as well as alternate import workflows for Tagbase integration.
 
 
-*Publications
+= Publications =
+Papers using analyzepsat 
+
+*[http://www.plosone.org/article/info:doi/10.1371/journal.pone.0037829]Benjamin Galuardi and Molly Lutcavage. Dispersal routes and habitat utilization of juvenile Atlantic bluefin tuna Thunnus thynnus tracked with mini PSAT and archival tags. PLoSOne
+
+*[http://www.nrcresearchpress.com/doi/abs/10.1139/f10-033] Galuardi, B.; Royer, F.; Golet, W.; Logan, J.; Nielson, J. & Lutcavage, M. Complex Migration Routes of Atlantic Bluefin Tuna Question Current Population Structure Paradigm. Canadian Journal of Fisheries and Aquatic Sciences, 2010, Vol. 67(1), 966-976
+
+other papers using bathymetric correction schemes
+
+  * Richardson DE, Llopiz JK, Leaman KD, Vertes PS, Muller-Karger FE, Cowen RK (2009) Sailfish (Istiophorus platypterus) spawning and larval environment in a Florida Current frontal eddy. Progress In Oceanography 82:252–264
+
+ * Royer F, Lutcavage M (2009) Positioning pelagic fish from sunrise and sunset times: complex observation errors call for constrained, robust modeling. In: Second International Symposium on Tagging and Tracking Marine Fish With Electronic Devices. Springer, p 323–341
+
+ * Teo, S., Boustany, A., and Block, B. 2007. Oceanographic preferences of Atlantic bluefin tuna, Thunnus thynnus, on their Gulf
+of Mexico breeding grounds. Mar. Biol. (Berl.), 152(5): 1105–
+1119. doi:10.1007/s00227-007-0758-1.
+
+  * Hoolihan, J. 2005. Horizontal and vertical movements of sailfish (Istiophorus platypterus) in the Arabian Gulf, determined by ultrasonic
+and pop-up satellite tagging. Mar. Biol. (Berl.), 146(5):
+1015–1029. doi:10.1007/s00227-004-1488-2.
+
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+to install analyzepsat and all dependencies start R and type the following:
+
+source('http://geolocation.googlecode.com/files/install_analyzepsat.r')
+
+Major functions of analyzepsat include:
+  * Import of MTI fish reports via ODBC/gdata (for Windows/Linux respectively) into a standard list format. This includes some functionality for recovered MTI tags
+  * Import tags stored in Tagbase (Access)
+  * Display temperature/depth data nicely
+  * Interpolate fitted tracks for missing days using a Kalman filter based technique (Crawl package)
+  * Download bathymetric data and correct fitted tracks
+  * Produce publication quality maps with fitted tracks
+  * Produce utilization distributions (UD) based on covariance of fitted tracks
+  * Produce vertical habitat envelopes (currently, MTI tags only)
+  * Display SST data downloaded during ukfsst/trackit analysis
+  * Export tracks, confidence intervals and UD to shapefiles and .asc files (for ArcGIS and others)
+ 
+
+
+We can't cover all the details here but the help files are decent and always improving! 
