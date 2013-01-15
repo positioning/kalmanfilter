@@ -1,0 +1,18 @@
+#summary Analyzepsat for bathymetric correction and display of PSAT data
+
+<wiki:toc max_depth="2" />
+
+=Overview=
+Analyzepsat is an add-on package for kftrack, ukfsst and trackit. It is used for import, analysis and display of pop-up and archival tag data. It is primarily focused on data returned by Microwave Telemetry fish tags but many of the functions may be used on any tag data conforming to the proper format. 
+
+The main driver behind the packages creation is a bathymetric correction scheme for light based geolocation data. Functionality exists for interpolation for missing days as well as alternate import workflows for Tagbase integration.
+
+
+*Publications
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
