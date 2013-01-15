@@ -1,4 +1,5 @@
 #summary Analyzepsat for bathymetric correction and display of PSAT data
+#labels Featured
 
 <wiki:toc max_depth="2" />
 
