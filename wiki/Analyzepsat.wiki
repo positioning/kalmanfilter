@@ -33,9 +33,9 @@ and pop-up satellite tagging. Mar. Biol. (Berl.), 146(5):
 = Details =
 
 to install analyzepsat and all dependencies start R and type the following:
-
+{{{
 source('http://geolocation.googlecode.com/files/install_analyzepsat.r')
-
+}}}
 Major functions of analyzepsat include:
   * Import of MTI fish reports via ODBC/gdata (for Windows/Linux respectively) into a standard list format. This includes some functionality for recovered MTI tags
   * Import tags stored in Tagbase (Access)
