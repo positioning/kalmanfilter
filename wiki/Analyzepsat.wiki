@@ -11,7 +11,7 @@ The main driver behind the packages creation is a bathymetric correction scheme 
 = Publications =
 Papers using analyzepsat 
 
-*[http://www.plosone.org/article/info:doi/10.1371/journal.pone.0037829]Benjamin Galuardi and Molly Lutcavage. Dispersal routes and habitat utilization of juvenile Atlantic bluefin tuna Thunnus thynnus tracked with mini PSAT and archival tags. PLoSOne
+*[http://www.plosone.org/article/info:doi/10.1371/journal.pone.0037829] Benjamin Galuardi and Molly Lutcavage. Dispersal routes and habitat utilization of juvenile Atlantic bluefin tuna Thunnus thynnus tracked with mini PSAT and archival tags. PLoSOne
 
 *[http://www.nrcresearchpress.com/doi/abs/10.1139/f10-033] Galuardi, B.; Royer, F.; Golet, W.; Logan, J.; Nielson, J. & Lutcavage, M. Complex Migration Routes of Atlantic Bluefin Tuna Question Current Population Structure Paradigm. Canadian Journal of Fisheries and Aquatic Sciences, 2010, Vol. 67(1), 966-976
 
