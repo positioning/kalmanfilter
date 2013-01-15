@@ -10,6 +10,6 @@ Full-sized image [http://tagbase.googlecode.com/svn/trunk/images/Tag04233-2005UD
 
 Great utilities are provided here to work tag data in the [http://www.r-project.org/ R] environment. 
 
-Refer to [http://rparticle.web-p.cisti.nrc.ca/rparticle/AbstractTemplateServlet?calyLang=eng&journal=cjfas&volume=67&year=0&issue=6&msno=f10-033 Galuardi et al.] for details. 
+Refer to [http://www.nrcresearchpress.com/doi/abs/10.1139/f10-033#.UPWF3ydX3EY Galuardi et al.] for details. 
 
 Data courtesy of Large Pelagics Research Center, UMass Amherst.
