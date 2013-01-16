@@ -37,11 +37,11 @@ to install analyzepsat and all dependencies start R and type the following:
 {{{
 source('http://geolocation.googlecode.com/files/install_analyzepsat.r')
 }}}
+
 Major functions of analyzepsat include:
   * Import of MTI fish reports via ODBC/gdata (for Windows/Linux respectively) into a standard list format. This includes some functionality for recovered MTI tags
   * Import tags stored in Tagbase (Access)
   * Display temperature/depth data nicely
-  * Interpolate fitted tracks for missing days using a Kalman filter based technique (Crawl package)
   * Download bathymetric data and correct fitted tracks
   * Produce publication quality maps with fitted tracks
   * Produce utilization distributions (UD) based on covariance of fitted tracks
