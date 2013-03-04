@@ -1,7 +1,7 @@
 #summary Take geolocation models for a spin with track-project.org
 #labels Featured
 
-= http://track-project.org =
+= https://vmmawp.imm.dtu.dk/trackproject/ =
 === Created by Martin W. Pedersen and Anders Nielsen  ===
 
 Track-project is an online application (or in modern terms 'cloud service'), which analyses movement data using a range of statistical methods. The methods available here were developed by researchers currently employed at the Danish National Institute of Aquatic Resources in collaboration with scientific partners. The methods (Kftrack, Kfsst, Trackit, Spatial HMM) are documented in [ArticleRefs scientific papers]. 
