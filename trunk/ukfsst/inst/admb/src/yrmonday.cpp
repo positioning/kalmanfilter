@@ -300,7 +300,7 @@ istream& operator>>(istream& istr, year_month_day& t)
   {
     const int buf_len = 31;
     char buf[buf_len];
-    strnset(buf,'\0',buf_len);
+    //strnset(buf,'\0',buf_len);
     istr >> buf;
     if (istr)
     {
