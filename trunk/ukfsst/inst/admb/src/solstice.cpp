@@ -1,4 +1,6 @@
-#include <iostream.h>
+#include <iostream>
+using std::cout;
+using std::endl;
 #include "yrmonday.h"
 
 int previous_solstice(const int y0, const int m0, const int d0)

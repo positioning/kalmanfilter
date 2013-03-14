@@ -14,17 +14,19 @@
 // Now with SST also ...  
  
 GLOBALS_SECTION
+  #include <fstream>
+  #include <strstream>
+  using std::ifstream;
+  using std::ofstream;
+  using std::ostrstream;
   #include "quadmap.h"
   #include "chol.h"
   #include "nLogNormal.h"
   #include "basics.h"
-  #include <fstream.h>
   #include <math.h>
   #include <fvar.hpp>
   #include <adstring.hpp>
   #include "yrmonday.h"
-  #include <strstream>
-  using std::ostrstream;
   #include "trace.h"
   #undef REPORT
   #define REPORT(object) report << #object " = " << object << endl;
