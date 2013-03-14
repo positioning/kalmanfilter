@@ -1,6 +1,8 @@
 #ifndef __TRACE__
 #define __TRACE__
-#include <iostream.h>
+#include <iostream>
+using std::endl;
+
 #undef HERE
 #define HERE clogf << "reached " << __LINE__ << " in " << __FILE__ << endl;
 

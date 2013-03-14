@@ -1,4 +1,3 @@
-#include "yrmonday.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
@@ -6,7 +5,16 @@
 #include <strstream>
 using std::ostrstream;
 using std::istrstream;
-#include <iomanip.h>
+#include <iomanip>
+using std::istream;
+using std::ostream;
+using std::setw;
+using std::setfill;
+
+#include "yrmonday.h"
+using std::cerr;
+using std::cout;
+using std::endl;
 
 #ifndef FALSE
   #define FALSE false

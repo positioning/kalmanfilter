@@ -1,6 +1,8 @@
-#include <fvar.hpp>
-#include <iostream.h>
+#include <iostream>
+using std::cout;
+using std::endl;
 #include <math.h>
+#include <fvar.hpp>
   const double eps = 1e-8;  //small number to avoid divide by 0
  
   dvariable azimuth(const dvariable& y, const dvariable& x)

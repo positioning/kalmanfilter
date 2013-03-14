@@ -1,7 +1,8 @@
 #include <strstream> 
 using std::ostrstream;
+#include <iomanip>
+using std::hex;
 #include <fvar.hpp>
-#include <iomanip.h>
 #include <adstring.hpp>
 
 extern adstring copyright;
