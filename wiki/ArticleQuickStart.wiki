@@ -9,7 +9,7 @@
 
   * Please understand that R is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. 
 
-  * Our currently tested version is R-2.15.2.
+  * Our currently tested version is R-2.15.3.
 
 === Easy installation of geolocation packages ===  
   
