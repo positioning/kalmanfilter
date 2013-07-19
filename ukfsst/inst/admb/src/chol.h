@@ -6,10 +6,11 @@
 
 void dfchol(void);
 
-dvar_matrix chol(_CONST dvar_matrix& MM)
+dvar_matrix chol(_CONST dvar_matrix& _MM)
 {
   RETURN_ARRAYS_INCREMENT();	
   // kludge to deal with constantness
+  dvar_matrix& MM = (dvar_matrix&)_MM;
   if (MM.colsize() != MM.rowsize())
   {
     cerr << "Error in chol_decomp. Matrix not square" << endl;
@@ -26,6 +27,7 @@ dvar_matrix chol(_CONST dvar_matrix& MM)
     }
     dvar_matrix  vc(mmin,mmax,mmin,mmax);
     vc(mmin,mmin)=sqrt(MM(mmin,mmin));
+    RETURN_ARRAYS_DECREMENT();
     return vc;
   }
   dmatrix M=value(MM);
