@@ -30,7 +30,7 @@
   
   }}}
 
-=== Manual installation of geolocation packages ===
+=== Manual installation of geolocation packages (for R-2.15 or older) ===
   
   * Go to our *[http://code.google.com/p/geolocation/downloads/list Downloads]* to download the package files, according to your operating system (OS). Notice different OS will have different file extensions.
 
