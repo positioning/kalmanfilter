@@ -9,12 +9,20 @@
 
   * Please understand that R is being very rapidly developed and geolocation packages may sometimes lag in catching up with the fundamental changes made in R. 
 
-  * Our currently tested version is R-2.15.3.
+  * Our currently tested version is R-3.0.2.
 
 === Easy installation of geolocation packages ===  
   
   *  To make installation a bit easier, a script has been prepared to set up all required packages. To run it, fire up *[http://www.r-project.org/ R]* and type (or paste) the following line:
   
+  {{{
+  
+  source('http://geolocation.googlecode.com/files/install-3.0.r')
+  
+  }}}
+
+  * Use the following for R-2.15 or older
+
   {{{
   
   source('http://geolocation.googlecode.com/files/install.r')
