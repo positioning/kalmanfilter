@@ -18,17 +18,10 @@
   {{{
 
 
-  source('http://geolocation.googlecode.com/svn/trunk/install-3.0.r')
+  source('http://geolocation.googlecode.com/svn/trunk/install.r')
   
   }}}
 
-  * Use the following for R-2.15 or older
-
-  {{{
-  
-  source('http://geolocation.googlecode.com/files/install.r')
-  
-  }}}
 
 === Manual installation of geolocation packages (for R-2.15 or older) ===
   
