@@ -22,6 +22,13 @@
   
   }}}
 
+  * if you are running R 3.0, use this script
+
+  {{{
+
+  source('http://geolocation.googlecode.com/svn/trunk/install-3.0.r')
+ 
+  }}}
 
 === Manual installation of geolocation packages (for R-2.15 or older) ===
   
