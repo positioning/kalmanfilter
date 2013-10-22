@@ -14,6 +14,8 @@ Papers using analyzepsat
 
 *[http://dx.plos.org/10.1371/journal.pone.0071883] Hueter RE, Tyminski JP, de la Parra R (2013) Horizontal Movements, Migration Patterns, and Population Structure of Whale Sharks in the Gulf of Mexico and Northwestern Caribbean Sea. PLoS ONE 8: e71883. doi:10.1371/journal.pone.0071883.
 
+*[http://dx.doi.org/10.1371/journal.pone.0056588] Howey-Jordan LA, Brooks EJ, Abercrombie DL, Jordan LKB, Brooks A, et al. (2013) Complex Movements, Philopatry and Expanded Depth Range of a Severely Threatened Pelagic Shark, the Oceanic Whitetip (Carcharhinus longimanus) in the Western North Atlantic. PLoS ONE 8: e56588. doi:10.1371/journal.pone.0056588.
+
 *[http://www.plosone.org/article/info:doi/10.1371/journal.pone.0037829] Benjamin Galuardi and Molly Lutcavage. Dispersal routes and habitat utilization of juvenile Atlantic bluefin tuna Thunnus thynnus tracked with mini PSAT and archival tags. PLoSOne
 
 *[http://www.nrcresearchpress.com/doi/abs/10.1139/f10-033] Galuardi, B.; Royer, F.; Golet, W.; Logan, J.; Nielson, J. & Lutcavage, M. Complex Migration Routes of Atlantic Bluefin Tuna Question Current Population Structure Paradigm. Canadian Journal of Fisheries and Aquatic Sciences, 2010, Vol. 67(1), 966-976
