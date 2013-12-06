@@ -1,7 +1,7 @@
 all: ukf prepro
 
 ukf: ukf.tpl 
-	CXXFLAGS=-fpermissive admb ukf
+	admb ukf
 
 prepro: prepro.tpl 
 	admb prepro
