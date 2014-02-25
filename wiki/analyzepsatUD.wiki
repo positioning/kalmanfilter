@@ -111,7 +111,7 @@ ukern = getvolumeUD(fkern)
 }}}
 http://geolocation.googlecode.com/svn/wiki/images/big241-fixedKD.jpeg
 
-Side-by-side comprison shows that fixed kernel methods overestimate the utilization
+*Side-by-side comprison shows that fixed kernel methods overestimate the utilization
 http://geolocation.googlecode.com/svn/wiki/images/big241-fixedKD-vs-track2KD.jpeg
 
 = Summary =
