@@ -17,6 +17,7 @@
     * [ArticleParTrackit Description of Model Parameters]
     * [ArticleRefTrackit Reference manual]
   * [Analyzepsat Bathymetric correction with Analyzepsat]
+  * [analyzepsatUD The Correct Way to Generate Utilization Distribution (UD) with Analyzepsat]
   * [ArticleWcDap Third-party software using KF packages]
     * [ArticleWcDap Working with Wildlife Computers DAP/GPE]
   * [ArticlePedersen Other Geolocation Packages]
