@@ -95,6 +95,7 @@ fit<-trackit(prep.track)
   Tips: other options to use: 
   D.ph=2 or 4, D.i=400 or 1200, 
   ss1.ph=4 or ss2.ph=4 (don't turn off ss1 or ss2, you can but you must check the outputs)
+  When SST is used, the parameters rad, bsst and sssst can be tweaked too.
 	 }}}
   # Re-run the model where necessary (sorry - this is usually the case!)
      * When a model fails to converge, no output files can be generated, and that usually results in a series of warning and error messages. Those messages do not mean there is any software problem other than the model fails (I know, still disappointing). This is a simple of such messages. Return to Step 5 to give it another try.
