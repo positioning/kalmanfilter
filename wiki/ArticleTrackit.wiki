@@ -6,7 +6,7 @@
 
 Trackit is an add-on package for the statistical environment *R* to efficiently estimate movement parameters and predict "the most probable track" directly from the raw light measurements obtained from archival tagged individuals. Its basic use is to fit and plot the model described in Nielsen and Sibert 2007.
 
-The model is unique in estimating the most probable track without making any light-level threshold assumptions, or constraining the movement of the tag between dawn and dusk. The model generates 2 estimated geographic positions per day (at dawn and dusk) based on light; and 3 estimated positions per day (at dawn, dusk, SST time point) when sea-surface temperature (SST) are used in combination with light. The covariance structure of the model is designed to handle high correlations between light measurements, such as might be caused by local weather conditions. The yearly pattern in latitude precision is estimated by propagating the data uncertainities through the geolocation process. The model has been applied to simulated data, mooring studies, and real deployments on swimming and diving fish.
+The model is unique in estimating the most probable track without making any light-level threshold assumptions, or constraining the movement of the tag between dawn and dusk. The model generates 2 estimated geographic positions per day (at dawn and dusk) based on light; and 3 estimated positions per day (at dawn, dusk, SST time point) when sea-surface temperature (SST) are used in combination with light. The covariance structure of the model is designed to handle high correlations between light measurements, such as might be caused by local weather conditions. The yearly pattern in latitude precision is estimated by propagating the data uncertainties through the geolocation process. The model has been applied to simulated data, mooring studies, and real deployments on swimming and diving fish.
 
 = Publications = 
 
@@ -91,7 +91,29 @@ fit<-trackit(prep.track)
      * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
 	 {{{
   fit <- trackit(prep.track, ss3.ph=-1)
+
+  Tips: other options to use: 
+  D.ph=2 or 4, D.i=400 or 1200, 
+  ss1.ph=4 or ss2.ph=4 (don't turn off ss1 or ss2, you can but you must check the outputs)
 	 }}}
+  # Re-run the model where necessary (sorry - this is usually the case!)
+     * When a model fails to converge, no output files can be generated, and that usually results in a series of warning and error messages. Those messages do not mean there is any software problem other than the model fails (I know, still disappointing). This is a simple of such messages. Return to Step 5 to give it another try.
+	 {{{
+
+### An example ###
+
+Error in file(file, "rt") : cannot open the connection In addition:
+Warning messages:
+1: In dir.create(dirname) :
+  'C:\Temp\RtmpEhPlmirun' already exists
+2: running command 'C:\Windows\system32\cmd.exe /c ukf.exe' had status 1
+3: In shell(cmd, invisible = TRUE) :
+  'ukf.exe' execution failed with error code 1
+4: In file(file, "rt") :
+  cannot open file 'ukf.std': No such file or directory
+
+	 }}}
+
 	 
 = Subsampling light data =
 == Transmitted light data ==
