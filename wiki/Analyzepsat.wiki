@@ -48,7 +48,7 @@ Major functions of analyzepsat include:
   * Display temperature/depth data nicely
   * Download bathymetric data and correct fitted tracks
   * Produce publication quality maps with fitted tracks
-  * Produce utilization distributions (UD) based on covariance of fitted tracks
+  * [analyzepsatUD Produce utilization distributions (UD) based on covariance of fitted tracks] *NEW!*
   * Produce vertical habitat envelopes (currently, MTI tags only)
   * Display SST data downloaded during ukfsst/trackit analysis
   * Export tracks, confidence intervals and UD to shapefiles and .asc files (for ArcGIS and others)
