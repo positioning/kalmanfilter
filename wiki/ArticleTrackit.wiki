@@ -88,7 +88,7 @@ fit<-trackit(prep.track)
   #                       localsstfolder="c:/temp/sstfolder")
 	 }}}
   # Run the model via the `trackit` function
-     * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some parameters to simplify the model. For instance, for tracks with a very short deployment, try
+     * It is not uncommon that model fails to converge. Try using different initial values or turn off estimation of some *[ArticleParTrackit parameters]* to simplify the model. For instance, for tracks with a very short deployment, try
 	 {{{
   fit <- trackit(prep.track, ss3.ph=-1)
 
