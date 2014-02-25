@@ -72,30 +72,32 @@ http://geolocation.googlecode.com/svn/wiki/images/big241-btrack.jpeg
 {{{
 
 # get the utilization distribution
+btrack1[,8] = btrack1[,8]+360  # add 360 back to longitude so the gmt polygons match
 
-kd1 = track2KD(btrack1,  xsize= .1,  ysize= .1,  range.x=c(-160, -140)+360, range.y= c(-10,50))
+kd1 = track2KD(btrack1,  xsize= .1,  ysize= .1,  range.x=c(-160, -140)+360, range.y= c(0,30))
 ud1 = kern2UD(kd1)
 
 # plot it 
 x11()
-mycol = colorRampPalette(c("lightcyan", "royalblue", "blue", "lemonchiffon", "orange", "red"), space = "Lab")
 ilabs = c(.1, .3, .5,.75, .95)*100
 axis.args=list( at=ilabs, labels=paste0(round(ilabs), '%') )
 
-image(ud, zlim = c(0,.99),  xlim = c(-160, -140)+360, ylim = c(10,25), col = rev(mycol(100)), xlab='', ylab='',add=F, axes=F)
+image(ud1, zlim = c(0,.99),  xlim = c(-160, -140)+360, ylim = c(10,25), col = gray.colors(100,start = 0, end = 1), xlab='', ylab='',add=F, axes=F)
 rect(par("usr")[1],par("usr")[3],par("usr")[2],par("usr")[4],col = "lightblue")
-image(ud, zlim = c(0,.99),  xlim = c(-160, -140)+360, ylim = c(10,25), col = rev(mycol(100)), xlab='', ylab='',add=T, axes=F)
+image(ud1, zlim = c(0,.99),  xlim = c(-160, -140)+360, ylim = c(10,25), col = gray.colors(100,start = 0, end = 1), xlab='', ylab='',add=T, axes=F)
 	degAxis(1); 
 	degAxis(2);
-	polygon(gmt3, col = 'black')
+	polygon(gmt3, col = 'green')
 	box()
 	
-image.plot(matrix(c(0,100)), col =  rev(mycol(100)), smallplot = c(.65,.70,.25,.85) , legend.only=T, axis.args=axis.args)
+image.plot(matrix(c(0,100)), col =  gray.colors(100,start = 0, end = 1), smallplot = c(.65,.70,.25,.85) , legend.only=T, axis.args=axis.args)
 }}}
 http://geolocation.googlecode.com/svn/wiki/images/big241-UD.jpeg
 {{{
 
 # add the track
+data(ATL)
+data(myramps)
 plot.btrack(btrack1, map2, offset=0, add=T, ci=F)
 
 }}}
