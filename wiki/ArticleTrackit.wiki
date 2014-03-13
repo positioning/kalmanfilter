@@ -189,6 +189,25 @@ Std. dev.: 13.5800 29.58500
   
   http://geolocation.googlecode.com/svn/wiki/images/drifter-map.jpg
   
+= Troubleshooting for R-3.0+ =
+
+R-3.0 has made some changes to their base functions, and whenever their team decided to do that, they screw us up. Here are fixes we can find after plenty of hard work of tracking them down
+
+  * Missing data
+  When it happens - trying to call fitmap( ) to plot the data on a map
+  {{{
+  # Fix: load the data before plotting
+  data(gmt3)
+  }}}
+  * Error in table
+  When it happens - trying to call prepit( ) and is presented with an error
+  {{{
+  # Error message: Error in table$JDE: object of type 'closure' is not subsettable
+
+  # Fix: load the data before calling prepit()
+  data(deltat); deltat$JDE = with(deltat,JDE(year,month,day))
+  }}}
+
 = Known issues =
   # Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
   # Trackit cannot handle dateline crossing at the 0/360 line yet.
