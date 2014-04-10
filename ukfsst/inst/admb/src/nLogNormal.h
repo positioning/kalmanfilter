@@ -6,11 +6,11 @@
 #include <fvar.hpp>
 #include <math.h>
 
-_CONST double log2pi = log(2.0*M_PI);
+const double log2pi = log(2.0*M_PI);
 
 void dmdm_bksolve(void);
 
-dvar_matrix bksolve(_CONST dvar_matrix& L, _CONST dvar_matrix& b)
+dvar_matrix bksolve(const dvar_matrix& L, const dvar_matrix& b)
 {
   RETURN_ARRAYS_INCREMENT();	  
   int i, k, r, R, c, C;
@@ -99,7 +99,7 @@ void dmdm_bksolve(void)
 }
 
 
-dvar_vector nLogNormal(_CONST dvar_vector& x, _CONST dvar_matrix& mu, _CONST dvar_matrix& S)
+dvar_vector nLogNormal(const dvar_vector& x, const dvar_matrix& mu, const dvar_matrix& S)
 {
   RETURN_ARRAYS_INCREMENT();	
   int r, R, c, C, N;
@@ -120,7 +120,7 @@ dvar_vector nLogNormal(_CONST dvar_vector& x, _CONST dvar_matrix& mu, _CONST dva
   return ret;
 }
 
-dvar_vector nLogNormal(_CONST dvar_matrix& x, _CONST dvar_vector& mu, _CONST dvar_matrix& S)
+dvar_vector nLogNormal(const dvar_matrix& x, const dvar_vector& mu, const dvar_matrix& S)
 {
   RETURN_ARRAYS_INCREMENT();
   dvar_vector ret=nLogNormal(mu, x, S);
@@ -128,7 +128,7 @@ dvar_vector nLogNormal(_CONST dvar_matrix& x, _CONST dvar_vector& mu, _CONST dva
   return ret;
 }
 
-dvariable nLogNormal(_CONST dvar_vector& x, _CONST dvar_vector& mu, _CONST dvar_matrix& S)
+dvariable nLogNormal(const dvar_vector& x, const dvar_vector& mu, const dvar_matrix& S)
 {
   RETURN_ARRAYS_INCREMENT();	
   dvar_matrix MU(mu.indexmin(),mu.indexmax(),1,1);
@@ -140,7 +140,7 @@ dvariable nLogNormal(_CONST dvar_vector& x, _CONST dvar_vector& mu, _CONST dvar_
 }
 
 //TEST
-dvar_vector nLogNormalChol(_CONST dvar_vector& x, _CONST dvar_matrix& mu, _CONST dvar_matrix& chol)
+dvar_vector nLogNormalChol(const dvar_vector& x, const dvar_matrix& mu, const dvar_matrix& chol)
 {
   RETURN_ARRAYS_INCREMENT();	
   int r, R, c, C, N;
@@ -160,7 +160,7 @@ dvar_vector nLogNormalChol(_CONST dvar_vector& x, _CONST dvar_matrix& mu, _CONST
   return ret;
 }
 
-dvar_vector nLogNormalChol(_CONST dvar_matrix& x, _CONST dvar_vector& mu, _CONST dvar_matrix& chol)
+dvar_vector nLogNormalChol(const dvar_matrix& x, const dvar_vector& mu, const dvar_matrix& chol)
 {
   RETURN_ARRAYS_INCREMENT();	
   dvar_vector ret=nLogNormalChol(mu, x, chol);	
@@ -168,7 +168,7 @@ dvar_vector nLogNormalChol(_CONST dvar_matrix& x, _CONST dvar_vector& mu, _CONST
   return ret;
 }
 
-dvariable nLogNormalChol(_CONST dvar_vector& x, _CONST dvar_vector& mu, _CONST dvar_matrix& chol)
+dvariable nLogNormalChol(const dvar_vector& x, const dvar_vector& mu, const dvar_matrix& chol)
 {
   RETURN_ARRAYS_INCREMENT();	
   dvar_matrix MU(mu.indexmin(),mu.indexmax(),1,1);
@@ -181,7 +181,7 @@ dvariable nLogNormalChol(_CONST dvar_vector& x, _CONST dvar_vector& mu, _CONST d
 
 void dmdm_fwsolve(void);
 
-dvar_matrix fwsolve(_CONST dvar_matrix& L, _CONST dvar_matrix& b)
+dvar_matrix fwsolve(const dvar_matrix& L, const dvar_matrix& b)
 {  
   RETURN_ARRAYS_INCREMENT();	
   int i, k, r, R, c, C;

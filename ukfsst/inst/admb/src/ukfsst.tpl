@@ -375,7 +375,7 @@ PROCEDURE_SECTION
   sdvsst=vsst;
   sdr=radius;
 
-FUNCTION dvariable wave(_CONST dvar_vector& w, _CONST dvector& p)
+FUNCTION dvariable wave(const dvar_vector& w, const dvector& p)
   dvector cw=value(w);
   double T=cw*p; 
   double B=sum(cw); 
