@@ -208,7 +208,7 @@ GLOBALS_SECTION
     dfw.save_dvector_derivatives(wpos);
   }
 
-  dvariable wave(_CONST dvar_vector& w, _CONST dvector& p){
+  dvariable wave(const dvar_vector& w, const dvector& p){
     dvector cw=value(w);
     double T=cw*p; 
     double B=sum(cw); 

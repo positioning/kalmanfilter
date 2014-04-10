@@ -6,7 +6,7 @@
 
 void dfchol(void);
 
-dvar_matrix chol(_CONST dvar_matrix& _MM)
+dvar_matrix chol(const dvar_matrix& _MM)
 {
   RETURN_ARRAYS_INCREMENT();	
   // kludge to deal with constantness
