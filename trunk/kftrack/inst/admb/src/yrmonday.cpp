@@ -16,12 +16,6 @@ using namespace std;
 #endif
 //#include "trace.h"
 
-#ifdef __GNUDOS__
-  void strnset(char *, const char, size_t n)
-  {
-  }
-#endif
-
 int year_month_day::month_length[14] =
 
 {
@@ -306,7 +300,6 @@ istream& operator>>(istream& istr, year_month_day& t)
   {
     const int buf_len = 31;
     char buf[buf_len];
-    strnset(buf,'\0',buf_len);
     istr >> buf;
     if (istr)
     {
