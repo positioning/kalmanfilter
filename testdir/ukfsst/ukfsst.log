@@ -1,0 +1,18 @@
+size of file gradfil1.tmp = 0
+size of file gradfil2.tmp = 0
+size of file varssave.tmp = 0
+size of file cmpdiff.tmp = 0
+ 1
+line 125, file ukfsst.cpp, start_long = 209.725
+line 228, file ukfsst.cpp, u_active = 1, u_phase = 1
+line 229, file ukfsst.cpp, v_active = 1, v_phase = 1
+line 230, file ukfsst.cpp, D_active = 1, D_phase = 1
+line 231, file ukfsst.cpp, bx_active = 0, bx_phase = -1
+line 232, file ukfsst.cpp, by_active = 1, by_phase = 2
+line 233, file ukfsst.cpp, vx_active = 1, vx_phase = 2
+line 234, file ukfsst.cpp, vy_active = 1, vy_phase = 2
+line 235, file ukfsst.cpp, var_struct = 1, var_struct_phase = 3
+line 299, file ukfsst.cpp, init_D = 100, D = 100
+line 302, file ukfsst.cpp, init_vx = 0.1, vx = 0.1
+line 305, file ukfsst.cpp, init_vy = 1, vy = 1
+line 308, file ukfsst.cpp, init_vsst = 0.1, vsst = 0.1
