@@ -211,24 +211,24 @@
 #Number of sst data files
  18 
 #List of file names
-c:\tmp\RtmpgH5oa1/sst_files/RS2001091_2001097_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001098_2001104_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001105_2001111_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001112_2001118_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001119_2001125_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001126_2001132_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001133_2001139_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001140_2001146_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001147_2001153_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001154_2001160_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001161_2001167_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001168_2001174_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001175_2001181_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001182_2001188_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001189_2001195_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001196_2001202_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001203_2001209_sst.xyz 
-c:\tmp\RtmpgH5oa1/sst_files/RS2001210_2001216_sst.xyz 
+sst_files/RS2001091_2001097_sst.xyz 
+sst_files/RS2001098_2001104_sst.xyz 
+sst_files/RS2001105_2001111_sst.xyz 
+sst_files/RS2001112_2001118_sst.xyz 
+sst_files/RS2001119_2001125_sst.xyz 
+sst_files/RS2001126_2001132_sst.xyz 
+sst_files/RS2001133_2001139_sst.xyz 
+sst_files/RS2001140_2001146_sst.xyz 
+sst_files/RS2001147_2001153_sst.xyz 
+sst_files/RS2001154_2001160_sst.xyz 
+sst_files/RS2001161_2001167_sst.xyz 
+sst_files/RS2001168_2001174_sst.xyz 
+sst_files/RS2001175_2001181_sst.xyz 
+sst_files/RS2001182_2001188_sst.xyz 
+sst_files/RS2001189_2001195_sst.xyz 
+sst_files/RS2001196_2001202_sst.xyz 
+sst_files/RS2001203_2001209_sst.xyz 
+sst_files/RS2001210_2001216_sst.xyz 
 #Corresponding mid-dates (rounded upwards)
 2001 4 4
 2001 4 11
