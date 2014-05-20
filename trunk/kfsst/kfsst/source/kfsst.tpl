@@ -332,7 +332,7 @@ PROCEDURE_SECTION
 
 FUNCTION int getIndexFromVector(dvariable x, dvar_vector vec)
   int i=1; 
-  while((vec(i)<x)&&(i<=vec.indexmax()))i++;
+  while((i<=vec.indexmax())&&(vec(i)<x))i++;
   if(x<vec(vec.indexmin())){
     i++;
   //cout<<"WARNING from getIndexFromVector: "<<x<<" not in ("<<min(vec)<<","<<max(vec)<<")\n";  
