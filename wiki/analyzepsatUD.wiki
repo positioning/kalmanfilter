@@ -102,7 +102,7 @@ http://geolocation.googlecode.com/svn/wiki/images/big241-UD.jpeg
 # add the track
 data(ATL)
 data(myramps)
-plot.btrack(btrack1, map2, offset=0, add=T, ci=F)
+plot.btrack(btrack1, offset=0, add=T, ci=F)
 
 }}}
 http://geolocation.googlecode.com/svn/wiki/images/big241-UD-track.jpeg
