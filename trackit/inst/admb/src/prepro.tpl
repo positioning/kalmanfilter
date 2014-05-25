@@ -339,7 +339,7 @@ GLOBALS_SECTION
 
   double higestDec(const dvector& jdu, dvector& light){
     int i; 
-    int res=10; 
+    const int res=10; 
     int n[res]; 
     double v[res]; 
     for(i=0; i<res; ++i){
