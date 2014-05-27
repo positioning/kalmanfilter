@@ -81,7 +81,7 @@ ud1 = kern2UD(kd1)
 # plot it 
 x11()
 ilabs = c(.1, .3, .5,.75, .95)*100
-axis.args=list( at=ilabs, labels=paste0(round(ilabs), '%') )
+axis.args=list( at=ilabs, labels=paste(round(ilabs), '%') )
 
 image(ud1, zlim = c(0,.99),  xlim = c(-160, -140)+360, ylim = c(10,25),
  col = gray.colors(100,start = 0, end = 1), xlab='', ylab='',add=F, axes=F)
