@@ -1,6 +1,4 @@
 ## TrackIt Example 1. Quick run with the "drifter" data set
-## February 2010 IWSS Meeting
-## Chi Lam; chihinl@usc.edu
 
 # Step 1. Load library
 library(trackit)

@@ -1,4 +1,0 @@
-; Unless otherwise specified, depths here generally assume a 1000 meter instrument and you may need to double the depths for 2000 meter instruments!
-
-DeployID,Ptt,DepthSensor,Instr,SW,RTC,Received,Time Offset,LocationQuality,Latitude,Longitude,Type,HauledOut,BrokenThermistor,BrokenLink,Transmits,BattVoltage,TransmitVoltage,TransmitCurrent,Temperature,Depth,MaxDepth,ZeroDepthOffset,LightLevel,NoDawnDusk,ReleaseType,ReleaseTime,InitiallyBroken,BurnMinutes,ReleaseDepth,FastGPSPower,TWICPower,PowerLimit,MinWetDry,MaxWetDry,WetDryThreshold,StatusWord,TransmitPower,Resets
-"117495",117495,,Mk10,,07:41:34 26-Jun-2012,07:41:16 26-Jun-2012,-17,,,,CRC,0,0,1,,,0.792,0.604,,7.5,52.0,-24,,,Scheduled,02:00:00 26-Jun-2012,0,120.000000,40,,,,24,26,50,,,
