@@ -1,5 +1,4 @@
-trackit <- 
-function (prep.track, a2lpoints = 15, u.init = 0, v.init = 0, 
+trackit <- function (prep.track, a2lpoints = 15, u.init = 0, v.init = 0, 
     D.init = 100, ss1.init = 1, ss2.init = 5, ss3.init = 1, rho.init = 0.01, 
     bsst.init = 0, sssst.init = 0.01, rad.init = 200, dep1.init = 0, 
     dep2.init = 0, phi.init = c(60, rep((200 - 60)/(a2lpoints - 
