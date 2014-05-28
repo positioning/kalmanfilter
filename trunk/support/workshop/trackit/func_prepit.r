@@ -1,5 +1,4 @@
-prepit <-
-function (track, fix.first, fix.last, scan = TRUE, window = c(0.05, 
+prepit <- function (track, fix.first, fix.last, scan = TRUE, window = c(0.05, 
     0.01), tmpfile = "input.dat", datfile = "ukf.dat", keepfiles = c(FALSE, 
     FALSE), internal = TRUE, sst = NULL, from.ystr = c(3, 6), 
     from.dstr = c(7, 9), to.ystr = c(11, 14), to.dstr = c(15, 
