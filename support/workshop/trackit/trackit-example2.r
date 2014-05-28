@@ -1,6 +1,4 @@
 ## TrackIt Example 2. Exporting a track
-## February 2010 IWSS Meeting
-## Chi Lam; chihinl@usc.edu
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Quick recap - we assume you have got a nice fit for your track

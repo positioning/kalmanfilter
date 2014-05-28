@@ -1,6 +1,4 @@
 ## TrackIt Example 3. Stepping up a gear - TrackIt with SST-matching (Advanced topic!)
-## November 2009 PFRP Meeting
-## Chi Lam; chihinl@usc.edu
 
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ## Quick recap - we have run the drifter example with TrackIt 
