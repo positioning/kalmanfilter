@@ -98,7 +98,7 @@ fit<-trackit(prep.track)
   When SST is used, the parameters rad, bsst and sssst can be tweaked too.
 	 }}}
   # Re-run the model where necessary (sorry - this is usually the case!)
-     * When a model fails to converge, no output files can be generated, and that usually results in a series of warning and error messages. Those messages do not mean there is any software problem other than the model fails (I know, still disappointing). This is a simple of such messages. Return to Step 5 to give it another try.
+     * When a model fails to converge, no output files can be generated, and that usually results in a series of warning and error messages. Those messages do not mean there is any software problem other than the model fails (I know, still disappointing). This is a simple of such messages. Return to Step 6 to give it another try.
 	 {{{
 
 ### An example ###
