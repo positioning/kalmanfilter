@@ -59,12 +59,12 @@ prepit <- function (track, fix.first, fix.last, scan = TRUE, window = c(0.05,
         sep = "/"), "lunar.dat", TRUE)
     cat("# dummy file", file = "prepro.dat")
     if (.Platform$OS.type == "windows") {
-        file.copy(paste(path.package("trackit"), "/admb/bin/prepro.exe", 
+        file.copy(paste(path.package("trackit"), "/admb/prepro.exe", 
             sep = "/"), "prepro.exe", TRUE)
         error.code <- .sys("prepro.exe")
     }
     else {
-        file.copy(paste(path.package("trackit"), "/admb/bin/prepro", 
+        file.copy(paste(path.package("trackit"), "/admb/prepro", 
             sep = "/"), "prepro", TRUE)
         .sys("chmod u+x prepro")
         error.code <- .sys(paste("./prepro", sep = ""))

@@ -45,12 +45,12 @@ trackit <- function (prep.track, a2lpoints = 15, u.init = 0, v.init = 0,
     cat("# Run program in simulation mode only 0=FALSE, 1=TRUE\n", 
         0, "\n", file = "sstsim.dat")
     if (.Platform$OS.type == "windows") {
-        file.copy(paste(path.package("trackit"), "/admb/bin/ukf.exe", 
+        file.copy(paste(path.package("trackit"), "/admb/ukf.exe", 
             sep = ""), "ukf.exe", TRUE)
         error.code <- .sys("ukf.exe")
     }
     else {
-        file.copy(paste(path.package("trackit"), "/admb/bin/ukf", 
+        file.copy(paste(path.package("trackit"), "/admb/ukf", 
             sep = ""), "ukf", TRUE)
         .sys("chmod u+x ukf")
         error.code <- .sys(paste("./ukf", sep = ""))
