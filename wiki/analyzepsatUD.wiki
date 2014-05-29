@@ -27,7 +27,7 @@ big.241$maxz=-10
 fit1 = kftrack(big.241[,1:5])
 
 # plot it
-.plot3(fit1, map=T, ci=T, points=F, pred=F)
+.plot3(fit1, map=F, ci=T, points=F, pred=F)
 points(fit1$most.prob.track, typ='o', col=4, pch=19, cex=.7)
 polygon(gmt3, col = 'black')
 title('big.241 most probable track')
