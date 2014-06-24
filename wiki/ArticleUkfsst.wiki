@@ -99,8 +99,8 @@ This problem will appear in the Eastern Atlantic when an animal crosses 0/360 lo
   source('http://geolocation.googlecode.com/svn/trunk/updates/get-reynolds.R')
   }}}
   * Input arguments include a request of SST data from 0 to 360, so that everything is downloaded
-  * Then apply an offset to the downloaded files, via the argument `offsetx`
-  * Finally, trim extra SST data to keep files smaller and within bounds, via the argument `offset.cutoff`
+  * Then apply an offset to the downloaded files, via the argument, `offsetx`
+  * Finally, trim extra SST data to keep files smaller and within bounds, via the argument, `offset.cutoff`
   {{{
   sst.path<-get.reynolds(track[,c(3,2,1)],0,360,18,50,
                          minus180=T, offsetx= myoffset, offset.cutoff= maxlon)   
