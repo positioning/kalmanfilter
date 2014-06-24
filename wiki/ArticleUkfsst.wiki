@@ -80,7 +80,7 @@ This problem will appear in the Eastern Atlantic when an animal crosses 0/360 lo
 
   ==2. Add an offset to the input longitude values ==
   {{{
-  ### The modified longitude values stayed within 0-360
+  ### The modified longitude values need to stay within 0-360
   ### An offset of 200 is added here:
   
   myoffset = 200
