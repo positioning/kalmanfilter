@@ -98,7 +98,7 @@ This problem will appear in the Eastern Atlantic when an animal crosses 0/360 lo
   {{{
   source('http://geolocation.googlecode.com/svn/trunk/updates/get-reynolds.R')
   }}}
-  * Input arguments include a request of SST data from 0 to 360, so that everything is downloaded
+  * Input arguments include a request of SST data from 0 to 360 longitude, so that everything is downloaded
   * Then apply an offset to the downloaded files, via the argument, `offsetx`
   * Finally, trim extra SST data to keep files smaller and within bounds, via the argument, `offset.cutoff`
   {{{
