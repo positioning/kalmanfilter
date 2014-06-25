@@ -208,7 +208,7 @@ Std. dev.: 13.5800 29.58500
   
   ==1. Download a hotfix script ==
   {{{
-  source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.R')
+  source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.r')
   }}}
 
   ==2. Obtain simulated example files (a start West, end East case) to follow along ==
