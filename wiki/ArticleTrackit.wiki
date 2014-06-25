@@ -208,6 +208,7 @@ Std. dev.: 13.5800 29.58500
   
   ==1. Download a hotfix script ==
   {{{
+  library(trackit)
   source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.r')
   }}}
 
