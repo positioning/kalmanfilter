@@ -212,7 +212,7 @@ Std. dev.: 13.5800 29.58500
   source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.r')
   }}}
 
-  ==2. Obtain simulated example files (a start West, end East case) to follow along ==
+  ==2. Obtain simulated example files for migratory bird (a start West, end East case) to follow along ==
   {{{
 track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/light.dat", sep=" ", head=T)
 sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
@@ -251,9 +251,11 @@ sst <- subset(sst, sst>0)
   points(truth, cex=.6)
   points(fit$most.prob.track, col=2,pch=20)  # Trackit solution in red points
   }}}
-  
-  {{{ ### Finally the results
 
+http://geolocation.googlecode.com/svn/trunk/testdir/180case/sim-track.jpg
+  
+  * And finally the results,
+  {{{
 # Trackit version: 0.2-6 
 # Date: 25 Jun 2014 (10:05:46) 
 # Negative log likelihood: 27232 
@@ -271,8 +273,6 @@ Estimates: 9.08010 6.378500 4.841200 3.701200 2.995100 2.42930 2.18620 1.59080 2
 Std. dev.: 0.08626 0.084381 0.082508 0.084133 0.088606 0.10076 0.12504 0.18936 0.6043
 
   }}}
-  
-  http://geolocation.googlecode.com/svn/trunk/testdir/180case/sim-track.jpg
   
 = Troubleshooting for R-3.0+ =
 
