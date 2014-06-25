@@ -218,6 +218,7 @@ track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/li
 sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
 truth <- read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/truth.dat", sep=" ", head=F)
 
+### No SST values when the bird went over land
 sst <- subset(sst, sst>0)
   }}}
   
