@@ -252,6 +252,26 @@ sst <- subset(sst, sst>0)
   points(fit$most.prob.track, col=2,pch=20)  # Trackit solution in red points
   }}}
   
+  {{{ ### Finally the results
+
+# Trackit version: 0.2-6 
+# Date: 25 Jun 2014 (10:05:46) 
+# Negative log likelihood: 27232 
+# Maximum gradient component: 0.0012 
+# which does not meet the convergence criteria, 
+# but is very close, so convercence so is likely 
+# obtained anyway.
+
+Parameters:
+                  D        ss1      ss2      ss3       rho    sssst     phi1   phi2     phi3      phi4      phi5      phi6
+Estimates: 1335.600 3.0727e-07 0.354900 2.396500 0.0078059 0.353690 50.72500 12.942 14.52500 15.080000 13.952000 12.153000
+Std. dev.:   70.712 6.5068e-06 0.059006 0.065179 0.0021121 0.033441  0.59735  0.531  0.15059  0.098347  0.085629  0.086508
+              phi7     phi8     phi9    phi10    phi11   phi12   phi13   phi14  phi15
+Estimates: 9.08010 6.378500 4.841200 3.701200 2.995100 2.42930 2.18620 1.59080 2.4640
+Std. dev.: 0.08626 0.084381 0.082508 0.084133 0.088606 0.10076 0.12504 0.18936 0.6043
+
+  }}}
+  
   http://geolocation.googlecode.com/svn/trunk/testdir/180case/sim-track.jpg
   
 = Troubleshooting for R-3.0+ =
