@@ -204,7 +204,6 @@ Std. dev.: 13.5800 29.58500
   ### For example, we are requesting all data between 26 and 51 N for the world
   
   sst.path<-get.sst.from.server(track, lonlow=0, lonhigh=360, latlow=26, lathigh=51)
-  
   }}}
   
   ==1. Download a hotfix script ==
@@ -245,6 +244,8 @@ sst <- subset(sst, sst>0)
   ==5. Adjust longitude values from 0-360 to -180 to 180 for plotting purposes ==
   {{{
   fit <- switch2lon180(fit)
+  
+  ### Plotting
   fitmap(fit, ci=T)
   points(truth, cex=.6)
   points(fit$most.prob.track, col=2,pch=20)  # Trackit solution in red points
