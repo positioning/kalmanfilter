@@ -102,7 +102,8 @@ This problem will appear in the Eastern Atlantic when an animal crosses 0/360 lo
   * Then apply an offset to the downloaded files, via the argument, `offsetx`
   * Finally, trim extra SST data to keep files smaller and within bounds, via the argument, `offset.cutoff`
   {{{
-  sst.path<-get.reynolds(track[,c(3,2,1)],0,360,18,50,
+  sst.path<-get.reynolds(track[,c(3,2,1)], lonlow=0, lonhigh=360, latlow=18, lathigh=50,
                          minus180=T, offsetx= myoffset, offset.cutoff= maxlon)   
   }}}
   * Once download is complete, you are good to go!
+  * Lastly, make sure once you have obtained a fit, substract the offset from the fitted object.

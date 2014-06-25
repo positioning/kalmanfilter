@@ -188,6 +188,68 @@ Std. dev.: 13.5800 29.58500
   }}}
   
   http://geolocation.googlecode.com/svn/wiki/images/drifter-map.jpg
+
+= A fix for animals crossing from 360 to 0 longitude and vice versa = 
+
+  The following table summarizes whether this fix is needed, when an animal at some point at liberty has crossed (or go back and forth between) the 0/360 longitude line:
+  
+|| *Starting longitude (deployment)* || *Ending longitude (popoff/ recovery)* || *Fix needed * || * Notes * ||
+|| West, e.g., 70 W || East, e.g., 10 E || Yes || ||
+|| East, e.g., 10 E || West, e.g., 70 W || Yes || ||
+|| West, e.g., 70 W || West, e.g., 40 W || No || Only the SST step is needed if running Trackit+SST ||
+|| East, e.g., 10 E || East, e.g., 5 E || No || Only the SST step is needed if running Trackit+SST||
+
+  == SST step (for running Trackit+SST) - just make sure you download all data from 0-360 longitude ==
+  {{{
+  ### For example, we are requesting all data between 26 and 51 N for the world
+  
+  sst.path<-get.sst.from.server(track, lonlow=0, lonhigh=360, latlow=26, lathigh=51)
+  
+  }}}
+  
+  ==1. Download a hotfix script ==
+  {{{
+  source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.R')
+  }}}
+
+  ==2. Obtain simulated example files (a start West, end East case) to follow along ==
+  {{{
+  track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/light.dat", sep=" ", head=T)
+  sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
+  truth <- read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/truth.dat", sep=" ", head=F)
+  sst <- subset(sst, sst>0)
+  }}}
+  
+  ==3. Run `prepit` as usual ==
+  {{{
+  ### Running Trackit+SST, therefore, download the satellite imagery
+  sst.path = get.sst.from.server(track,0,360,26,51)
+  
+  ### prepit step
+  prep.track<-prepit(track, sst=sst, 
+                     fix.first=c(285,35,2003,1,1,0,0,0),
+					 fix.last=c(10.96376520823528721849,35.92527349625796517785,2004,1,1,0,0,0))
+  
+  }}}
+  
+  ==4. Apply the hot fix and run `trackit` as usual ==
+  {{{
+  ### Direction: "WE" for West to East, otherwise "EW" for East to West
+  prep.track <- hotfix.dayline(prep.track, direction="WE") 
+  
+  fit <- trackit(prep.track, rad.ph=-1, D.i=1200, rad.i=400)
+  
+  }}}
+  
+  ==5. Adjust longitude values from 0-360 to -180 to 180 for plotting purposes ==
+  {{{
+  fit <- switch2lon180(fit)
+  fitmap(fit, ci=T)
+  points(truth, cex=.6)
+  points(fit$most.prob.track, col=2,pch=20)  # Trackit solution in red points
+  }}}
+  
+  http://geolocation.googlecode.com/svn/trunk/testdir/180case/sim-track.jpg
   
 = Troubleshooting for R-3.0+ =
 
@@ -210,4 +272,3 @@ R-3.0 has made some changes to their base functions, and whenever their team dec
 
 = Known issues =
   # Light data must have a continuous sinusoidal-like waveform, i.e. light "curves" that function resemble square waves (box-car) will not work well in Trackit. Tags that uses the light sensors as an "on-off" switch will not provide adequate information for Trackit to run, which includes recovered tags from Microwave Telemetry and bird tags from BAS.
-  # Trackit cannot handle dateline crossing at the 0/360 line yet.
