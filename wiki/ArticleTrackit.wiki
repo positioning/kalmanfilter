@@ -212,7 +212,7 @@ Std. dev.: 13.5800 29.58500
   source('http://geolocation.googlecode.com/svn/trunk/updates/lon180trackit.r')
   }}}
 
-  ==2. Obtain simulated example files for migratory bird (a start West, end East case) to follow along ==
+  ==2. Obtain simulated example files for a migratory bird (start West, end East) to follow along ==
   {{{
 track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/light.dat", sep=" ", head=T)
 sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
