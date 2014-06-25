@@ -214,10 +214,11 @@ Std. dev.: 13.5800 29.58500
 
   ==2. Obtain simulated example files (a start West, end East case) to follow along ==
   {{{
-  track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/light.dat", sep=" ", head=T)
-  sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
-  truth <- read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/truth.dat", sep=" ", head=F)
-  sst <- subset(sst, sst>0)
+track=read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/light.dat", sep=" ", head=T)
+sst=read.csv("http://geolocation.googlecode.com/svn/trunk/testdir/180case/sstvalues.csv", head=T)
+truth <- read.table("http://geolocation.googlecode.com/svn/trunk/testdir/180case/truth.dat", sep=" ", head=F)
+
+sst <- subset(sst, sst>0)
   }}}
   
   ==3. Run `prepit` as usual ==
@@ -228,7 +229,7 @@ Std. dev.: 13.5800 29.58500
   ### prepit step
   prep.track<-prepit(track, sst=sst, 
                      fix.first=c(285,35,2003,1,1,0,0,0),
-				fix.last=c(10.96376520823528721849,35.92527349625796517785,2004,1,1,0,0,0))
+			fix.last=c(10.96376520823528721849,35.92527349625796517785,2004,1,1,0,0,0))
   
   }}}
   
