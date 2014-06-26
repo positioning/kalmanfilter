@@ -158,9 +158,7 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
         xyz <- na.omit(xyz)
         if (removeland) {
 		     xyz <- xyz[which(xyz[,4]==1), -4]
-	    }else{
-		     xyz[which(xyz[,4]==0),3] <- -999
-		}
+	    }
 		if (minus180){
           jy <- order(xyz[,2])
 		  xyz <- xyz[jy,]
