@@ -39,7 +39,11 @@ http://geolocation.googlecode.com/svn/wiki/images/ukfsst.jpg
   {{{
 # Note: delete the hash sign (#) at the beginning to uncomment a line
 
-library(ukfsst)  
+library(ukfsst)
+
+# For users with R-3.1 and over, please run the following line as well:
+# source('http://geolocation.googlecode.com/svn/trunk/support/ukfsst/func_ukfsst.r')
+  
 track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
 sst.path <- get.sst.from.server(track) 
 # see function, get.blended.sst 
