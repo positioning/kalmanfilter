@@ -48,6 +48,8 @@ http://tagbase.googlecode.com/svn/trunk/images/WcDap3.jpg
 
   * In order to keep your estimated positions, you should save the entire workspace in DAP via "File" > "Save Workspace", a file with the extension ".wcdap" will be generated.
 
+  * The geolocation estimates (including those using the Kalman filter interface) will be saved to the .csv files when you choose "File" > "Export Decoded Data" > "Popular Formats (`*`.`*`)"
+
 ==== 2. Standalone ====
 
   * Start "Global Position Estimator" from your Windows Start menu (under Wildlife Computers), drag-and-drop a "`LightLoc.csv`" file (that you have generated from DAP) or a previously processed GPE file (.wcg2) from your file explorer/ browser.
