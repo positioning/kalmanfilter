@@ -52,9 +52,11 @@ http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
 
 library(trackit)
 
-# For users with R-3.1 and over, please run the following lines as well:
-# source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r')
-# source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r')
+# For users with R-3.0 and over, please run the following lines as well:
+data(deltat); deltat$JDE = with(deltat,JDE(year,month,day))  # a fix for R 3.0+
+# fix for path.packages issues for R.3.1+
+source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r")  
+source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r")
 
 track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
 prep.track<-prepit(track, fix.first=c(360-161.45,22.85,2002,9,10,0,0,0), 
