@@ -66,8 +66,10 @@ source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.
 source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r")
 
 track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
+
 prep.track<-prepit(track, fix.first=c(360-161.45,22.85,2002,9,10,0,0,0), 
                    fix.last=c(360-159.87,21.95,2003,5,21,0,0,0), scan=FALSE)
+
 fit<-trackit(prep.track)
   }}}
   
