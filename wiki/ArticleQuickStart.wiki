@@ -100,7 +100,7 @@ library(ukfsst)
 #library(kfsst)
 
 # For users with R-3.1 and over, please run the following line as well:
-# source('http://geolocation.googlecode.com/svn/trunk/support/ukfsst/func_ukfsst.r')
+source('http://geolocation.googlecode.com/svn/trunk/support/ukfsst/func_ukfsst.r')
 
 data(blue.shark) # load packaged example data
 #track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
@@ -124,8 +124,9 @@ save(fit2, file="kf-example.Rdata")
 library(trackit)
 
 # For users with R-3.1 and over, please run the following lines as well:
-# source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r')
-# source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r')
+data(gmt3); data(deltat); deltat$JDE = with(deltat,JDE(year,month,day))
+source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r')
+source('http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r')
   
 data(drifter) # load packaged example data
 #track<-read.table("datafile.dat", header=TRUE) # change file name and path for your own file
