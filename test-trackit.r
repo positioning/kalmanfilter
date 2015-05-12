@@ -1,5 +1,5 @@
 library(trackit)
-data(drifter)
+data(drifter); data(gmt3)
 data(deltat); deltat$JDE = with(deltat,JDE(year,month,day))  # a fix for R 3.0+
 source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r")  # fix for path.packages issues for R.3.1+
 source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r") # fix for path.packages issues for R.3.1+
