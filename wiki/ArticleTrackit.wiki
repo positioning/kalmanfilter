@@ -17,6 +17,13 @@ The model is unique in estimating the most probable track without making any lig
   
 http://geolocation.googlecode.com/svn/wiki/images/trackit.jpg
 
+= See an example in R before working on your own dataset =  
+
+{{{
+source('http://geolocation.googlecode.com/svn/trunk/test-trackit.r')
+}}}
+
+= Now, for your own data: = 
 = Input data format =  
   ==1. Light data==
   {{{
@@ -299,6 +306,10 @@ R-3.0 has made some changes to their base functions, and whenever their team dec
 
   # Fix: load the data before calling prepit()
   data(deltat); deltat$JDE = with(deltat,JDE(year,month,day))
+
+  # Fix for R-3.2: add also these lines
+  source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_prepit.r")  
+  source("http://geolocation.googlecode.com/svn/trunk/support/trackit/func_trackit.r")
   }}}
 
 = Known issues =
