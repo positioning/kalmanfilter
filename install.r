@@ -7,9 +7,7 @@
 kf.install <- function(x64=FALSE, ver)
 {
 install.packages("date", repos="http://cran.rstudio.com/")
-# Hosting ncdf
-nfile <- "ncdf_1.8.6.tar.gz"
-nlink <- "http://github.com/positioning/kalmanfilter/raw/master/downloads/ncdf_1.8.6.tar.gz"
+install.packages("ncdf", repos="http://cran.rstudio.com/")
 
 d2 <- "http://github.com/positioning/kalmanfilter/raw/master/Rpack/"
 # For R.2.15 or earlier
@@ -22,11 +20,6 @@ pac <- c('kftrack', 'ukfsst', 'trackit')
 ver <- c('_0.70', '_0.3', '_0.2-6')
 
 if (os == "Windows") {
-   nfile <- 'ncdf_1.8.1.zip'
-   nlink <- 'http://github.com/positioning/kalmanfilter/raw/master/downloads/ncdf_1.8.1.zip'
-   download.file(nlink, nfile, mode='wb')
-   install.packages(nfile, .libPaths()[1], repos = NULL, type='binary')
-   unlink(nfile)
    for (i in 1:3) {
      lfile <- paste(pac[i],ver[i],lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'),'/win/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
@@ -35,9 +28,6 @@ if (os == "Windows") {
      unlink(lfile)
      }
   } else if (os == "Darwin") {
-   download.file(nlink, nfile, mode='wb')
-   install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
-   unlink(nfile)
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/mac/' , pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
@@ -45,10 +35,7 @@ if (os == "Windows") {
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
-  } else {
-   download.file(nlink, nfile, mode='wb')
-   install.packages(nfile, repos = NULL, type='source')
-   unlink(nfile)	
+  } else {	
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/linux/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
