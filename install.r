@@ -1,6 +1,6 @@
 # Small script to install KF geolocation packages and the packages it depend on
 # Modified from earlier work of Anders Nielsen
-# Chi Hin (Tim) Lam <timlam@eco.umass.edu> 
+# Chi Hin (Tim) Lam <tagtuna@gmail.com> 
 # October 16, 2013 modified for R 3.0 by Benjamin Galuardi
 # For details, visit http://code.google.com/p/geolocation
 
@@ -50,9 +50,7 @@ kf3.install <- function(x64=FALSE)
 {
 install.packages("date", repos="http://cran.rstudio.com/")
 install.packages("ncdf", repos="http://cran.rstudio.com/")
-# dlink <- 'http://geolocation.googlecode.com/files/'
-dlink<-"http://geolocation.googlecode.com/svn/trunk/downloads/R3x/"
-# https://geolocation.googlecode.com/svn/trunk/downloads/R3x/64bit/kftrack_0.70-x64.tar.gz
+dlink<-"http://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/"
 os <- Sys.info()[['sysname']]
 ext <- c('.tar.gz')
 pac <- c('kftrack', 'ukfsst', 'trackit')
