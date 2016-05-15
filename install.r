@@ -7,19 +7,21 @@
 kf.install <- function(x64=FALSE, ver)
 {
 install.packages("date", repos="http://cran.rstudio.com/")
-install.packages("ncdf", repos="http://cran.rstudio.com/")
+# Hosting ncdf
+nfile <- "ncdf_1.8.6.tar.gz"
+nlink <- "http://github.com/positioning/kalmanfilter/raw/master/downloads/ncdf_1.8.6.tar.gz"
+
 d2 <- "http://github.com/positioning/kalmanfilter/raw/master/Rpack/"
 # For R.2.15 or earlier
 d3 <-"http://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/"
 # For R.3.0 or later
 dlink <- ifelse(ver==2,d2,d3)
 os <- Sys.info()[['sysname']]
-ext <- c('.tar.gz')
+lext <- c('.tar.gz')
 pac <- c('kftrack', 'ukfsst', 'trackit')
 ver <- c('_0.70', '_0.3', '_0.2-6')
 
 if (os == "Windows") {
-   lext <- ext[1]
    for (i in 1:3) {
      lfile <- paste(pac[i],ver[i],lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'),'/win/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
@@ -27,24 +29,31 @@ if (os == "Windows") {
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
+     download.file(nlink, nfile, mode='wb')
+     install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
+     unlink(nfile)
   } else if (os == "Darwin") {
-   lext <- ext[1]
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/mac/' , pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
      download.file(llink, lfile, mode='wb')
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
-     }   
+     }
+	 download.file(nlink, nfile, mode='wb')
+     install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
+     unlink(nfile)
   } else {
-   lext <- ext[1]
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/linux/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
      download.file(llink, lfile, mode='wb')
      install.packages(lfile, repos = NULL, type='source')
      unlink(lfile)
-     } 
+     }
+     download.file(nlink, nfile, mode='wb')
+     install.packages(nfile, repos = NULL, type='source')
+     unlink(nfile)	 
   }
 }
 
