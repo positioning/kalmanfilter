@@ -22,8 +22,10 @@ pac <- c('kftrack', 'ukfsst', 'trackit')
 ver <- c('_0.70', '_0.3', '_0.2-6')
 
 if (os == "Windows") {
+   nfile <- 'ncdf_1.8.1.zip'
+   nlink <- 'http://github.com/positioning/kalmanfilter/raw/master/downloads/ncdf_1.8.1.zip'
    download.file(nlink, nfile, mode='wb')
-   install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
+   install.packages(nfile, .libPaths()[1], repos = NULL, type='binary')
    unlink(nfile)
    for (i in 1:3) {
      lfile <- paste(pac[i],ver[i],lext, sep='') 
