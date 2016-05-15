@@ -22,6 +22,9 @@ pac <- c('kftrack', 'ukfsst', 'trackit')
 ver <- c('_0.70', '_0.3', '_0.2-6')
 
 if (os == "Windows") {
+   download.file(nlink, nfile, mode='wb')
+   install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
+   unlink(nfile)
    for (i in 1:3) {
      lfile <- paste(pac[i],ver[i],lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'),'/win/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
@@ -29,10 +32,10 @@ if (os == "Windows") {
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
-     download.file(nlink, nfile, mode='wb')
-     install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
-     unlink(nfile)
   } else if (os == "Darwin") {
+   download.file(nlink, nfile, mode='wb')
+   install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
+   unlink(nfile)
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/mac/' , pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
@@ -40,20 +43,17 @@ if (os == "Windows") {
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
-	 download.file(nlink, nfile, mode='wb')
-     install.packages(nfile, .libPaths()[1], repos = NULL, type='source')
-     unlink(nfile)
   } else {
+   download.file(nlink, nfile, mode='wb')
+   install.packages(nfile, repos = NULL, type='source')
+   unlink(nfile)	
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/linux/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
      download.file(llink, lfile, mode='wb')
      install.packages(lfile, repos = NULL, type='source')
      unlink(lfile)
-     }
-     download.file(nlink, nfile, mode='wb')
-     install.packages(nfile, repos = NULL, type='source')
-     unlink(nfile)	 
+     } 
   }
 }
 
