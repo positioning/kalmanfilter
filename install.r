@@ -6,10 +6,12 @@
 
 kf.install <- function(x64=FALSE, ver)
 {
-install.packages("date", repos="http://cran.rstudio.com/")
-install.packages("ncdf", repos="http://cran.rstudio.com/")
-install.packages("httr", repos="http://cran.rstudio.com/")
-require(httr)
+pack <- c('date','ncdf','httr','devtools')
+spack <- installed.packages()[,"Package"]
+for (i in pack){
+  if (!any(i == spack)) install.packages(i, repos="http://cran.rstudio.com/")
+}
+require(httr) # For https download
 
 dlink <-"https://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/"
 os <- Sys.info()[['sysname']]
