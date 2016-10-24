@@ -1,19 +1,17 @@
 # Small script to install KF geolocation packages and the packages it depend on
-# Modified from earlier work of Anders Nielsen
-# Modified for R 3.0 by Benjamin Galuardi
-# Last edited May 16 2016
+# Modified from Anders Nielsen and Benjamin Galuardi
+# Last edited Oct 24 2016 
+# Tested ONLY for only Windows install with R-3.0.2
 # by Chi Hin (Tim) Lam <tagtuna@gmail.com> 
 
 kf.install <- function(x64=FALSE, ver)
 {
 install.packages("date", repos="http://cran.rstudio.com/")
 install.packages("ncdf", repos="http://cran.rstudio.com/")
+install.packages("httr", repos="http://cran.rstudio.com/")
+require(httr)
 
-d2 <- "http://github.com/positioning/kalmanfilter/raw/master/Rpack/"
-# For R.2.15 or earlier
-d3 <-"http://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/"
-# For R.3.0 or later
-dlink <- ifelse(ver==2,d2,d3)
+dlink <-"https://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/"
 os <- Sys.info()[['sysname']]
 lext <- c('.tar.gz')
 pac <- c('kftrack', 'ukfsst', 'trackit')
@@ -23,7 +21,7 @@ if (os == "Windows") {
    for (i in 1:3) {
      lfile <- paste(pac[i],ver[i],lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'),'/win/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
-     download.file(llink, lfile, mode='wb')
+     GET(llink, write_disk(lfile, overwrite=TRUE))
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
@@ -31,7 +29,7 @@ if (os == "Windows") {
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/mac/' , pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
-     download.file(llink, lfile, mode='wb')
+     GET(llink, write_disk(lfile, overwrite=TRUE))
      install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
      unlink(lfile)
      }
@@ -39,15 +37,11 @@ if (os == "Windows") {
    for (i in 1:3) {
      lfile <- paste(pac[i], lext, sep='') 
      llink <- paste(dlink, ifelse(x64, '64bit', '32bit'), '/linux/' ,pac[i], ver[i], ifelse(x64, '-x64', ''), lext ,sep='')
-     download.file(llink, lfile, mode='wb')
+     GET(llink, write_disk(lfile, overwrite=TRUE))
      install.packages(lfile, repos = NULL, type='source')
      unlink(lfile)
      } 
   }
 }
 
-# Switch between R versions
-   ### install 32-bit files by default
-if (getRversion() < "3"){
-   kf.install(F,2)} else{
-   kf.install(F,3)}
+kf.install(F)
