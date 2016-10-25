@@ -6,7 +6,7 @@
 
 kf.install <- function(x64=FALSE, ver)
 {
-pack <- c('date','ncdf','httr','devtools')
+pack <- c('date','ncdf','devtools')
 spack <- installed.packages()[,"Package"]
 for (i in pack){
   if (!any(i == spack)) install.packages(i, repos="http://cran.rstudio.com/")
