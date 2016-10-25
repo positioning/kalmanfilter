@@ -1,59 +1,38 @@
 # Small script to install  analyzepsat and dependencies
-# Ben Galuardi March 2013 <galuardi@eco.umass.edu>
+# First version: Ben Galuardi March 2013 <bgaluardi@umassd.edu>
+# Slight changes to match geolocation installation script for R-3.0.2
+# Last edited: Oct 24 2016
 
-install.psat = function(v3=F){
+install.psat = function(){
 #===============================================================#
-# my old version
-# funstion to test for installed packages
-#===============================================================#
-# pkglist=c('MASS','gdata','maptools','GenKern','matlab','raster','ncdf','RODBC','adehabitat','fields','ellipse')
-# pkgTest <- function(x)
-  # {
-    # if(x %in% rownames(installed.packages())==F)
-    # {
-      # install.packages(x,dep=TRUE)
-        # if(!require(x,character.only = TRUE)) stop("Package not found")
-    # }
-  # }
-  
-# install required packages  
-# for(i in pkglist){
- # pkgTest(i)
-# }
-  
-#===============================================================#
-# New version: borrowed from   http://www.rforge.net/FSA/InstallFSA.R
+# Borrowed from   http://www.rforge.net/FSA/InstallFSA.R
 #===============================================================#
 # Find out what analyzepsat needs that is not already installed
 installed <- library()$results[,"Package"]
-psat.depend <- c('MASS','gdata','maptools','GenKern','matlab','raster','ncdf','RODBC','adehabitat','fields','ellipse','crawl')
+psat.depend <- c('MASS','gdata','maptools','GenKern','matlab','raster','ncdf','RODBC','adehabitat','fields','ellipse','crawl','devtools','httr')
 psat.dep.log <- psat.depend %in% installed
 psat.need <- psat.depend[!psat.dep.log]  
 
 ## Install all packages from CRAN that are needed (be on the lookout for choosing a mirror)
-if (length(psat.need)>0) install.packages(psat.need)
+if (length(psat.need)>0) install.packages(psat.need, repos="http://cran.rstudio.com/")
 
 #================================================================#
-# back to my version
+# Analyzepsat
 #================================================================#
 # install kf stuff
 if('ukfsst' %in% rownames(installed.packages())==F){
-if(v3==F){
- source('http://geolocation.googlecode.com/files/install.r')
- }else{
- source('http://geolocation.googlecode.com/svn/trunk/install-3.0.r')
- }
+require(devtools)
+source_url("https://raw.githubusercontent.com/positioning/kalmanfilter/master/install.r")
 }
 
 # if (.Platform$OS.type == "windows") {
-  download.file('http://geolocation.googlecode.com/svn/trunk/downloads/R3x/analyzepsat_3.1.tar.gz','analyzepsat_3.1.tar.gz', mode='wb')
-  install.packages('analyzepsat_3.1.tar.gz', .libPaths()[1], repos = NULL, type='source')
-  unlink(c('analyzepsat_3.1.tar.gz'))
-# }else{
-   # download.file('http://geolocation.googlecode.com/files/analyzepsat_3.1.tar.gz','analyzepsat_3.1.tar.gz', mode='wb')
-  # install.packages('analyzepsat_3.1.tar.gz', repos = NULL)
-  # unlink(c('analyzepsat_3.1.tar.gz'))
-# }
+  require(httr)
+  llink <- 'https://github.com/positioning/kalmanfilter/raw/master/downloads/R3x/analyzepsat_3.1.tar.gz'
+  lfile <- 'analyzepsat_3.1.tar.gz'
+  GET(llink, write_disk(lfile, overwrite=TRUE))
+  install.packages(lfile, .libPaths()[1], repos = NULL, type='source')
+  unlink(lfile)
+#}
  
 ## Clean up a little
 rm("installed","psat.depend","psat.dep.log","psat.need")
