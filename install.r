@@ -1,12 +1,12 @@
-# Small script to install KF geolocation packages and the packages it depend on
-# Modified from Anders Nielsen and Benjamin Galuardi
-# Last edited Oct 24 2016 
-# Tested ONLY for only Windows install with R-3.0.2
-# by Chi Hin (Tim) Lam <tagtuna@gmail.com> 
+## Small script to install KF geolocation packages and the packages it depend on
+## Modified from Anders Nielsen and Benjamin Galuardi
+## Last edited Jan 11 2017 
+## Tested ONLY for only Windows install with R-3.0.2
+## by Chi Hin (Tim) Lam <tagtuna@gmail.com> 
 
 kf.install <- function(x64=FALSE, ver)
 {
-pack <- c('date','ncdf','devtools')
+pack <- c('date','ncdf','devtools','httr')
 spack <- installed.packages()[,"Package"]
 for (i in pack){
   if (!any(i == spack)) install.packages(i, repos="http://cran.rstudio.com/")
