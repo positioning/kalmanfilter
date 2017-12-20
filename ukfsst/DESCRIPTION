@@ -8,6 +8,6 @@ Description: Archival tagged marine creatures are typically geolocated based on
              observed sea surface temperatures in a coherent state-space model to 
              reconstruct the track via the extended Kalman filter.    
 Maintainer: Anders Nielsen <anders.nielsen@hawaii.edu>
-Depends: R (>= 1.8.0), date, kftrack
+Depends: R (>= 1.8.0), date, kftrack, ncdf4
 License: BSD
 Packaged: 2012-11-24 15:50:31 UTC; ben
