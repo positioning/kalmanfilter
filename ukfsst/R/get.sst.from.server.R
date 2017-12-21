@@ -2,7 +2,7 @@ get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
 {
   # Metadata: http://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.html
   require(date)
-  require(ncdf)
+  require(ncdf4)
   fmtDate <- function(date) {
         x <- date.mdy(date)
         paste(x$year, formatC(x$month, digits = 1, flag = "0", 
@@ -49,10 +49,10 @@ get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
   link <- "ftp://ftp.cdc.noaa.gov/Datasets/noaa.oisst.v2/lsmask.nc"
   fname = paste(folder, "landmask.nc", sep = "/")
   download.file(link, fname, mode="wb")
-  nc <- open.ncdf(fname)
-  land <- get.var.ncdf(nc, varid="mask")
+  nc <- nc_open(fname)
+  land <- ncvar_get(nc, varid="mask")
   land <- land[lonlow:lonhigh,((lathigh-90)*-1):((latlow-90)*-1)]
-  close.ncdf(nc)
+  nc_close(nc)
   #
   # Get dataset ID and find out the end date and file dates of the imagery series
   link <- "http://www.esrl.noaa.gov/psd/cgi-bin/db_search/DBSearch.pl?Dataset=NOAA+Optimum+Interpolation+(OI)+SST+V2&Variable=Sea+Surface+Temperature"
@@ -111,22 +111,22 @@ get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
   cat(paste("SST data are downloaded as a netcdf file from \n\n", flink, "\n\n" , sep=""))
   #
   # Add land mask to oisst.nc
-  nc <- open.ncdf(fname, write=T)
+  nc <- nc_open(fname, write=T)
   xdim <- nc$dim[['lon']]
   ydim <- nc$dim[['lat']]
-  varz = var.def.ncdf("land","flag", list(xdim,ydim), 32767, 
+  varz = ncvar_def("land","flag", list(xdim,ydim), 32767, 
           longname="Land mask for SST values (1=ocean, 0=land)")
-  nc <- var.add.ncdf(nc, varz)
-  put.var.ncdf(nc, "land", land)
-  sync.ncdf(nc)
-  close.ncdf(nc)
+  nc <- ncvar_add(nc, varz)
+  ncvar_put(nc, "land", land)
+  nc_sync(nc)
+  nc_close(nc)
   land <- t(land) # the dimensions are flipped
   #
   # Extract each day of data as xyz
-  nc <- open.ncdf(fname)
-  lon <- get.var.ncdf(nc, varid="lon")
-  lat <- get.var.ncdf(nc, varid="lat")
-  dates <- as.Date("1800-01-01") + get.var.ncdf(nc, varid="time")
+  nc <- nc_open(fname)
+  lon <- ncvar_get(nc, varid="lon")
+  lat <- ncvar_get(nc, varid="lat")
+  dates <- as.Date("1800-01-01") + ncvar_get(nc, varid="time")
   every.day <- 7
   vv      <- nc$var[[1]]
   varsize <- vv$varsize
@@ -138,7 +138,7 @@ get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
         start[ndims] <- i       # change to start=(1,1,1,...,i) to read timestep i
         count <- varsize        # begin w/count=(nx,ny,nz,...,nt), reads entire var
         count[ndims] <- 1       # change to count=(nx,ny,nz,...,1) to read 1 tstep
-        sst <- round(t(get.var.ncdf(nc, vv, start=start, count=count )),2)
+        sst <- round(t(ncvar_get(nc, vv, start=start, count=count )),2)
         # Prepare an individual xyz file
         xyz <- rbind(rep(NA, 4))
         d <- mdy.date(as.numeric(format(dates[i], "%m")),
@@ -162,7 +162,7 @@ get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
         write.table(xyz, file = dest, 
                     quote = FALSE, row.names = FALSE, col.names = FALSE)
   }
-  close.ncdf(nc)
+  nc_close(nc)
   cat("And repackaged to", length(dir(sstfolder)), "xyz files in:\n\n  ", sstfolder, "\n\n")
   cat(paste(rep("=", options()$width), collapse = ""), "\n\n")
   .sstFileVector <<- paste(sstfolder, dir(sstfolder), sep = "/")
