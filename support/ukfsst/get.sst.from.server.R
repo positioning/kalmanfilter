@@ -1,9 +1,8 @@
-get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
-                         folder = tempdir(), removeland = TRUE, minus180 = FALSE, offsetx=0, offset.cutoff=360)
+get.sst.from.server <- function(track, folder = tempdir(), removeland = TRUE)
 {
   # Metadata: http://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.html
   require(date)
-  require(ncdf)
+  require(ncdf4)
   fmtDate <- function(date) {
         x <- date.mdy(date)
         paste(x$year, formatC(x$month, digits = 1, flag = "0", 
@@ -34,22 +33,26 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
   unlink(paste(sstfolder, "/*", sep=""), F)
   if (is.data.frame(track)) track <- list(track)
   minDate <- min(unlist(lapply(track, function(x) mdy.date(x[1, 
-        2], x[1, 3], x[1, 1]))))
+        2], x[1, 1], x[1, 3]))))
   maxDate <- max(unlist(lapply(track, function(x) mdy.date(x[nrow(x), 
-        2], x[nrow(x), 3], x[nrow(x), 1]))))
-  latlow <- ifelse(latlow < -89.5, -89.5, trunc(latlow)-0.5)
-  lathigh <- ifelse(lathigh > 89.5, 89.5, trunc(lathigh)+0.5)
-  lonlow <- ifelse(lonlow < 0, trunc(lonlow)+360-0.5, trunc(lonlow)-0.5)
-  lonhigh <- ifelse(lonhigh < 0, trunc(lonhigh)+360+0.5, trunc(lonhigh)+0.5)
+        2], x[nrow(x), 1], x[nrow(x), 3]))))
+  minLon <- min(unlist(lapply(track, function(x) min(x[, 4])))) -  2
+  maxLon <- max(unlist(lapply(track, function(x) max(x[, 4])))) + 2
+  minLat <- min(unlist(lapply(track, function(x) min(x[, 5])))) - 4
+  maxLat <- max(unlist(lapply(track, function(x) max(x[, 5])))) + 4
+  latlow <- ifelse(minLat < -89.5, -89.5, trunc(minLat)-0.5)
+  lathigh <- ifelse(maxLat > 89.5, 89.5, trunc(maxLat)+0.5)
+  lonlow <- ifelse(minLon < 0, trunc(minLon)+360-0.5, trunc(minLon)-0.5)
+  lonhigh <- ifelse(maxLon < 0, trunc(maxLon)+360+0.5, trunc(maxLon)+0.5)
   #
   # Download and subset land mask
   link <- "ftp://ftp.cdc.noaa.gov/Datasets/noaa.oisst.v2/lsmask.nc"
   fname = paste(folder, "landmask.nc", sep = "/")
   download.file(link, fname, mode="wb")
-  nc <- open.ncdf(fname)
-  land <- get.var.ncdf(nc, varid="mask")
+  nc <- nc_open(fname)
+  land <- ncvar_get(nc, varid="mask")
   land <- land[lonlow:lonhigh,((lathigh-90)*-1):((latlow-90)*-1)]
-  close.ncdf(nc)
+  nc_close(nc)
   #
   # Get dataset ID and find out the end date and file dates of the imagery series
   link <- "http://www.esrl.noaa.gov/psd/cgi-bin/db_search/DBSearch.pl?Dataset=NOAA+Optimum+Interpolation+(OI)+SST+V2&Variable=Sea+Surface+Temperature"
@@ -108,22 +111,22 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
   cat(paste("SST data are downloaded as a netcdf file from \n\n", flink, "\n\n" , sep=""))
   #
   # Add land mask to oisst.nc
-  nc <- open.ncdf(fname, write=T)
+  nc <- nc_open(fname, write=T)
   xdim <- nc$dim[['lon']]
   ydim <- nc$dim[['lat']]
-  varz = var.def.ncdf("land","flag", list(xdim,ydim), 32767, 
+  varz = ncvar_def("land","flag", list(xdim,ydim), 32767, 
           longname="Land mask for SST values (1=ocean, 0=land)")
-  nc <- var.add.ncdf(nc, varz)
-  put.var.ncdf(nc, "land", land)
-  sync.ncdf(nc)
-  close.ncdf(nc)
+  nc <- ncvar_add(nc, varz)
+  ncvar_put(nc, "land", land)
+  nc_sync(nc)
+  nc_close(nc)
   land <- t(land) # the dimensions are flipped
   #
   # Extract each day of data as xyz
-  nc <- open.ncdf(fname)
-  lon <- get.var.ncdf(nc, varid="lon")
-  lat <- get.var.ncdf(nc, varid="lat")
-  dates <- as.Date("1800-01-01") + get.var.ncdf(nc, varid="time")
+  nc <- nc_open(fname)
+  lon <- ncvar_get(nc, varid="lon")
+  lat <- ncvar_get(nc, varid="lat")
+  dates <- as.Date("1800-01-01") + ncvar_get(nc, varid="time")
   every.day <- 7
   vv      <- nc$var[[1]]
   varsize <- vv$varsize
@@ -135,7 +138,7 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
         start[ndims] <- i       # change to start=(1,1,1,...,i) to read timestep i
         count <- varsize        # begin w/count=(nx,ny,nz,...,nt), reads entire var
         count[ndims] <- 1       # change to count=(nx,ny,nz,...,1) to read 1 tstep
-        sst <- round(t(get.var.ncdf(nc, vv, start=start, count=count )),2)
+        sst <- round(t(ncvar_get(nc, vv, start=start, count=count )),2)
         # Prepare an individual xyz file
         xyz <- rbind(rep(NA, 4))
         d <- mdy.date(as.numeric(format(dates[i], "%m")),
@@ -143,7 +146,7 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
                       as.numeric(format(dates[i], "%Y")))
         # !! The date constructs for the filename are different - the first date is the image date
         # !! Unlike old code that centers the image date in between d1 and d2 (+/- days to position it)
-	    y1 <- date.mdy(d)$year
+	y1 <- date.mdy(d)$year
         d1 <- d - mdy.date(month = 1, day = 1, year = y1) + 1
         y2 <- date.mdy(d + every.day - 1)$year
         d2 <- (d + every.day -1) - mdy.date(month = 1, 
@@ -152,34 +155,24 @@ get.reynolds <- function(track, lonlow, lonhigh, latlow, lathigh,
                     "_", y2, fmtDay(d2), "_", "sst", ".xyz", sep = "")
         dest <- paste(sstfolder, filename, sep = "/")
         for (j in 1:length(lon)) {
-		     m180 <- ifelse(lon[j]>180, lon[j]-360, lon[j]) + offsetx
-             xyz <- rbind(xyz, cbind(lat, ifelse(minus180, m180, lon[j]), sst[,j], land[,j]))
+             xyz <- rbind(xyz, cbind(lat, lon[j], sst[,j], land[,j]))
         }
         xyz <- na.omit(xyz)
-        if (removeland) {
-		     xyz <- xyz[which(xyz[,4]==1), -4]
-	    } else {
-		     xyz <- xyz[, -4]
-		}
-		if (minus180){
-          jy <- order(xyz[,2])
-		  xyz <- xyz[jy,]
-	      jy <- which(xyz[,2]> offset.cutoff)[1]-1
-		  xyz <- xyz[1:jy,]
-		}
+        if (removeland) xyz <- xyz[which(xyz[,4]==1), -4] 
         write.table(xyz, file = dest, 
                     quote = FALSE, row.names = FALSE, col.names = FALSE)
   }
-  close.ncdf(nc)
+  nc_close(nc)
   cat("And repackaged to", length(dir(sstfolder)), "xyz files in:\n\n  ", sstfolder, "\n\n")
   cat(paste(rep("=", options()$width), collapse = ""), "\n\n")
   .sstFileVector <<- paste(sstfolder, dir(sstfolder), sep = "/")
   return(sstfolder)
-}  
+} 
 
 # Not run
 # setwd("C:\\Documents and Settings\\Valued Customer\\Desktop\\R\\getsst")
-# ##source("get-reynolds.R")
-# pts <- read.csv("points.csv")
-# sst.path <- get.reynolds(pts,200,250,10,40, "c:/temp")
-
+### source("get-reynolds-ukf.R")
+# library(ukfsst)
+# data(blue.shark)
+# sst.path <- get.reynolds(blue.shark)
+# fit <- kfsst(blue.shark, bx.active=FALSE, bsst.active=FALSE)
