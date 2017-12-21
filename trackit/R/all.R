@@ -376,142 +376,151 @@ light.simulator<-function(u=0, v=0, D=100, ss1=80, ss2=15, ss3=2.5, rho=0.05, bs
   return(ret)
 }
 
-prepit<-function(track, fix.first, fix.last, scan=TRUE, window=c(0.05,0.01), 
-                 tmpfile='input.dat', datfile='ukf.dat', keepfiles=c(FALSE,FALSE), 
-                 internal=TRUE, sst=NULL, from.ystr=c(3,6), from.dstr=c(7,9), 
-                 to.ystr=c(11,14), to.dstr=c(15,17), localsstfolder=NULL){
 
-  oldDigits<-options()$digits; options(digits=22)
-
-  xx<-as.numeric(mdy.date(track$month, track$day, track$year))+track$hour/24+track$min/24/60+track$sec/24/60/60
-  if(any(diff(xx)<0))stop('Dates (including times) are not sorted in increasing order.')
-  
-  if((!internal)&(!keepfiles[2]))stop("Either \'internal\' or \'keepfiles[2]\' has to be TRUE, or nothing is returned")
-  cat("Writing to temp files ... ")
-  ret<-list()
-  ret$fix.first<-fix.first[1:8]
-  if(length(fix.first)==11){
-    ret$fix.first.var<-matrix(fix.first[c(9,11,11,10)],nrow=2,ncol=2)
-  }else{
-    ret$fix.first.var<-matrix(0,nrow=2,ncol=2)
-  }
-  ret$fix.last<-fix.last[1:8]
-  if(length(fix.last)==11){
-    ret$fix.last.var<-matrix(fix.last[c(9,11,11,10)],nrow=2,ncol=2)
-  }else{
-    ret$fix.last.var<-matrix(0,nrow=2,ncol=2)
-  }
-  fix.first[1]<-(360-fix.first[1])%%360 # Now it is west pos 
-  fix.last[1]<-(360-fix.last[1])%%360   # Now it is west pos 
-  ret$scan<-scan
-  ret$window<-window
-  vec2str<-function(x)paste(x,collapse=" ")
-  ret$prehead<-c(
-    "# Data file written from the trackit package",
-    "# scanIt",
-    ifelse(scan,1,0),
-    "# fixFirst",
-    vec2str(fix.first[1:8]),
-    vec2str(ret$fix.first.var[1,]),
-    vec2str(ret$fix.first.var[2,]),
-    "# fixLast",
-    vec2str(fix.last[1:8]), 
-    vec2str(ret$fix.last.var[1,]),
-    vec2str(ret$fix.last.var[2,]),
-    "# fraction of day used around each solar event",
-    vec2str(window),
-    "# dims",
-    nrow(track), 
-    ncol(track), 
-    "# year month day hour min sec depth light temp"
-  )
-  writeLines(ret$prehead, tmpfile)
-  write.table(track, row.names=FALSE, col.names=FALSE, file=tmpfile, append=TRUE)
-  cat("# Exclude dates\n 0 \n", file=tmpfile, append=TRUE)
-  cat("Done.\n")
-  dirname<-paste(tempdir(), 'prep', sep='')
-  dir.create(dirname)
-  oldwd<-getwd()
-  setwd(dirname)
-  file.copy(paste(oldwd,tmpfile,sep="/"),"input.dat", TRUE)
-  file.copy(paste(.path.package("trackit"),'/admb/src/deltaT.dat',sep="/"),"deltaT.dat", TRUE)
-  file.copy(paste(.path.package("trackit"),'/admb/src/lunar.dat',sep="/"),"lunar.dat", TRUE)
-  cat("# dummy file", file='prepro.dat')
-  if (.Platform$OS.type == "windows") {
-    file.copy(paste(.path.package('trackit'),"/admb/bin/prepro.exe",sep="/"),"prepro.exe", TRUE)
-    error.code<-.sys("prepro.exe")
-  }else {
-      file.copy(paste(.path.package('trackit'),"/admb/bin/prepro",sep="/"),"prepro", TRUE)
-      .sys("chmod u+x prepro")
-      error.code<-.sys(paste("./prepro", sep = ""))
-  }
-  file.copy("ukf.dat", paste(oldwd,datfile,sep="/"), TRUE)
-  setwd(oldwd)
-  unlink(dirname, TRUE)
-  alllines<-readLines(datfile)
-  skiplines<-grep('obsMat', alllines)
-  ret$posthead<-alllines[1:skiplines]
-
-  if(internal){
-    cat("Creating internal object ... ")
-    ret$data<-matrix(scan(datfile, skip=skiplines, quiet=TRUE), ncol=13, byrow=TRUE)
+prepit <- function (track, fix.first, fix.last, scan = TRUE, window = c(0.05, 
+    0.01), tmpfile = "input.dat", datfile = "ukf.dat", keepfiles = c(FALSE, 
+    FALSE), internal = TRUE, sst = NULL, from.ystr = c(3, 6), 
+    from.dstr = c(7, 9), to.ystr = c(11, 14), to.dstr = c(15, 
+        17), localsstfolder = NULL) 
+{
+    oldDigits <- options()$digits
+    options(digits = 22)
+    xx <- as.numeric(mdy.date(track$month, track$day, track$year)) + 
+        track$hour/24 + track$min/24/60 + track$sec/24/60/60
+    if (any(diff(xx) < 0)) 
+        stop("Dates (including times) are not sorted in increasing order.")
+    if ((!internal) & (!keepfiles[2])) 
+        stop("Either 'internal' or 'keepfiles[2]' has to be TRUE, or nothing is returned")
+    cat("Writing to temp files ... ")
+    ret <- list()
+    ret$fix.first <- fix.first[1:8]
+    if (length(fix.first) == 11) {
+        ret$fix.first.var <- matrix(fix.first[c(9, 11, 11, 10)], 
+            nrow = 2, ncol = 2)
+    }
+    else {
+        ret$fix.first.var <- matrix(0, nrow = 2, ncol = 2)
+    }
+    ret$fix.last <- fix.last[1:8]
+    if (length(fix.last) == 11) {
+        ret$fix.last.var <- matrix(fix.last[c(9, 11, 11, 10)], 
+            nrow = 2, ncol = 2)
+    }
+    else {
+        ret$fix.last.var <- matrix(0, nrow = 2, ncol = 2)
+    }
+    fix.first[1] <- (360 - fix.first[1])%%360
+    fix.last[1] <- (360 - fix.last[1])%%360
+    ret$scan <- scan
+    ret$window <- window
+    vec2str <- function(x) paste(x, collapse = " ")
+    ret$prehead <- c("# Data file written from the trackit package", 
+        "# scanIt", ifelse(scan, 1, 0), "# fixFirst", vec2str(fix.first[1:8]), 
+        vec2str(ret$fix.first.var[1, ]), vec2str(ret$fix.first.var[2, 
+            ]), "# fixLast", vec2str(fix.last[1:8]), vec2str(ret$fix.last.var[1, 
+            ]), vec2str(ret$fix.last.var[2, ]), "# fraction of day used around each solar event", 
+        vec2str(window), "# dims", nrow(track), ncol(track), 
+        "# year month day hour min sec depth light temp")
+    writeLines(ret$prehead, tmpfile)
+    write.table(track, row.names = FALSE, col.names = FALSE, 
+        file = tmpfile, append = TRUE)
+    cat("# Exclude dates\n 0 \n", file = tmpfile, append = TRUE)
     cat("Done.\n")
-  }  
-  
-  ############################################################
-  tail<-'\n'
-  ret$has.sst<-!is.null(sst)
-  if(ret$has.sst){ 
-    if(!is.null(localsstfolder)){
-      .sstFileVector<<-paste(localsstfolder,dir(localsstfolder), sep='/')
+    dirname <- paste(tempdir(), "prep", sep = "")
+    dir.create(dirname)
+    oldwd <- getwd()
+    setwd(dirname)
+    file.copy(paste(oldwd, tmpfile, sep = "/"), "input.dat", 
+        TRUE)
+    file.copy(paste(path.package("trackit"), "/admb/src/deltaT.dat", 
+        sep = "/"), "deltaT.dat", TRUE)
+    file.copy(paste(path.package("trackit"), "/admb/src/lunar.dat", 
+        sep = "/"), "lunar.dat", TRUE)
+    cat("# dummy file", file = "prepro.dat")
+    if (.Platform$OS.type == "windows") {
+        file.copy(paste(path.package("trackit"), "/admb/prepro.exe", 
+            sep = "/"), "prepro.exe", TRUE)
+        error.code <- .sys("prepro.exe")
     }
-    tail<-c(tail,"\n#Number of sst data files\n",length(.sstFileVector),"\n")
-    tail<-c(tail,"#List of file names\n")
-    for(i in 1:length(.sstFileVector)){
-      tail<-c(tail,.sstFileVector[i],'\n')
+    else {
+        file.copy(paste(path.package("trackit"), "/admb/prepro", 
+            sep = "/"), "prepro", TRUE)
+        .sys("chmod u+x prepro")
+        error.code <- .sys(paste("./prepro", sep = ""))
     }
-    bnvec<-basename(.sstFileVector)
-    y1<-as.numeric(substr(bnvec,from.ystr[1], from.ystr[2]))
-    y2<-as.numeric(substr(bnvec,to.ystr[1], to.ystr[2]))
-    d1<-as.numeric(substr(bnvec,from.dstr[1], from.dstr[2]))
-    d2<-as.numeric(substr(bnvec,to.dstr[1], to.dstr[2]))
-    date1<-(mdy.date(year=y1, month=1, day=1)+d1-1)
-    date2<-(mdy.date(year=y2, month=1, day=1)+d2-1)
-    middate<-date.mdy(0.5*(date1+date2))
-    datevec<-JD(middate$year,middate$month,middate$day, type='universal')
-    tail<-c(tail,"#Corresponding mid-dates (rounded upwards)\n")
-    tail<-c(tail,paste(datevec, collapse=' '),"\n")
-    tail<-c(tail,"\n")
-    
-    sstJDU<-JD(sst[,1],sst[,2],sst[,3]+sst[,4]/24+sst[,5]/1440+sst[,6]/86400, type='universal')
-    sstout<-cbind(sstJDU,sst[,7]) 
-    tail<-c(tail,"\n#Number of sst observations\n",nrow(sstout),"\n")
-    for(i in 1:nrow(sstout)){
-      tail<-c(tail,paste(sstout[i,], collapse=' '),"\n")
+    file.copy("ukf.dat", paste(oldwd, datfile, sep = "/"), TRUE)
+    setwd(oldwd)
+    unlink(dirname, TRUE)
+    alllines <- readLines(datfile)
+    skiplines <- grep("obsMat", alllines)
+    ret$posthead <- alllines[1:skiplines]
+    if (internal) {
+        cat("Creating internal object ... ")
+        ret$data <- matrix(scan(datfile, skip = skiplines, quiet = TRUE), 
+            ncol = 13, byrow = TRUE)
+        cat("Done.\n")
     }
-  }else{
-    tail<-c(tail,"\n#Number of sst data files\n",0,"\n")
-  }
-  cat(tail, file=datfile, append=TRUE) 
-  ret$tail<-tail
-  ############################################################
-
-  if(keepfiles[1]){
-    ret$prefile<-file.path(tmpfile)
-  }else{
-    unlink(tmpfile)
-  }
-  if(keepfiles[2]){
-    ret$postfile<-file.path(datfile)
-  }else{
-    unlink(datfile)
-  }
-  class(ret)<-"trackit.scan"
-  options(digits=oldDigits)
-  return(ret)
+    tail <- "\n"
+    ret$has.sst <- !is.null(sst)
+    if (ret$has.sst) {
+        if (!is.null(localsstfolder)) {
+            .sstFileVector <<- paste(localsstfolder, dir(localsstfolder), 
+                sep = "/")
+        }
+        tail <- c(tail, "\n#Number of sst data files\n", length(.sstFileVector), 
+            "\n")
+        tail <- c(tail, "#List of file names\n")
+        for (i in 1:length(.sstFileVector)) {
+            tail <- c(tail, .sstFileVector[i], "\n")
+        }
+        bnvec <- basename(.sstFileVector)
+        y1 <- as.numeric(substr(bnvec, from.ystr[1], from.ystr[2]))
+        y2 <- as.numeric(substr(bnvec, to.ystr[1], to.ystr[2]))
+        d1 <- as.numeric(substr(bnvec, from.dstr[1], from.dstr[2]))
+        d2 <- as.numeric(substr(bnvec, to.dstr[1], to.dstr[2]))
+        date1 <- (mdy.date(year = y1, month = 1, day = 1) + d1 - 
+            1)
+        date2 <- (mdy.date(year = y2, month = 1, day = 1) + d2 - 
+            1)
+        middate <- date.mdy(0.5 * (date1 + date2))
+        datevec <- JD(middate$year, middate$month, middate$day, 
+            type = "universal")
+        tail <- c(tail, "#Corresponding mid-dates (rounded upwards)\n")
+        tail <- c(tail, paste(datevec, collapse = " "), "\n")
+        tail <- c(tail, "\n")
+        sstJDU <- JD(sst[, 1], sst[, 2], sst[, 3] + sst[, 4]/24 + 
+            sst[, 5]/1440 + sst[, 6]/86400, type = "universal")
+        sstout <- cbind(sstJDU, sst[, 7])
+        tail <- c(tail, "\n#Number of sst observations\n", nrow(sstout), 
+            "\n")
+        for (i in 1:nrow(sstout)) {
+            tail <- c(tail, paste(sstout[i, ], collapse = " "), 
+                "\n")
+        }
+    }
+    else {
+        tail <- c(tail, "\n#Number of sst data files\n", 0, "\n")
+    }
+    cat(tail, file = datfile, append = TRUE)
+    ret$tail <- tail
+    if (keepfiles[1]) {
+        ret$prefile <- filepath(tmpfile)
+    }
+    else {
+        unlink(tmpfile)
+    }
+    if (keepfiles[2]) {
+        ret$postfile <- filepath(datfile)
+    }
+    else {
+        unlink(datfile)
+    }
+    class(ret) <- "trackit.scan"
+    options(digits = oldDigits)
+    return(ret)
 }
 
-.trimit  <- function (scan) 
+.trimit <- function (scan) 
 {
     oldDigits <- options()$digits
     options(digits = 22)
@@ -544,100 +553,115 @@ prepit<-function(track, fix.first, fix.last, scan=TRUE, window=c(0.05,0.01),
     scan$posthead[18] <- length(unique(scan$data[, 12]))  #change 12 to 18
     no <- no[!remove]
     scan$posthead[20] <- paste(as.integer(cumsum(c(1, no[-length(no)]))), 
-        collapse = " ")			# change 14 to 20
+        collapse = " ")   # change 14 to 20
     scan$posthead[22] <- paste(as.integer(cumsum(no)), collapse = " ")
     options(digits = oldDigits)
     return(scan)  #change 16 to 22
 }
 
-
-trackit<-function(prep.track, a2lpoints=15,
-                  u.init=0, v.init=0, D.init=100, ss1.init=1, ss2.init=5, ss3.init=1, rho.init=0.01, 
-                  bsst.init=0, sssst.init=0.01, rad.init=200, dep1.init=0, dep2.init=0, 
-                  phi.init=c(60,rep((200-60)/(a2lpoints-1),a2lpoints-1)),    
-                  init=c(u.init,v.init,D.init,ss1.init,ss2.init,ss3.init,rho.init,
-                         bsst.init,sssst.init,rad.init,dep1.init,dep2.init,phi.init), 
-                  u.ph=-1, v.ph=-1, D.ph=3, ss1.ph=2, ss2.ph=2, ss3.ph=2, rho.ph=3, 
-                  bsst.ph=-1, sssst.ph=2, rad.ph=3, dep1.ph=-1, dep2.ph=-1,phi.ph=1,  
-                  phase=c(u.ph,v.ph,D.ph,ss1.ph,ss2.ph,ss3.ph,rho.ph,
-                          bsst.ph,sssst.ph,rad.ph,dep1.ph,dep2.ph,phi.ph),
-                  blue.light.only=FALSE, save.dir=NULL){
-  init[1] <- -init[1]
-  oldDigits<-options()$digits; options(digits=22)
-  vec2str<-function(x)paste(x,collapse=" ")
-  confLines<-c(
-    "# Ponts in angle to light approximation", 
-    a2lpoints,
-    "# Parameter names u v D ss1 ss2 ss3 rho bsst sssst rad dep1 dep2 phi1 ... phiN", 
-    "# Initial values", 
-    vec2str(init),
-    "# Estimation phase", 
-    vec2str(phase)
-  )
-  if(is.null(save.dir)){
-    dirname<-paste(tempdir(), 'run', sep='')
-  }else{
-    dirname<-paste(save.dir, 'run', sep='')
-  }
-  dir.create(dirname)
-  ukfdat<-paste(dirname,"ukf.dat", sep='/')
-  if(is.null(prep.track$postfile)){
-    writeLines(c("# Blue light only", ifelse(blue.light.only,1,0), prep.track$posthead), ukfdat)
-    write.table(prep.track$data, row.names=FALSE, col.names=FALSE, file=ukfdat, append=TRUE)
-    cat(prep.track$tail, file=ukfdat, append=TRUE) 
-  }else{
-    lines<-readLines(prep.track$postfile)
-    writeLines(c("# Blue light only", ifelse(blue.light.only,1,0), lines), ukfdat)
-    #file.copy(prep.track$postfile,paste(dirname,"ukf.dat", sep='/'), TRUE)    
-  }
-  oldwd<-getwd()
-  setwd(dirname)
-  writeLines(confLines,'model.cfg')
-  cat("# Run program in simulation mode only 0=FALSE, 1=TRUE\n",0,"\n", file="sstsim.dat") 
-  if (.Platform$OS.type == "windows") {
-    file.copy(paste(.path.package('trackit'),"/admb/bin/ukf.exe",sep=""),"ukf.exe", TRUE)
-	error.code<-.sys("ukf.exe")
-  }else {
-      file.copy(paste(.path.package('trackit'),"/admb/bin/ukf",sep=""),"ukf", TRUE)
-      .sys("chmod u+x ukf")
-      error.code<-.sys(paste("./ukf", sep = ""))
-  }
-  ret<-list()
-  pnames<-c("u","v","D","ss1","ss2","ss3","rho","bsst","sssst","rad","dep1","dep2","qSparTilde")
-  ret$init<-init; ret$init[1] <- -ret$init[1]
-  ret$phase<-phase
-  ret$error.code
-  mpt<-read.table('mpt.out')
-  jdu2date<-function(jdu)as.date(jdu-2436934.5) 
-  ret$decimal.date<-mpt$V1-2436934.5
-  if(prep.track$has.sst){
-    sstobsstr<-(prep.track$tail[(grep("Number of sst observations",prep.track$tail)+2):length(prep.track$tail)])
-    sstobsmat<-matrix(as.numeric(unlist(strsplit(sstobsstr[sstobsstr!='\n'],' '))), ncol=2, byrow=TRUE)
-    sstobsmat[,1]<-sstobsmat[,1]-2436934.5
-    ret$sstobs<-sstobsmat
-    ret$most.prob.sst<-mpt$V14
-  }
-  ret$date<-jdu2date(mpt$V1)
-  ret$timeAL<-mpt$V1-mpt$V1[1]
-  ret$most.prob.track<-cbind(x=(360-mpt$V8)%%360,y=mpt$V9)
-  ret$var.most.prob.track<-cbind(mpt$V10,mpt$V11,mpt$V12,mpt$V13)
-  std<-read.table('ukf.std', header=FALSE, skip=1)      
-  ret$est<-unlist(sapply(pnames, function(n)std$V3[std$V2==n]))
-  if("u"%in%names(ret$est)){ret$est["u"] <- -ret$est["u"]}
-  ret$sd<-unlist(sapply(pnames, function(n)std$V4[std$V2==n]))
-  names(ret$est)<-gsub('qSparTilde','phi', names(ret$est))
-  names(ret$sd)<-gsub('qSparTilde','phi', names(ret$sd))
-  par<-as.numeric(scan('ukf.par', what="", nlines=1, quiet=TRUE)[c(6,11,16)]) 
-  ret$npar<-par[1]
-  ret$nlogL<-par[2]
-  ret$max.grad.comp<-par[3]
-  setwd(oldwd)
-  if(is.null(save.dir)){
-    unlink(dirname, TRUE)
-  }
-  class(ret)<-"trackit"
-  options(digits=oldDigits)
-  return(ret)
+trackit <- function (prep.track, a2lpoints = 15, u.init = 0, v.init = 0, 
+    D.init = 100, ss1.init = 1, ss2.init = 5, ss3.init = 1, rho.init = 0.01, 
+    bsst.init = 0, sssst.init = 0.01, rad.init = 200, dep1.init = 0, 
+    dep2.init = 0, phi.init = c(60, rep((200 - 60)/(a2lpoints - 
+        1), a2lpoints - 1)), init = c(u.init, v.init, D.init, 
+        ss1.init, ss2.init, ss3.init, rho.init, bsst.init, sssst.init, 
+        rad.init, dep1.init, dep2.init, phi.init), u.ph = -1, 
+    v.ph = -1, D.ph = 3, ss1.ph = 2, ss2.ph = 2, ss3.ph = 2, 
+    rho.ph = 3, bsst.ph = -1, sssst.ph = 2, rad.ph = 3, dep1.ph = -1, 
+    dep2.ph = -1, phi.ph = 1, phase = c(u.ph, v.ph, D.ph, ss1.ph, 
+        ss2.ph, ss3.ph, rho.ph, bsst.ph, sssst.ph, rad.ph, dep1.ph, 
+        dep2.ph, phi.ph), blue.light.only = FALSE, save.dir = NULL) 
+{
+    init[1] <- -init[1]
+    oldDigits <- options()$digits
+    options(digits = 22)
+    vec2str <- function(x) paste(x, collapse = " ")
+    confLines <- c("# Ponts in angle to light approximation", 
+        a2lpoints, "# Parameter names u v D ss1 ss2 ss3 rho bsst sssst rad dep1 dep2 phi1 ... phiN", 
+        "# Initial values", vec2str(init), "# Estimation phase", 
+        vec2str(phase))
+    if (is.null(save.dir)) {
+        dirname <- paste(tempdir(), "run", sep = "")
+    }
+    else {
+        dirname <- paste(save.dir, "run", sep = "")
+    }
+    dir.create(dirname)
+    ukfdat <- paste(dirname, "ukf.dat", sep = "/")
+    if (is.null(prep.track$postfile)) {
+        writeLines(c("# Blue light only", ifelse(blue.light.only, 
+            1, 0), prep.track$posthead), ukfdat)
+        write.table(prep.track$data, row.names = FALSE, col.names = FALSE, 
+            file = ukfdat, append = TRUE)
+        cat(prep.track$tail, file = ukfdat, append = TRUE)
+    }
+    else {
+        lines <- readLines(prep.track$postfile)
+        writeLines(c("# Blue light only", ifelse(blue.light.only, 
+            1, 0), lines), ukfdat)
+    }
+    oldwd <- getwd()
+    setwd(dirname)
+    writeLines(confLines, "model.cfg")
+    cat("# Run program in simulation mode only 0=FALSE, 1=TRUE\n", 
+        0, "\n", file = "sstsim.dat")
+    if (.Platform$OS.type == "windows") {
+        file.copy(paste(path.package("trackit"), "/admb/ukf.exe", 
+            sep = ""), "ukf.exe", TRUE)
+        error.code <- .sys("ukf.exe")
+    }
+    else {
+        file.copy(paste(path.package("trackit"), "/admb/ukf", 
+            sep = ""), "ukf", TRUE)
+        .sys("chmod u+x ukf")
+        error.code <- .sys(paste("./ukf", sep = ""))
+    }
+    ret <- list()
+    pnames <- c("u", "v", "D", "ss1", "ss2", "ss3", "rho", "bsst", 
+        "sssst", "rad", "dep1", "dep2", "qSparTilde")
+    ret$init <- init
+    ret$init[1] <- -ret$init[1]
+    ret$phase <- phase
+    ret$error.code
+    mpt <- read.table("mpt.out")
+    jdu2date <- function(jdu) as.date(jdu - 2436934.5)
+    ret$decimal.date <- mpt$V1 - 2436934.5
+    if (prep.track$has.sst) {
+        sstobsstr <- (prep.track$tail[(grep("Number of sst observations", 
+            prep.track$tail) + 2):length(prep.track$tail)])
+        sstobsmat <- matrix(as.numeric(unlist(strsplit(sstobsstr[sstobsstr != 
+            "\n"], " "))), ncol = 2, byrow = TRUE)
+        sstobsmat[, 1] <- sstobsmat[, 1] - 2436934.5
+        ret$sstobs <- sstobsmat
+        ret$most.prob.sst <- mpt$V14
+    }
+    ret$date <- jdu2date(mpt$V1)
+    ret$timeAL <- mpt$V1 - mpt$V1[1]
+    ret$most.prob.track <- cbind(x = (360 - mpt$V8)%%360, y = mpt$V9)
+    ret$var.most.prob.track <- cbind(mpt$V10, mpt$V11, mpt$V12, 
+        mpt$V13)
+    std <- read.table("ukf.std", header = FALSE, skip = 1)
+    ret$est <- unlist(sapply(pnames, function(n) std$V3[std$V2 == 
+        n]))
+    if ("u" %in% names(ret$est)) {
+        ret$est["u"] <- -ret$est["u"]
+    }
+    ret$sd <- unlist(sapply(pnames, function(n) std$V4[std$V2 == 
+        n]))
+    names(ret$est) <- gsub("qSparTilde", "phi", names(ret$est))
+    names(ret$sd) <- gsub("qSparTilde", "phi", names(ret$sd))
+    par <- as.numeric(scan("ukf.par", what = "", nlines = 1, 
+        quiet = TRUE)[c(6, 11, 16)])
+    ret$npar <- par[1]
+    ret$nlogL <- par[2]
+    ret$max.grad.comp <- par[3]
+    setwd(oldwd)
+    if (is.null(save.dir)) {
+        unlink(dirname, TRUE)
+    }
+    class(ret) <- "trackit"
+    options(digits = oldDigits)
+    return(ret)
 }
 
 two.layer.depth.corr<-function(track, daybyday=FALSE, D0=50){
@@ -775,11 +799,11 @@ plot.trackit<-function(x, onlylonlat=FALSE,...){
 }
 
 get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
-                         folder = tempdir(), removeland = TRUE)
+                         folder = tempdir(), removeland = TRUE, minus180 = FALSE, offsetx=0, offset.cutoff=360)
 {
   # Metadata: http://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.html
   require(date)
-  require(ncdf)
+  require(ncdf4)
   fmtDate <- function(date) {
         x <- date.mdy(date)
         paste(x$year, formatC(x$month, digits = 1, flag = "0", 
@@ -822,10 +846,10 @@ get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
   link <- "ftp://ftp.cdc.noaa.gov/Datasets/noaa.oisst.v2/lsmask.nc"
   fname = paste(folder, "landmask.nc", sep = "/")
   download.file(link, fname, mode="wb")
-  nc <- open.ncdf(fname)
-  land <- get.var.ncdf(nc, varid="mask")
+  nc <- nc_open(fname)
+  land <- ncvar_get(nc, varid="mask")
   land <- land[lonlow:lonhigh,((lathigh-90)*-1):((latlow-90)*-1)]
-  close.ncdf(nc)
+  nc_close(nc)
   #
   # Get dataset ID and find out the end date and file dates of the imagery series
   link <- "http://www.esrl.noaa.gov/psd/cgi-bin/db_search/DBSearch.pl?Dataset=NOAA+Optimum+Interpolation+(OI)+SST+V2&Variable=Sea+Surface+Temperature"
@@ -884,22 +908,22 @@ get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
   cat(paste("SST data are downloaded as a netcdf file from \n\n", flink, "\n\n" , sep=""))
   #
   # Add land mask to oisst.nc
-  nc <- open.ncdf(fname, write=T)
+  nc <- nc_open(fname, write=T)
   xdim <- nc$dim[['lon']]
   ydim <- nc$dim[['lat']]
-  varz = var.def.ncdf("land","flag", list(xdim,ydim), 32767, 
+  varz = ncvar_def("land","flag", list(xdim,ydim), 32767, 
           longname="Land mask for SST values (1=ocean, 0=land)")
-  nc <- var.add.ncdf(nc, varz)
-  put.var.ncdf(nc, "land", land)
-  sync.ncdf(nc)
-  close.ncdf(nc)
+  nc <- ncvar_add(nc, varz)
+  ncvar_put(nc, "land", land)
+  nc_sync(nc)
+  nc_close(nc)
   land <- t(land) # the dimensions are flipped
   #
   # Extract each day of data as xyz
-  nc <- open.ncdf(fname)
-  lon <- get.var.ncdf(nc, varid="lon")
-  lat <- get.var.ncdf(nc, varid="lat")
-  dates <- as.Date("1800-01-01") + get.var.ncdf(nc, varid="time")
+  nc <- nc_open(fname)
+  lon <- ncvar_get(nc, varid="lon")
+  lat <- ncvar_get(nc, varid="lat")
+  dates <- as.Date("1800-01-01") + ncvar_get(nc, varid="time")
   every.day <- 7
   vv      <- nc$var[[1]]
   varsize <- vv$varsize
@@ -911,7 +935,7 @@ get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
         start[ndims] <- i       # change to start=(1,1,1,...,i) to read timestep i
         count <- varsize        # begin w/count=(nx,ny,nz,...,nt), reads entire var
         count[ndims] <- 1       # change to count=(nx,ny,nz,...,1) to read 1 tstep
-        sst <- round(t(get.var.ncdf(nc, vv, start=start, count=count )),2)
+        sst <- round(t(ncvar_get(nc, vv, start=start, count=count )),2)
         # Prepare an individual xyz file
         xyz <- rbind(rep(NA, 4))
         d <- mdy.date(as.numeric(format(dates[i], "%m")),
@@ -919,7 +943,7 @@ get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
                       as.numeric(format(dates[i], "%Y")))
         # !! The date constructs for the filename are different - the first date is the image date
         # !! Unlike old code that centers the image date in between d1 and d2 (+/- days to position it)
-	y1 <- date.mdy(d)$year
+	    y1 <- date.mdy(d)$year
         d1 <- d - mdy.date(month = 1, day = 1, year = y1) + 1
         y2 <- date.mdy(d + every.day - 1)$year
         d2 <- (d + every.day -1) - mdy.date(month = 1, 
@@ -928,14 +952,21 @@ get.sst.from.server <- function(track, lonlow, lonhigh, latlow, lathigh,
                     "_", y2, fmtDay(d2), "_", "sst", ".xyz", sep = "")
         dest <- paste(sstfolder, filename, sep = "/")
         for (j in 1:length(lon)) {
-             xyz <- rbind(xyz, cbind(lat, lon[j], sst[,j], land[,j]))
+		     m180 <- ifelse(lon[j]>180, lon[j]-360, lon[j]) + offsetx
+             xyz <- rbind(xyz, cbind(lat, ifelse(minus180, m180, lon[j]), sst[,j], land[,j]))
         }
         xyz <- na.omit(xyz)
-        if (removeland) xyz <- xyz[which(xyz[,4]==1), -4] 
+        if (removeland) xyz <- xyz[which(xyz[,4]==1), -4]
+		if (minus180){
+          jy <- order(xyz[,2])
+		  xyz <- xyz[jy,]
+	      jy <- which(xyz[,2]> offset.cutoff)[1]-1
+		  xyz <- xyz[1:jy,]
+		}
         write.table(xyz, file = dest, 
                     quote = FALSE, row.names = FALSE, col.names = FALSE)
   }
-  close.ncdf(nc)
+  nc_close(nc)
   cat("And repackaged to", length(dir(sstfolder)), "xyz files in:\n\n  ", sstfolder, "\n\n")
   cat(paste(rep("=", options()$width), collapse = ""), "\n\n")
   .sstFileVector <<- paste(sstfolder, dir(sstfolder), sep = "/")
