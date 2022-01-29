@@ -282,9 +282,9 @@ light.simulator<-function(u=0, v=0, D=100, ss1=80, ss2=15, ss3=2.5, rho=0.05, bs
                 file='sstsim.dat', append=TRUE)
     cat("dummy\n",file='ukf.dat')
     if (.Platform$OS.type == "windows") {
-      error.code<-.sys(paste(.path.package("trackit"),"/admb/src/ukf.exe", sep = ""))
+      error.code<-.sys(paste(.path.package("trackit"),"/admb/ukf.exe", sep = ""))
     }else {
-      file.copy(paste(.path.package('trackit'),"/admb/src/ukf",sep=""),"ukf", TRUE)
+      file.copy(paste(.path.package('trackit'),"/admb/ukf",sep=""),"ukf", TRUE)
       .sys("chmod u+x ukf")
       error.code<-.sys(paste("./ukf", sep = ""))
     }
@@ -341,9 +341,9 @@ light.simulator<-function(u=0, v=0, D=100, ss1=80, ss2=15, ss3=2.5, rho=0.05, bs
   file.copy(paste(.path.package("trackit"),'/admb/src/lunar.dat',sep="/"),"lunar.dat", TRUE)
   cat("# dummy file", file='prepro.dat')
   if (.Platform$OS.type == "windows") {
-    error.code<-.sys(paste(.path.package("trackit"),"/admb/src/prepro.exe", sep = ""))
+    error.code<-.sys(paste(.path.package("trackit"),"/admb/prepro.exe", sep = ""))
   }else {
-      file.copy(paste(.path.package('trackit'),"/admb/src/prepro",sep=""),"prepro", TRUE)
+      file.copy(paste(.path.package('trackit'),"/admb/prepro",sep=""),"prepro", TRUE)
       .sys("chmod u+x prepro")
       error.code<-.sys(paste("./prepro", sep = ""))
   }
@@ -438,12 +438,12 @@ prepit <- function (track, fix.first, fix.last, scan = TRUE, window = c(0.05,
         sep = "/"), "lunar.dat", TRUE)
     cat("# dummy file", file = "prepro.dat")
     if (.Platform$OS.type == "windows") {
-        file.copy(paste(path.package("trackit"), "/admb/src/prepro.exe", 
+        file.copy(paste(path.package("trackit"), "/admb/prepro.exe", 
             sep = "/"), "prepro.exe", TRUE)
         error.code <- .sys("prepro.exe")
     }
     else {
-        file.copy(paste(path.package("trackit"), "/admb/src/prepro", 
+        file.copy(paste(path.package("trackit"), "/admb/prepro", 
             sep = "/"), "prepro", TRUE)
         .sys("chmod u+x prepro")
         error.code <- .sys(paste("./prepro", sep = ""))
@@ -606,12 +606,12 @@ trackit <- function (prep.track, a2lpoints = 15, u.init = 0, v.init = 0,
     cat("# Run program in simulation mode only 0=FALSE, 1=TRUE\n", 
         0, "\n", file = "sstsim.dat")
     if (.Platform$OS.type == "windows") {
-        file.copy(paste(path.package("trackit"), "/admb/src/ukf.exe", 
+        file.copy(paste(path.package("trackit"), "/admb/ukf.exe", 
             sep = ""), "ukf.exe", TRUE)
         error.code <- .sys("ukf.exe")
     }
     else {
-        file.copy(paste(path.package("trackit"), "/admb/src/ukf", 
+        file.copy(paste(path.package("trackit"), "/admb/ukf", 
             sep = ""), "ukf", TRUE)
         .sys("chmod u+x ukf")
         error.code <- .sys(paste("./ukf", sep = ""))

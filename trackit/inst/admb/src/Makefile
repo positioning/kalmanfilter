@@ -1,10 +1,12 @@
-all: ukf prepro
+all: clean
+	$(MAKE) ../ukf
+	$(MAKE) ../prepro
 
-ukf: ukf.tpl 
-	admb ukf
+../ukf: ukf.tpl 
+	admb -o $@ $^
 
-prepro: prepro.tpl 
-	admb prepro
+../prepro: prepro.tpl 
+	admb -o $@ $^
 
 clean:
-	@rm -vf prepro prepro.cpp prepro.htp ukf ukf.htp ukf.cpp *.o*
+	@rm -vf ../prepro prepro.cpp prepro.htp ../ukf ukf.htp ukf.cpp *.o*
