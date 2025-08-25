@@ -1,10 +1,5 @@
-get.reynolds <- function (track = NULL, datelow = "2008-01-01", datehigh = "2008-02-01", lonlow, lonhigh, latlow, lathigh, folder = tempdir(), removeland = TRUE, landvalue=NULL, minus180 = FALSE, offsetx = 0, offset.cutoff = 360, res = "low") 
+get.reynolds <- function (track, lonlow, lonhigh, latlow, lathigh, folder = tempdir(), removeland = TRUE, landvalue=NULL, minus180 = FALSE, offsetx = 0, offset.cutoff = 360, res = "low") 
 {
-	### Variant Aug 2025
-	###-------------------------------------------------------------
-	### Feed in date-range directly, instead of looking from track
-	### Short-term fix for handling MTI tags for Matt's sailfish
-	###-------------------------------------------------------------
     ### Updated Jan 2023
 	###-------------------------------------------------------------
 	### Switched to THREDDS Data Server
@@ -12,7 +7,6 @@ get.reynolds <- function (track = NULL, datelow = "2008-01-01", datehigh = "2008
 	### then up-scale to "low" res @1.00 deg & "mid" res @0.50
 	### https://psl.noaa.gov/mddb2/makePlot.html?variableID=156648
 	###-------------------------------------------------------------
-
     require(date)
     require(ncdf4)
     fmtDate <- function(date) {
@@ -43,23 +37,12 @@ get.reynolds <- function (track = NULL, datelow = "2008-01-01", datehigh = "2008
             stop("The folder name supplied is in fact a filename")
     }
     unlink(paste(sstfolder, "/*", sep = ""), F)
-    
-    ### Variant starts...
-    if (!is.null(track)){
-      if (is.data.frame(track)) 
-          track <- list(track)
-      minDate <- min(unlist(lapply(track, function(x) mdy.date(x[1, 
-          2], x[1, 3], x[1, 1]))))
-      maxDate <- max(unlist(lapply(track, function(x) mdy.date(x[nrow(x), 
-          2], x[nrow(x), 3], x[nrow(x), 1]))))
-    } else {
-    	  md <- as.numeric(unlist(strsplit(datelow,"-")))
-    	  minDate <- mdy.date(md[2],md[3],md[1])
-    	  md <- as.numeric(unlist(strsplit(datehigh,"-")))
-      maxDate <- mdy.date(md[2],md[3],md[1])
-    }
-    ### Variant ends....
-        
+    if (is.data.frame(track)) 
+        track <- list(track)
+    minDate <- min(unlist(lapply(track, function(x) mdy.date(x[1, 
+        2], x[1, 3], x[1, 1]))))
+    maxDate <- max(unlist(lapply(track, function(x) mdy.date(x[nrow(x), 
+        2], x[nrow(x), 3], x[nrow(x), 1]))))
     latlow <- ifelse(latlow < -90, -90, trunc(latlow))
     lathigh <- ifelse(lathigh > 90, 90, trunc(lathigh))
     lonlow <- ifelse(lonlow < 0, trunc(lonlow) + 360, trunc(lonlow))
